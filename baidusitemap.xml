@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https:///www.limuyang.cc/2016/03/01/APP%E5%90%AF%E5%8A%A8%E9%A1%B5%E7%9A%84%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2017-09-13T11:59:43.914Z</lastmod>
+    <data>
+        <display>
+        <title>APP启动页的正确配置方式</title>
+        <pubTime>2016-03-01T12:23:31.000Z</pubTime>
+        
+        <tag>冷热启动</tag>
+         
+        <tag>app</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="https:///www.limuyang.cc/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https:///www.limuyang.cc/2016/05/03/%E8%AF%91Android-Design-Support-Library-%E4%BD%BF%E7%94%A8CoordinatorLayout%E6%9D%A5%E5%A4%84%E7%90%86%E6%BB%9A%E5%8A%A8/</loc>
     <lastmod>2017-09-12T12:42:32.633Z</lastmod>
     <data>
@@ -60,28 +82,6 @@
         <tag>异步IO</tag>
          
         <tag>AsyncTask</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https:///www.limuyang.cc/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https:///www.limuyang.cc/2016/03/01/APP%E5%90%AF%E5%8A%A8%E9%A1%B5%E7%9A%84%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</loc>
-    <lastmod>2017-09-12T12:26:14.024Z</lastmod>
-    <data>
-        <display>
-        <title>APP启动页的正确配置方式</title>
-        <pubTime>2016-03-01T12:23:31.000Z</pubTime>
-        
-        <tag>冷热启动</tag>
-         
-        <tag>app</tag>
          
          
            
