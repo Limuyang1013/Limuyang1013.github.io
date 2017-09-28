@@ -73,7 +73,7 @@
     <link href="https:///www.limuyang.cc/2017/06/01/%E5%91%8A%E5%88%AB%E4%BA%94%E6%9C%88/"/>
     <id>https:///www.limuyang.cc/2017/06/01/告别五月/</id>
     <published>2017-06-01T14:06:01.000Z</published>
-    <updated>2017-06-07T13:25:00.133Z</updated>
+    <updated>2017-06-07T13:25:00.134Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://olivyw4lw.bkt.clouddn.com/davide-ragusa-3131-min.jpg" alt=""></p>
 <p>2017年<br>6月1号<br>转眼就跑到那似水流年里去了，然而身边的人都不珍视自己的似水流年<br>我要告别5月<br><a id="more"></a></p>
@@ -101,7 +101,7 @@
     <link href="https:///www.limuyang.cc/2017/02/17/%E8%87%AA%E5%A7%8B%E8%87%B3%E7%BB%88/"/>
     <id>https:///www.limuyang.cc/2017/02/17/自始至终/</id>
     <published>2017-02-17T14:25:29.000Z</published>
-    <updated>2017-06-07T13:21:14.906Z</updated>
+    <updated>2017-06-07T13:21:14.907Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://olivyw4lw.bkt.clouddn.com/17-2-17/11192154-file_1487341097174_e508.jpg" alt=""></p>
 <p>长安有男儿，二十心已朽<br>我已经快忘了来这座城市的初衷</p>
@@ -272,7 +272,7 @@
     <link href="https:///www.limuyang.cc/2016/10/29/Handler%E6%9C%BA%E5%88%B6%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83-%E4%B8%80/"/>
     <id>https:///www.limuyang.cc/2016/10/29/Handler机制从入门到放弃-一/</id>
     <published>2016-10-29T14:41:23.000Z</published>
-    <updated>2017-02-17T10:58:14.739Z</updated>
+    <updated>2017-02-17T10:58:14.740Z</updated>
     
     <content type="html"><![CDATA[<p>闲来无事，准备好好梳理一下Handler机制，之前分析过没有写成博客，结果就是慢慢的淡忘了，这次趁着刚分析完，赶紧写下来。</p>
 <p>在开始分析之前先打打基础，理解理解什么是线程以及什么是Handler，这里大部分内容引用一篇来自伯乐在线的文章，因为看来看去关于基础的部分这个人已经说得很好了，我就负责把主要的部分抽取出来。</p>
@@ -329,7 +329,7 @@
     <link href="https:///www.limuyang.cc/2016/08/11/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Python-%E5%88%86%E5%88%86%E9%92%9F%E4%B8%8B%E8%BD%BD%E7%9F%A5%E4%B9%8E%E7%BE%8E%E5%9B%BE%E7%BB%99%E4%BD%A0%E7%9C%8B/"/>
     <id>https:///www.limuyang.cc/2016/08/11/人生苦短，我用Python-分分钟下载知乎美图给你看/</id>
     <published>2016-08-11T11:45:46.000Z</published>
-    <updated>2016-08-18T11:56:21.114Z</updated>
+    <updated>2016-08-18T11:56:21.115Z</updated>
     
     <content type="html"><![CDATA[<h3 id="起"><a href="#起" class="headerlink" title="起"></a>起</h3><p>上次说了要爬知乎的图片，于是花了一下午的时间去完成这件事，发现暂时接触到的爬虫总是逃脱不了一个规律：</p>
 <ul>
@@ -431,11 +431,11 @@
       <category term="Python" scheme="https:///www.limuyang.cc/categories/Python/"/>
     
     
-      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
-    
       <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="数据采集" scheme="https:///www.limuyang.cc/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+    
+      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
     
   </entry>
   
@@ -524,9 +524,9 @@
       <category term="Python" scheme="https:///www.limuyang.cc/categories/Python/"/>
     
     
-      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
-    
       <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
     
       <category term="网络" scheme="https:///www.limuyang.cc/tags/%E7%BD%91%E7%BB%9C/"/>
     
@@ -537,7 +537,7 @@
     <link href="https:///www.limuyang.cc/2016/08/04/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Python-%E7%88%AC%E8%99%AB%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E6%95%99%E5%8A%A1%E5%A4%84%E5%B9%B6%E4%B8%94%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E5%88%B0%E6%9C%AC%E5%9C%B0/"/>
     <id>https:///www.limuyang.cc/2016/08/04/人生苦短，我用Python-爬虫模拟登陆教务处并且保存数据到本地/</id>
     <published>2016-08-04T11:26:46.000Z</published>
-    <updated>2016-08-09T11:38:57.662Z</updated>
+    <updated>2016-08-09T11:38:57.663Z</updated>
     
     <content type="html"><![CDATA[<p>刚开始接触Python，看很多人玩爬虫我也想玩，找来找去发现很多人用网络爬虫干的第一件事就是模拟登陆，增加点难度就是模拟登陆后在获取数据，但是网上好少有Python 3.x的模拟登陆Demo可以参考，加上自己也不怎么懂HTML，所以这第一个Python爬虫写的异常艰难，不过最终结果还是尽如人意的，下面把这次学习的过程整理一下。<br><a id="more"></a><br><strong>工具</strong></p>
 <ul>
@@ -615,9 +615,9 @@
       <category term="Python" scheme="https:///www.limuyang.cc/categories/Python/"/>
     
     
-      <category term="Python" scheme="https:///www.limuyang.cc/tags/Python/"/>
-    
       <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Python" scheme="https:///www.limuyang.cc/tags/Python/"/>
     
       <category term="模拟登陆" scheme="https:///www.limuyang.cc/tags/%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86/"/>
     
@@ -630,7 +630,7 @@
     <link href="https:///www.limuyang.cc/2016/07/25/Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
     <id>https:///www.limuyang.cc/2016/07/25/Python网络编程基础/</id>
     <published>2016-07-25T11:24:55.000Z</published>
-    <updated>2016-08-10T11:26:59.171Z</updated>
+    <updated>2016-08-10T11:26:59.172Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><strong>原文转自</strong>：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014320037768360d53e4e935ca4a1f96eed1c896ad1217000" target="_blank" rel="external"><strong>Python教程</strong></a>          </p>
@@ -910,7 +910,7 @@
     <link href="https:///www.limuyang.cc/2016/05/07/Android-Design-Support-Library-%E7%AE%80%E7%BA%A6%E8%80%8C%E4%B8%8D%E7%AE%80%E5%8D%95%E7%9A%84SnackBar/"/>
     <id>https:///www.limuyang.cc/2016/05/07/Android-Design-Support-Library-简约而不简单的SnackBar/</id>
     <published>2016-05-07T12:15:16.000Z</published>
-    <updated>2017-09-12T12:19:25.800Z</updated>
+    <updated>2017-09-12T12:19:25.801Z</updated>
     
     <content type="html"><![CDATA[<h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>在之前我有提到这一篇Android Design Support Library系列文章是关于SnackBar的，但是由于要用到CoordinatorLayout所以先翻译了一篇相关文章，如果还不了解的可以先看一下<strong><a href="http://blog.csdn.net/wei_smile/article/details/51306688" target="_blank" rel="external">Android Design Support Library–使用CoordinatorLayout来处理滚动</a></strong> ，这一篇我们讲SnackBar，SnackBar其实就是Toast的升级版，他们之间最大的不同就是：SnackBar会对我们的操作提供一个轻量级的反馈，并且可以对点击事件做出响应，如果是在手机上使用一个SnackBar的话，我们会看到在屏幕底部出现一条简短的信息，如果是在更大的屏幕上这条信息应该会显示在左下角，并且当一个SnackBar显示的时候它是凌驾于当前所有屏幕元素之上的，我们在屏幕上一次只能显示一个SnackBar，如果这么讲不是很清楚的话，我们先来看一个小Demo，通过代码驱动理解是比较好的方式。<br><a id="more"></a></p>
 <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>根据SnackBar的特点，在屏幕上显示出不同的SnackBar，效果如下：</p>
@@ -1342,7 +1342,7 @@
     <link href="https:///www.limuyang.cc/2016/04/16/%E4%BD%BF%E7%94%A8ViewPager%E5%8A%A8%E7%94%BB%E6%9D%A5%E5%81%9A%E5%87%BA%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E5%BC%95%E5%AF%BC%E9%A1%B5/"/>
     <id>https:///www.limuyang.cc/2016/04/16/使用ViewPager动画来做出不一样的引导页/</id>
     <published>2016-04-16T12:29:26.000Z</published>
-    <updated>2017-09-12T12:32:27.164Z</updated>
+    <updated>2017-09-12T12:32:27.165Z</updated>
     
     <content type="html"><![CDATA[<p>就算Google从很早开始就自带了设置引导页动画的接口，但是就我目前看来市面上使用引导页动画的还是很少的，也不知道是为什么，一想到Material Design的使用率也这么少表示很心塞。<br>首先来看看市面上千篇一律的引导页效果，诺：</p>
 <p><img src="http://img.my.csdn.net/uploads/201604/16/1460774446_5006.gif" alt="这里写图片描述"></p>
@@ -1485,9 +1485,9 @@
       <category term="Android" scheme="https:///www.limuyang.cc/categories/Android/"/>
     
     
-      <category term="回调" scheme="https:///www.limuyang.cc/tags/%E5%9B%9E%E8%B0%83/"/>
-    
       <category term="事件分发" scheme="https:///www.limuyang.cc/tags/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/"/>
+    
+      <category term="回调" scheme="https:///www.limuyang.cc/tags/%E5%9B%9E%E8%B0%83/"/>
     
       <category term="ViewGroup" scheme="https:///www.limuyang.cc/tags/ViewGroup/"/>
     
@@ -1607,9 +1607,9 @@
       <category term="Android" scheme="https:///www.limuyang.cc/categories/Android/"/>
     
     
-      <category term="回调" scheme="https:///www.limuyang.cc/tags/%E5%9B%9E%E8%B0%83/"/>
-    
       <category term="事件分发" scheme="https:///www.limuyang.cc/tags/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/"/>
+    
+      <category term="回调" scheme="https:///www.limuyang.cc/tags/%E5%9B%9E%E8%B0%83/"/>
     
   </entry>
   
@@ -1618,7 +1618,7 @@
     <link href="https:///www.limuyang.cc/2016/04/01/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%9C%BA%E5%88%B6/"/>
     <id>https:///www.limuyang.cc/2016/04/01/回调函数机制/</id>
     <published>2016-04-01T15:12:01.000Z</published>
-    <updated>2016-08-20T02:56:01.618Z</updated>
+    <updated>2016-08-20T02:56:01.619Z</updated>
     
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 <blockquote>
@@ -1736,7 +1736,7 @@
     <link href="https:///www.limuyang.cc/2015/12/18/AsyncTask%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/"/>
     <id>https:///www.limuyang.cc/2015/12/18/AsyncTask初步解析/</id>
     <published>2015-12-18T12:26:43.000Z</published>
-    <updated>2017-09-12T12:29:04.462Z</updated>
+    <updated>2017-09-12T12:29:04.463Z</updated>
     
     <content type="html"><![CDATA[<h4 id="AsyncTask-–-直接继承与Object类-在API-3中开始就被定义"><a href="#AsyncTask-–-直接继承与Object类-在API-3中开始就被定义" class="headerlink" title="AsyncTask  – 直接继承与Object类 在API-3中开始就被定义"></a>AsyncTask  – 直接继承与Object类 在API-3中开始就被定义</h4><p> <strong>一、AsyncTask初步介绍</strong><br>　在Android程序开始运行的时候会单独启动一个进程，默认情况下所有这个程序操作都在这个进程中进行。一个Android程序默认情况下只有一个进程，但是一个进程却是可以有许线程的。<br>　在这些线程中，有一个线程叫做UI线程，也叫做Main Thread，除了Main Thread之外的线程都可称为Worker Thread。Main Thread主要负责控制UI页面的显示、更新、交互等。 因此所有在UI线程中的操作要求越短越好，只有这样用户才会觉得操作比较流畅。一个比较好的做法是把一些比较耗时的操作，例如网络请求、数据库操作、 复杂计算等逻辑都封装到单独的线程，这样就可以避免阻塞主线程，这个时候就用到了异步任务类AsyncTask。<br>　AsyncTask 是一个综合Thread 和 Handler的辅助类，并不是通用线程框架的一部分。AsyncTask 是短期后台操作的理想选择（最多几秒钟），如果你需要线程长时间的保持运行，强烈建议你使用 java.util.concurrent 包提供的各种API以满足你的需求，比如：Executor, ThreadPoolExecutor and FutureTask.这里我们只讨论AsyncTask的初步使用。<br><a id="more"></a>　　<br><strong>二、AsyncTask的内部机制</strong><br>　首先我们来看一下AsyncTask的方法定义：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncTask</span>&lt;<span class="title">Params</span>, <span class="title">Progress</span>, <span class="title">Result</span>&gt; </span>&#123;</div></pre></td></tr></table></figure>
