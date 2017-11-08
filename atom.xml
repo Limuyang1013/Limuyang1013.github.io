@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:///www.limuyang.cc/"/>
-  <updated>2017-09-11T13:56:52.435Z</updated>
+  <updated>2017-11-08T12:51:05.693Z</updated>
   <id>https:///www.limuyang.cc/</id>
   
   <author>
@@ -16,25 +16,82 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>javascript中call、apply、bind方法的使用</title>
+    <link href="https:///www.limuyang.cc/2017/11/08/javascript%E4%B8%ADcall%E3%80%81apply%E3%80%81bind%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https:///www.limuyang.cc/2017/11/08/javascript中call、apply、bind方法的使用/</id>
+    <published>2017-11-08T12:50:19.000Z</published>
+    <updated>2017-11-08T12:51:05.693Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://olivyw4lw.bkt.clouddn.com/maxresdefault.jpg" alt=""></p>
+<a id="more"></a>
+<h4 id="context的概念"><a href="#context的概念" class="headerlink" title="context的概念"></a>context的概念</h4><p>在知道我们为什么要使用call、apply、bind方法之前，我觉得有必要先了解一下context的相关概念，通常context的作用是取决于函数将如何被调用，当函数作为对象的方法调用时，this就会被设置为调用方法的对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> object = &#123;</div><div class="line">       foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">           <span class="built_in">console</span>.log(<span class="keyword">this</span> === object);</div><div class="line">       &#125;</div><div class="line">   &#125;;</div><div class="line"></div><div class="line">   object.foo(); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p>当通过new一个对象的实例的方式来调用一个函数的时候，this的值将被设置为新创建的实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  foo() <span class="comment">// window</span></div><div class="line">  <span class="keyword">new</span> foo() <span class="comment">// foo&#123;&#125;</span></div></pre></td></tr></table></figure></p>
+<p>当作为未绑定对象被调用时，this默认指向全局上下文或者浏览器中的window对象。然而，如果函数在严格模式下被执行，上下文将被默认为undefined</p>
+<h4 id="动态改变this的值"><a href="#动态改变this的值" class="headerlink" title="动态改变this的值"></a>动态改变this的值</h4><p><strong>然而call、apply、bind方法允许你在自定义的context中执行函数</strong>，什么意思呢，通俗的说就是可以不遵循上面给出的部分定义，可以动态的改变this，我们直接引出MDN关于call方法的定义：</p>
+<blockquote>
+<p>call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)</p>
+</blockquote>
+<p>举个例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 非严格模式下</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">args</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">args</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">    add(); <span class="comment">// Window &#123;frames: Window, postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, …&#125;</span></div><div class="line">    sub(); <span class="comment">// Window &#123;frames: Window, postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, …&#125;</span></div></pre></td></tr></table></figure></p>
+<p>结果是符合预期的：</p>
+<blockquote>
+<p>当作为未绑定对象被调用时，this默认指向全局上下文或者浏览器中的window对象</p>
+</blockquote>
+<p>我们给他加上call方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 非严格模式下</span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">args</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">args</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">    add(); <span class="comment">// Window &#123;frames: Window, postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, …&#125;</span></div><div class="line">    sub(); <span class="comment">// Window &#123;frames: Window, postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, …&#125;</span></div><div class="line">    add.call(sub,<span class="number">1</span>); <span class="comment">// ƒ sub(args) &#123; ... &#125;</span></div><div class="line">    sub.call(add,<span class="number">1</span>); <span class="comment">// ƒ add(args) &#123; ... &#125;</span></div></pre></td></tr></table></figure></p>
+<p>这时候this的值有点类似于第一种情况：</p>
+<blockquote>
+<p>当函数作为对象的方法调用时，this就会被设置为调用方法的对象</p>
+</blockquote>
+<p>看起来我们调用call方法的时候好像实际上是进行了对象方法的调用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sub.call(add,<span class="number">1</span>);  <span class="comment">//sub</span></div><div class="line">=&gt;</div><div class="line"><span class="keyword">var</span> sub = &#123;</div><div class="line">    add: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">sub.add(); <span class="comment">// sub</span></div></pre></td></tr></table></figure>
+<p>这就是动态的改变了this<br>还有一点要注意的是，这里call和apply方法第一个参数的this值并不一定是该函数执行时真正的this值，比如在非严格模式下，我们传入<code>null</code>或<code>undefined</code>会自动指向全局对象，在浏览器环境中就是<code>window</code>，在node环境中就是<code>global</code>，另外我们还可以传入一些原始值(数字，字符串，布尔值)，这时候的this会指向这些原始值的包装对象，比如传入的是数字，会指向Number。</p>
+<h4 id="call和apply的区别"><a href="#call和apply的区别" class="headerlink" title="call和apply的区别"></a>call和apply的区别</h4><p>既然call和apply方法能够动态的改变this的值，我们可以利用这个特性来实现简单的继承，比如此时我们有一个父构造函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Product</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.age = age;</div><div class="line">        <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">"is"</span>+<span class="keyword">this</span>.age+<span class="string">"years old"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>如果我们想写一个子构造函数，只需要在子构造函数里面调用父构造函数的call方法就可以实现继承：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Toy</span>(<span class="params">name, price</span>) </span>&#123;</div><div class="line">        Product.call(<span class="keyword">this</span>, name, price);</div><div class="line">        <span class="keyword">this</span>.self = <span class="string">"single"</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>实现继承的同时父子构造函数还都能分别有自己的属性，比如这里的self属性。<br>这里使用了call方法作为演示，其实apply方法的使用和call方法并无多大区别，重点在参数上，他们的第一个参数都是一个指定的this值，这个值可以是任意js对象，但是第二个参数有区别，call方法接受的是若干个参数的列表，而apply方法接受的是一个包含多个参数的数组，如果上面的例子用apply来写的话就是这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Product</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.age = age;</div><div class="line">        <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">"is"</span>+<span class="keyword">this</span>.age+<span class="string">"years old"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Toy</span>(<span class="params">name, price</span>) </span>&#123;</div><div class="line">        Product.apply(<span class="keyword">this</span>, [name, price]);</div><div class="line">        <span class="keyword">this</span>.self = <span class="string">"single"</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="bind方法的特殊性"><a href="#bind方法的特殊性" class="headerlink" title="bind方法的特殊性"></a>bind方法的特殊性</h4><p>之所以把bind方法单独放出来是因为bind方法和前面两者还是有不小的区别的，虽然都是动态改变this的值，举个例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">     x: <span class="number">81</span>,</div><div class="line"> &#125;;</div><div class="line"></div><div class="line"> <span class="keyword">var</span> foo = &#123;</div><div class="line">     getX: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> <span class="keyword">this</span>.x;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="built_in">console</span>.log(foo.getX.bind(obj)());  <span class="comment">//81</span></div><div class="line"> <span class="built_in">console</span>.log(foo.getX.call(obj));    <span class="comment">//81</span></div><div class="line"> <span class="built_in">console</span>.log(foo.getX.apply(obj));   <span class="comment">//81</span></div></pre></td></tr></table></figure></p>
+<p>有没有注意到使用bind方法时候后面还要多加上一对括号，因为使用bind只是返回了对应函数并没有立即执行，而call和apply方法是立即执行的，并且MDN还提到，<strong>当使用new操作符调用绑定函数时指定的this参数会变无效：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">       x: <span class="number">81</span>,</div><div class="line">   &#125;;</div><div class="line"></div><div class="line">   <span class="keyword">var</span> foo = &#123;</div><div class="line">       getX: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="keyword">this</span>.x;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">var</span> result = foo.getX.bind(obj);</div><div class="line">   <span class="built_in">console</span>.log(<span class="keyword">new</span> result());  <span class="comment">//getX</span></div></pre></td></tr></table></figure></p>
+<p>bind方法的另一个应用是使一个函数拥有预设的初始函数，这些参数作为bind的第二个参数跟在this(或其他对象)后面，之后它们会被插入到目标函数的参数列表的开始位置，传递给绑定函数的参数会跟在它们的后面：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> list1 = list(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [1, 2, 3]</span></div><div class="line"></div><div class="line"><span class="comment">// Create a function with a preset leading argument</span></div><div class="line"><span class="keyword">var</span> leadingThirtysevenList = list.bind(<span class="literal">undefined</span>, <span class="number">37</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> list2 = leadingThirtysevenList(); <span class="comment">// [37]</span></div><div class="line"><span class="keyword">var</span> list3 = leadingThirtysevenList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [37, 1, 2, 3]</span></div></pre></td></tr></table></figure></p>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a href="http://ryanmorr.com/understanding-scope-and-context-in-javascript/" target="_blank" rel="external">Understanding Scope and Context in JavaScript</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="external">Function.prototype.call()</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://olivyw4lw.bkt.clouddn.com/maxresdefault.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端开发" scheme="https:///www.limuyang.cc/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="javascript" scheme="https:///www.limuyang.cc/tags/javascript/"/>
+    
+      <category term="call" scheme="https:///www.limuyang.cc/tags/call/"/>
+    
+      <category term="apply" scheme="https:///www.limuyang.cc/tags/apply/"/>
+    
+      <category term="bind" scheme="https:///www.limuyang.cc/tags/bind/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javascript立即执行函数(IIFE)</title>
     <link href="https:///www.limuyang.cc/2017/09/11/javascript%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0-IIFE/"/>
     <id>https:///www.limuyang.cc/2017/09/11/javascript立即执行函数-IIFE/</id>
     <published>2017-09-11T13:46:54.000Z</published>
-    <updated>2017-09-11T13:56:52.435Z</updated>
+    <updated>2017-11-08T12:37:49.403Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://oasusatoz.bkt.clouddn.com/maxresdefault.jpg" alt=""></p>
-<a id="more"></a>
-<p>通常我们声明一个函数有以下几种方式：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明函数f1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f1"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过()来调用此函数</span></div><div class="line">f1();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个匿名函数的函数表达式，被赋值给变量f2:</span></div><div class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f2"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f2();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个命名为f3的函数的函数表达式(这里的函数名可以随意命名，可以不必和变量f3重名)，被赋值给变量f3:</span></div><div class="line"><span class="keyword">var</span> f3 = <span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f3"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f3();</div></pre></td></tr></table></figure></p>
+<a id="more"></a> 通常我们声明一个函数有以下几种方式：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明函数f1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f1"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过()来调用此函数</span></div><div class="line">f1();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个匿名函数的函数表达式，被赋值给变量f2:</span></div><div class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f2"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f2();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个命名为f3的函数的函数表达式(这里的函数名可以随意命名，可以不必和变量f3重名)，被赋值给变量f3:</span></div><div class="line"><span class="keyword">var</span> f3 = <span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f3"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f3();</div></pre></td></tr></table></figure>
 <p>如果你看过一些自定义控件的话你会发现他们大多数都是沿用这种写法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	...</div><div class="line">   <span class="comment">// 这里开始写功能需求</span></div><div class="line"> &#125;)();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ...</div><div class="line">   <span class="comment">// 这里开始写功能需求</span></div><div class="line"> &#125;)();</div></pre></td></tr></table></figure>
 <p>这是我们常说的立即执行函数(IIFE)，顾名思义，也就是说这个函数是立即执行函数体的，不需要你额外去主动的去调用，一般情况下我们只对匿名函数使用IIFE，这么做有两个目的：</p>
 <blockquote>
-<p>一是不必为函数命名，避免了污染全局变量<br>二是IIFE内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量。</p>
+<p>一是不必为函数命名，避免了污染全局变量 二是IIFE内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量。</p>
 </blockquote>
-<p>如果看到这两句话无法理解，那么先从IIFE的运行原理说起。<br>因为IIFE通常用于匿名函数，这里就用简单的匿名函数作为栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"f"</span>);</div><div class="line">&#125;</div><div class="line">f();</div></pre></td></tr></table></figure>
+<p>如果看到这两句话无法理解，那么先从IIFE的运行原理说起。 因为IIFE通常用于匿名函数，这里就用简单的匿名函数作为栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f"</span>);</div><div class="line">&#125;</div><div class="line">f();</div></pre></td></tr></table></figure>
 <p>我们发现这里<code>f</code>只是这个匿名函数的一个引用变量，那么既然<code>f()</code>能够调用这个函数，我把<code>f</code>替换成函数本身可以么：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"f"</span>);	</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"f"</span>);</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
 <p>运行之后得到如下结果：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Uncaught <span class="built_in">SyntaxError</span>: Unexpected token (</div></pre></td></tr></table></figure>
 <p>产生这个错误的原因是，Javascript引擎看到function关键字之后，认为后面跟的是函数声明语句，不应该以圆括号结尾。解决方法就是让引擎知道，圆括号前面的部分不是函数定义语句，而是一个表达式，可以对此进行运算，这里区分一下函数声明和函数表达式：</p>
@@ -42,15 +99,15 @@
 <p>小学我们就学过用<code>()</code>括起来的表达式会先执行，就像下面这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1+(2+3) //这里先运行小括号里面的内容没有意见撒</div></pre></td></tr></table></figure>
 <p>其实在<code>javascript</code>中小括号也有相似的作用，Javascript引擎看到function关键字会认为是函数声明语句，那么如果Javascript引擎优先看到小括号会怎么样：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用小括号把函数包裹起来</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"f"</span>);	</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用小括号把函数包裹起来</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"f"</span>);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
 <p>函数成功执行了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f //控制台输出</div></pre></td></tr></table></figure>
 <p>这种情况下Javascript引擎就会认为这是一个表达式，而不是函数声明，当然要让Javascript引擎认为这是一个表达式的方法还有很多：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;();</div><div class="line">+<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;();</div><div class="line">-<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;();</div><div class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;();</div><div class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">/* code */</span> &#125;</div><div class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">/* code */</span> &#125;() <span class="comment">// 只有传递参数时，才需要最后那个圆括号。</span></div><div class="line">...</div></pre></td></tr></table></figure>
 <p>回到前面的问题，为什么说IIFE这种形式避免了污染全局变量，如果你见过别人写的jquery插件，里面通常会有类似这样的代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</div><div class="line">	...</div><div class="line">   <span class="comment">//插件实现代码</span></div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</div><div class="line">    ...</div><div class="line">   <span class="comment">//插件实现代码</span></div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
 <p>这里的<code>jquery</code>其实是该匿名函数的参数，联想一下我们调用匿名函数时候是用<code>f()</code>那么匿名带参数的就是<code>f(args)</code>对吧，这里把jquery作为参数传入该函数，那么在函数内部使用形参<code>$</code>的时候就不会影响到外部环境，因为有些插件也会用到<code>$</code>这个限定符，你在这个函数内部可以随意折腾。</p>
-<p>以上，在此过程中参考了以下两篇文章：<br><a href="http://www.tangshuang.net/2020.html" target="_blank" rel="external">javascript立即执行某个函数：插件中function(){}()再思考</a><br><a href="https://segmentfault.com/a/1190000003902899" target="_blank" rel="external">JavaScript中的立即执行函数</a></p>
+<p>以上，在此过程中参考了以下两篇文章： <a href="http://www.tangshuang.net/2020.html" target="_blank" rel="external">javascript立即执行某个函数：插件中function(){}()再思考</a> <a href="https://segmentfault.com/a/1190000003902899" target="_blank" rel="external">JavaScript中的立即执行函数</a></p>
 ]]></content>
     
     <summary type="html">
@@ -1105,11 +1162,11 @@
       <category term="Android" scheme="https:///www.limuyang.cc/categories/Android/"/>
     
     
+      <category term="Android" scheme="https:///www.limuyang.cc/tags/Android/"/>
+    
       <category term="Material Design" scheme="https:///www.limuyang.cc/tags/Material-Design/"/>
     
       <category term="Google" scheme="https:///www.limuyang.cc/tags/Google/"/>
-    
-      <category term="Android" scheme="https:///www.limuyang.cc/tags/Android/"/>
     
   </entry>
   
@@ -1783,70 +1840,6 @@
       <category term="异步IO" scheme="https:///www.limuyang.cc/tags/%E5%BC%82%E6%AD%A5IO/"/>
     
       <category term="AsyncTask" scheme="https:///www.limuyang.cc/tags/AsyncTask/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android系统架构解析</title>
-    <link href="https:///www.limuyang.cc/2015/10/14/Android%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%A7%A3%E6%9E%90/"/>
-    <id>https:///www.limuyang.cc/2015/10/14/Android系统架构解析/</id>
-    <published>2015-10-14T12:21:11.000Z</published>
-    <updated>2017-09-12T12:22:32.245Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="Andriod是什么？"><a href="#Andriod是什么？" class="headerlink" title="Andriod是什么？"></a>Andriod是什么？</h4><p>首先，就像Android开源和兼容性技术负责人Dan Morrill在Android开发手册兼容性部分所解释的，“Android并不是传统的Linux风格的一个规范或分发版本，也不是一系列可重用的组件集成，Android是一个用于连接设备的软件块。”<br><img src="http://cms.csdnimg.cn/articlev1/uploads/allimg/101124/20_101124174037_1.png" alt="这里写图片描述"></p>
-<a id="more"></a>
-<h4 id="Linux："><a href="#Linux：" class="headerlink" title="Linux："></a>Linux：</h4><p>所有东西的底层是一个稳定的保持更新的Linux内核（我现在用的Nexus手机所用的就是2.6.32版的内核），以及我们精心打造的能源管理组件；当然还有将它们整合至上层Linux代码的扩展和公共组件。</p>
-<h4 id="Dalvik："><a href="#Dalvik：" class="headerlink" title="Dalvik："></a>Dalvik：</h4><p>Android另一个重要的部分，包括虚拟机和一组重要的运行环境。它的设计非常巧妙，是个很好的一个手机终端的底层应用。</p>
-<h4 id="代码如何生成？"><a href="#代码如何生成？" class="headerlink" title="代码如何生成？"></a>代码如何生成？</h4><p>Dalvik虚拟机只执行.dex的可执行文件。当Java程序通过编译，最后还需要通过SDK中的工具转化成.dex格式才能在虚拟机上执行。</p>
-<p>我需要强调的是，Android应用本身就可视作可在平台上运行并调用APIs的代码，所以对代码如何生成不需特别看重。</p>
-<h4 id="特别的Apps："><a href="#特别的Apps：" class="headerlink" title="特别的Apps："></a>特别的Apps：</h4><p>在图中有些基于Dalvik虚拟机的Apps看起来像是Android的一部分，其实是由Google提供，这些应用包括Dialer、Contact、Calendar、Gmail和Chat等。它们中的绝大部分是开源并可复用的。只有少部分例外，比如Google Maps和Android Market.</p>
-<h4 id="开源那些事："><a href="#开源那些事：" class="headerlink" title="开源那些事："></a>开源那些事：</h4><p>在下面的图中，绿色的大部分组件是基于Apache许可证开源，其余基于GPL、LGPL和BSD。<br><img src="http://cms.csdnimg.cn/articlev1/uploads/allimg/101124/20_101124174250_1.png" alt="这里写图片描述"></p>
-<h4 id="Android框架"><a href="#Android框架" class="headerlink" title="Android框架"></a>Android框架</h4><p>在Android开发者网（developer.android.com）上已有不少篇幅来帮助你使用它，在此就不再累述<br><img src="http://cms.csdnimg.cn/articlev1/uploads/allimg/101124/20_101124174340_1.png" alt="这里写图片描述"></p>
-<h4 id="App里面是什么"><a href="#App里面是什么" class="headerlink" title="App里面是什么"></a>App里面是什么</h4><p>一个Android App包含在一个我们称之为APK的压缩文件夹中，APK并没有什么可说的，需要注意的是Android Manifest——介于App和Android System的接口。<br><img src="http://cms.csdnimg.cn/articlev1/uploads/allimg/101124/20_101124174405_1.png" alt="这里写图片描述"></p>
-<p><img src="http://cms.csdnimg.cn/articlev1/uploads/allimg/101124/20_101124174417_1.png" alt="这里写图片描述"></p>
-<h4 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h4><p>在这里“标准”是指“开发者在开源环境中一般可以使用的”。</p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>大多数应用是基于Dalvik的，我指的是除了游戏之外的应用。游戏开发者通常希望用C/C++来编写，排斥使用虚拟机，所以他们可以通过Andriod NDK来开发</p>
-<h4 id="Android架构详解"><a href="#Android架构详解" class="headerlink" title="Android架构详解"></a>Android架构详解</h4><p><img src="http://img.blog.csdn.net/20140311140541765" alt="android架构图"></p>
-<p>   显而易见的，根据上图自底向上我们知道Android系统架构包含5大部分:Linux Kernel(Linux内核) 、Libraries(库)、Android Runtime（ART）、Application framework(应用程序框架层)、application(应用程序层) 。 下面将依次了解这5部分：</p>
-<hr>
-<p> <strong>1、Linux Kernel</strong><br>      Android基于Linux 2.6提供核心系统服务，例如：安全、内存管理、进程管理、网络堆栈、驱动模型。Linux Kernel也作为硬件和软件之间的抽象层，它隐藏具体硬件细节而为上层提供统一的服务。</p>
-<p>如果你学过计算机网络知道OSI/RM，就会知道分层的好处就是使用下层提供的服务而为上层提供统一的服务，屏蔽本层及以下层的差异，当本层及以下层发生了变化不会影响到上层。也就是说各层各司其职，各层提供固定的SAP（Service Access Point），专业点可以说是高内聚、低耦合。</p>
-<p>如果你只是做应用开发，就不需要深入了解Linux Kernel层</p>
-<p><strong>2、Android Runtime</strong><br>Android包含一个核心库的集合，提供大部分在Java编程语言核心类库中可用的功能。每一个Android应用程序是Dalvik虚拟机中的实例，运行在他们自己的进程中。Dalvik虚拟机设计成，在一个设备可以高效地运行多个虚拟机。Dalvik虚拟机可执行文件格式是.dex，dex格式是专为Dalvik设计的一种压缩格式，适合内存和处理器速度有限的系统。</p>
-<p>大多数虚拟机包括JVM都是基于栈的，而Dalvik虚拟机则是基于寄存器的。两种架构各有优劣，一般而言，基于栈的机器需要更多指令，而基于寄存器的机器指令更大。dx 是一套工具，可以將 Java .class 转换成 .dex 格式。一个dex文件通常会有多个.class。由于dex有時必须进行最佳化，会使文件大小增加1-4倍，以ODEX结尾。</p>
-<p>Dalvik虚拟机依赖于Linux 内核提供基本功能，如线程和底层内存管理。</p>
-<blockquote>
-<p>Android给我们提供了一组C/C++库，为平台的不同组件所使用，比如媒体框架；而Android Runtime则由Android核心库集 + Dalvik虚拟机构成，Dalvik虚拟机是针对移动设备的虚拟机，它的特点:不需要很快的CPU计算速度和大量的内存空间;而每个App都单独地运行在单独的Dalvik虚拟机内每个app对于一条Dalvik进程）而他的简单运行流程如：<img src="http://pigmsghelper.qiniudn.com/15-6-14/12352621.jpg" alt="这里写图片描述"></p>
-</blockquote>
-<p>()</p>
-<p><strong>3、、Libraries</strong><br>Android包含一个C/C++库的集合，供Android系统的各个组件使用。这些功能通过Android的应用程序框架（application framework）暴露给开发者。下面列出一些核心库：</p>
-<p>系统C库——标准C系统库（libc）的BSD衍生，调整为基于嵌入式Linux设备<br>媒体库——基于PacketVideo的OpenCORE。这些库支持播放和录制许多流行的音频和视频格式，以及静态图像文件，包括MPEG4、 H.264、 MP3、 AAC、 AMR、JPG、 PNG<br>界面管理——管理访问显示子系统和无缝组合多个应用程序的二维和三维图形层<br>LibWebCore——新式的Web浏览器引擎,驱动Android 浏览器和内嵌的web视图<br>SGL——基本的2D图形引擎<br>3D库——基于OpenGL ES 1.0 APIs的实现。库使用硬件3D加速或包含高度优化的3D软件光栅<br>FreeType ——位图和矢量字体渲染<br>SQLite ——所有应用程序都可以使用的强大而轻量级的关系数据库引擎</p>
-<p><strong>4、Application Framework</strong><br>通过提供开放的开发平台，Android使开发者能够编制极其丰富和新颖的应用程序。开发者可以自由地利用设备硬件优势、访问位置信息、运行后台服务、设置闹钟、向状态栏添加通知等等，很多很多。</p>
-<p>开发者可以完全使用核心应用程序所使用的框架APIs。应用程序的体系结构旨在简化组件的重用，任何应用程序都能发布他的功能且任何其他应用程序可以使用这些功能（需要服从框架执行的安全限制）。这一机制允许用户替换组件。</p>
-<p>所有的应用程序其实是一组服务和系统，包括：</p>
-<ul>
-<li><strong>视图</strong>——丰富的、可扩展的视图集合，可用于构建一个应用程序。包括包括列表、网格、文本框、按钮，甚至是内嵌的网页浏览器</li>
-<li><strong>内容提供者</strong>（Content Providers）——使应用程序能访问其他应用程序（如通讯录）的数据，或共享自己的数据</li>
-<li><strong>资源管理器</strong>（Resource Manager）——提供访问非代码资源，如本地化字符串、图形和布局文件</li>
-<li><strong>通知管理器</strong>（Notification Manager）——使所有的应用程序能够在状态栏显示自定义警告</li>
-<li><strong>活动管理器</strong>（Activity Manager）——管理应用程序生命周期,提供通用的导航回退功能</li>
-</ul>
-<p><strong>5、Applications</strong><br>        Android装配一个核心应用程序集合，包括电子邮件客户端、SMS程序、日历、地图、浏览器、联系人和其他设置。所有应用程序都是用Java编程语言写的。更加丰富的应用程序有待我们去开发！</p>
-<p><strong>总结</strong><br>        从上面我们知道Android的架构是分层的，非常清晰，分工很明确。Android本身是一套软件堆叠(Software Stack)，或称为「软件叠层架构」，叠层主要分成三层：操作系统、中间件、应用程序。从上面我们也看到了开源的力量，一个个熟悉的开源软件在这里贡献了自己的一份力量。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Andriod是什么？&quot;&gt;&lt;a href=&quot;#Andriod是什么？&quot; class=&quot;headerlink&quot; title=&quot;Andriod是什么？&quot;&gt;&lt;/a&gt;Andriod是什么？&lt;/h4&gt;&lt;p&gt;首先，就像Android开源和兼容性技术负责人Dan Morrill在Android开发手册兼容性部分所解释的，“Android并不是传统的Linux风格的一个规范或分发版本，也不是一系列可重用的组件集成，Android是一个用于连接设备的软件块。”&lt;br&gt;&lt;img src=&quot;http://cms.csdnimg.cn/articlev1/uploads/allimg/101124/20_101124174037_1.png&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https:///www.limuyang.cc/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https:///www.limuyang.cc/tags/Android/"/>
-    
-      <category term="架构" scheme="https:///www.limuyang.cc/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   

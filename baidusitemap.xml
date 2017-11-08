@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>https:///www.limuyang.cc/2017/11/08/javascript%E4%B8%ADcall%E3%80%81apply%E3%80%81bind%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2017-11-08T12:51:05.693Z</lastmod>
+    <data>
+        <display>
+        <title>javascript中call、apply、bind方法的使用</title>
+        <pubTime>2017-11-08T12:50:19.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>call</tag>
+         
+        <tag>apply</tag>
+         
+        <tag>bind</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端开发" url="https:///www.limuyang.cc/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https:///www.limuyang.cc/2017/09/11/javascript%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0-IIFE/</loc>
+    <lastmod>2017-11-08T12:37:49.403Z</lastmod>
+    <data>
+        <display>
+        <title>javascript立即执行函数(IIFE)</title>
+        <pubTime>2017-09-11T13:46:54.000Z</pubTime>
+        
+        <tag>IIFE</tag>
+         
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端开发" url="https:///www.limuyang.cc/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https:///www.limuyang.cc/2016/03/01/APP%E5%90%AF%E5%8A%A8%E9%A1%B5%E7%9A%84%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</loc>
     <lastmod>2017-09-13T11:59:43.914Z</lastmod>
     <data>
@@ -123,38 +171,16 @@
         <title>Android Design Support Library--简约而不简单的SnackBar</title>
         <pubTime>2016-05-07T12:15:16.000Z</pubTime>
         
+        <tag>Android</tag>
+         
         <tag>Material Design</tag>
          
         <tag>Google</tag>
-         
-        <tag>Android</tag>
          
          
            
              
               <breadCrumb title="Android" url="https:///www.limuyang.cc/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https:///www.limuyang.cc/2017/09/11/javascript%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0-IIFE/</loc>
-    <lastmod>2017-09-11T13:56:52.435Z</lastmod>
-    <data>
-        <display>
-        <title>javascript立即执行函数(IIFE)</title>
-        <pubTime>2017-09-11T13:46:54.000Z</pubTime>
-        
-        <tag>IIFE</tag>
-         
-        <tag>javascript</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端开发" url="https:///www.limuyang.cc/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>

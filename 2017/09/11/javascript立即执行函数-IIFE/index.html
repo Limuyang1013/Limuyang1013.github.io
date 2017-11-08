@@ -13,7 +13,7 @@
 <meta property="og:url" content="https:///www.limuyang.cc/2017/09/11/javascript立即执行函数-IIFE/index.html">
 <meta property="og:site_name" content="李牧羊">
 <meta property="og:image" content="http://oasusatoz.bkt.clouddn.com/maxresdefault.jpg">
-<meta property="og:updated_time" content="2017-09-11T13:56:52.435Z">
+<meta property="og:updated_time" content="2017-11-08T12:37:49.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript立即执行函数(IIFE)">
 <meta name="twitter:image" content="http://oasusatoz.bkt.clouddn.com/maxresdefault.jpg">
@@ -183,18 +183,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://oasusatoz.bkt.clouddn.com/maxresdefault.jpg" alt=""></p>
-<a id="more"></a>
-<p>通常我们声明一个函数有以下几种方式：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明函数f1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f1"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过()来调用此函数</span></div><div class="line">f1();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个匿名函数的函数表达式，被赋值给变量f2:</span></div><div class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f2"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f2();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个命名为f3的函数的函数表达式(这里的函数名可以随意命名，可以不必和变量f3重名)，被赋值给变量f3:</span></div><div class="line"><span class="keyword">var</span> f3 = <span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f3"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f3();</div></pre></td></tr></table></figure></p>
+<a id="more"></a> 通常我们声明一个函数有以下几种方式：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明函数f1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f1"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过()来调用此函数</span></div><div class="line">f1();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个匿名函数的函数表达式，被赋值给变量f2:</span></div><div class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f2"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f2();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个命名为f3的函数的函数表达式(这里的函数名可以随意命名，可以不必和变量f3重名)，被赋值给变量f3:</span></div><div class="line"><span class="keyword">var</span> f3 = <span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f3"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f3();</div></pre></td></tr></table></figure>
 <p>如果你看过一些自定义控件的话你会发现他们大多数都是沿用这种写法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	...</div><div class="line">   <span class="comment">// 这里开始写功能需求</span></div><div class="line"> &#125;)();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ...</div><div class="line">   <span class="comment">// 这里开始写功能需求</span></div><div class="line"> &#125;)();</div></pre></td></tr></table></figure>
 <p>这是我们常说的立即执行函数(IIFE)，顾名思义，也就是说这个函数是立即执行函数体的，不需要你额外去主动的去调用，一般情况下我们只对匿名函数使用IIFE，这么做有两个目的：</p>
 <blockquote>
-<p>一是不必为函数命名，避免了污染全局变量<br>二是IIFE内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量。</p>
+<p>一是不必为函数命名，避免了污染全局变量 二是IIFE内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量。</p>
 </blockquote>
-<p>如果看到这两句话无法理解，那么先从IIFE的运行原理说起。<br>因为IIFE通常用于匿名函数，这里就用简单的匿名函数作为栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"f"</span>);</div><div class="line">&#125;</div><div class="line">f();</div></pre></td></tr></table></figure>
+<p>如果看到这两句话无法理解，那么先从IIFE的运行原理说起。 因为IIFE通常用于匿名函数，这里就用简单的匿名函数作为栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f"</span>);</div><div class="line">&#125;</div><div class="line">f();</div></pre></td></tr></table></figure>
 <p>我们发现这里<code>f</code>只是这个匿名函数的一个引用变量，那么既然<code>f()</code>能够调用这个函数，我把<code>f</code>替换成函数本身可以么：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"f"</span>);	</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"f"</span>);</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
 <p>运行之后得到如下结果：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Uncaught <span class="built_in">SyntaxError</span>: Unexpected token (</div></pre></td></tr></table></figure>
 <p>产生这个错误的原因是，Javascript引擎看到function关键字之后，认为后面跟的是函数声明语句，不应该以圆括号结尾。解决方法就是让引擎知道，圆括号前面的部分不是函数定义语句，而是一个表达式，可以对此进行运算，这里区分一下函数声明和函数表达式：</p>
@@ -202,15 +201,15 @@
 <p>小学我们就学过用<code>()</code>括起来的表达式会先执行，就像下面这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1+(2+3) //这里先运行小括号里面的内容没有意见撒</div></pre></td></tr></table></figure>
 <p>其实在<code>javascript</code>中小括号也有相似的作用，Javascript引擎看到function关键字会认为是函数声明语句，那么如果Javascript引擎优先看到小括号会怎么样：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用小括号把函数包裹起来</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"f"</span>);	</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用小括号把函数包裹起来</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"f"</span>);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
 <p>函数成功执行了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f //控制台输出</div></pre></td></tr></table></figure>
 <p>这种情况下Javascript引擎就会认为这是一个表达式，而不是函数声明，当然要让Javascript引擎认为这是一个表达式的方法还有很多：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;();</div><div class="line">+<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;();</div><div class="line">-<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;();</div><div class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;();</div><div class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">/* code */</span> &#125;</div><div class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">/* code */</span> &#125;() <span class="comment">// 只有传递参数时，才需要最后那个圆括号。</span></div><div class="line">...</div></pre></td></tr></table></figure>
 <p>回到前面的问题，为什么说IIFE这种形式避免了污染全局变量，如果你见过别人写的jquery插件，里面通常会有类似这样的代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</div><div class="line">	...</div><div class="line">   <span class="comment">//插件实现代码</span></div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</div><div class="line">    ...</div><div class="line">   <span class="comment">//插件实现代码</span></div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
 <p>这里的<code>jquery</code>其实是该匿名函数的参数，联想一下我们调用匿名函数时候是用<code>f()</code>那么匿名带参数的就是<code>f(args)</code>对吧，这里把jquery作为参数传入该函数，那么在函数内部使用形参<code>$</code>的时候就不会影响到外部环境，因为有些插件也会用到<code>$</code>这个限定符，你在这个函数内部可以随意折腾。</p>
-<p>以上，在此过程中参考了以下两篇文章：<br><a href="http://www.tangshuang.net/2020.html" target="_blank" rel="external">javascript立即执行某个函数：插件中function(){}()再思考</a><br><a href="https://segmentfault.com/a/1190000003902899" target="_blank" rel="external">JavaScript中的立即执行函数</a></p>
+<p>以上，在此过程中参考了以下两篇文章： <a href="http://www.tangshuang.net/2020.html" target="_blank" rel="external">javascript立即执行某个函数：插件中function(){}()再思考</a> <a href="https://segmentfault.com/a/1190000003902899" target="_blank" rel="external">JavaScript中的立即执行函数</a></p>
 
       
 
@@ -334,6 +333,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/11/08/javascript中call、apply、bind方法的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          javascript中call、apply、bind方法的使用
+        
+      </div>
+    </a>
   
   
     <a href="/2017/06/01/告别五月/" id="article-nav-older" class="article-nav-link-wrap">
@@ -472,22 +480,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Material Design</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Google</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TextInputLayout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">FloatingActionButton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
@@ -504,11 +496,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Handler</a>
+                <a href="javascript:void(0)" class="js-tag color1">Material Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">Google</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TextInputLayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">FloatingActionButton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Handler</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,6 +521,30 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IIFE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">call</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">apply</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">bind</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,11 +560,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IIFE</a>
+                <a href="javascript:void(0)" class="js-tag color4">引导页</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">ViewPager</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">动画</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,7 +584,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">告别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据采集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">自始至终</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,31 +604,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">引导页</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ViewPager</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">动画</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">告别</a>
+                <a href="javascript:void(0)" class="js-tag color3">CoordinatorLayout</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">自始至终</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CoordinatorLayout</a>
               </li>
             
             <div class="clearfix"></div>
