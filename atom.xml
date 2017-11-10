@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:///www.limuyang.cc/"/>
-  <updated>2017-11-08T12:51:05.693Z</updated>
+  <updated>2017-11-10T15:17:12.185Z</updated>
   <id>https:///www.limuyang.cc/</id>
   
   <author>
@@ -14,6 +14,116 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>不吹不黑聊聊前端框架--尤雨溪Live整理</title>
+    <link href="https:///www.limuyang.cc/2017/11/10/%E4%B8%8D%E5%90%B9%E4%B8%8D%E9%BB%91%E8%81%8A%E8%81%8A%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-%E5%B0%A4%E9%9B%A8%E6%BA%AALive%E6%95%B4%E7%90%86/"/>
+    <id>https:///www.limuyang.cc/2017/11/10/不吹不黑聊聊前端框架-尤雨溪Live整理/</id>
+    <published>2017-11-10T14:58:38.000Z</published>
+    <updated>2017-11-10T15:17:12.185Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://user-images.githubusercontent.com/11991572/32664683-ffb60d34-c66c-11e7-83ae-8a4ca3ae2da8.png" alt="image"></p>
+<p>最近买了尤雨溪大大的Live：不吹不黑聊聊前端框架，这场Live让我的前端思维到了前所未有的高度：当我们身为前端开发萌新，在前端人才金字塔的浮动与挣扎中思考该学什么框架、该如何入门前端、又遇到学习瓶颈怎么办的时候，正是这些业界大牛们用自己的行动引导着我们，有如尤大所说：多思考场景需求，多看看技术到底做了怎样的取舍，现在把相关的东西作为笔记整理下来，希望对前端开发有兴趣的同学都可以去支持一下尤大</p>
+<a id="more"></a>
+<h4 id="组件可以是函数"><a href="#组件可以是函数" class="headerlink" title="组件可以是函数"></a>组件可以是函数</h4><p>想象一下整个应用是一个大的函数，函数里面可以调用别的函数，每一个组件是一个函数，一个组件可以调用其他的函数，整个一个树状结构</p>
+<h4 id="组件是有分类的"><a href="#组件是有分类的" class="headerlink" title="组件是有分类的"></a>组件是有分类的</h4><ul>
+<li>纯展示型的组件，数据进，DOM出，直观明了</li>
+<li>接入型组件，在React场景下的container component，这种组件会跟数据层的service打交道，会包含一些跟服务器或者说数据源打交道的逻辑，container会把数据向下传递给展示型组件</li>
+<li>交互型组件，典型的例子是对于表单组件的封装和加强，大部分的组件库都是以交互型组件为主，比如说Element UI，特点是有比较复杂的交互逻辑，但是是比较通用的逻辑，强调组件的复用</li>
+<li>功能型组件，以Vue的应用场景举例，路由的router-view组件、transition组件，本身并不渲染任何内容，是一个逻辑型的东西，作为一种扩展或者是抽象机制存在</li>
+</ul>
+<h4 id="JSX和模版的对比"><a href="#JSX和模版的对比" class="headerlink" title="JSX和模版的对比"></a>JSX和模版的对比</h4><p>JSX本质就是Javascript，它完全获得了Javascript的灵活度，它最大的价值在于书写功能型组件的时候比纯模版更好，但是模版在展示型和其他的用例上也是不差的，模版会让你更少的把逻辑放在视图里面，展示型的组件虽然在逻辑上比较简单但是在样式上还是具有一定的复杂度</p>
+<h4 id="代码的拆分-colocation"><a href="#代码的拆分-colocation" class="headerlink" title="代码的拆分(colocation)"></a>代码的拆分(colocation)</h4><p>把应该放一起的东西放一起，比如说在vue的单文件组件里面我们把模版、样式和javascript的逻辑都是放在一起的，目前主流框架都是这么做的，如果这概念扩展开来，组件的文档也是可以和组件的其他东西放一起的，组件化之后和传统的Separation of concern就有区别了，传统的Separation of concern是以语言为单位作切分，组件是以组件本身作为一个切分的抽象</p>
+<h4 id="变化侦测和渲染机制"><a href="#变化侦测和渲染机制" class="headerlink" title="变化侦测和渲染机制"></a>变化侦测和渲染机制</h4><ul>
+<li>渲染机制</li>
+</ul>
+<p>现代的前端框架里面渲染这块最重要的是声明式(Declarative)，相比较之下的概念是命令式(Imperative)，Imperative最直接的例子是我们使用Jquery时候拿到一个选择器”直接干”，使用命令去进行操作，直截了当，但是很快就会遇到维护性的问题，英文里面有个词叫做jQuery Spaghetti，Spaghetti的意思是意大利面，这个词的意思就是说你的代码写到后面会像一坨意大利面一样，维护起来很困难，声明式的好处就是说我们直接描述说数据和DOM结构之间的映射关系应该是怎么样的，不需要我们手动去做这些操作</p>
+<p>React里面有一个等式 <code>view = render(state)</code> ，这里render就是我们在React里面写的render函数，vue的模版其实也是编译成渲染函数的，所以模版和JSX之间的本质是相似的，输入state，输出DOM，理想情况下我们就是描述了这样一种关系，那输入变了输出也会跟着变，我们不需要顾虑输入和输出之间发生了什么事情，具体到底层实现可以是Virtual DOM，但并不一定得是Virtual DOM，可以是细粒度的绑定</p>
+<ul>
+<li>变化侦测</li>
+</ul>
+<p>用过vue的朋友知道vue的数据是响应式的，vue会把你传递的数据进行转化，转化过后当你改变一些属性的值的时候，vue就会进行相应的更新，附上尤大相关的演讲PPT，里面有详细的过程：<br><a href="https://docs.google.com/presentation/d/1_BlJxudppfKmAtfbNIcqNwzrC5vLrR_h1e09apcpdNY/edit#slide=id.g19eebb1966_0_191" target="_blank" rel="external">ppt</a></p>
+<blockquote>
+<p>Live提问：<br>问：一直有一个疑问，以前<div onclick="clickHandler"></div> 被人诟病，为啥 vue  的声明式写法就是推崇的？<br>答：HTML里面这个onclick里面的Javascript的作用域是全局的，当你在vue里面这么写的时候是有很明确的Javascript作用域的，你的绑定以及你的method所能触及的影响范围是设定好的，这个跟全局的Javascript有本质的区别，另外当我们在vue或者Reac里面这么写的时候你的Javascript逻辑和你的模版或者说你的JSX是在一起的，可以联想我们之前提到的colocation的概念，所以并不会造成一个维护上的困难，但是如果你在全局的Html里面这样直接裸写，你完全不知道你这段Javascript可能会引用到哪里的变量或者是调用的哪里的方法</p>
+</blockquote>
+<p>简单的总结，变化侦测主要分为两种：</p>
+<ul>
+<li><p>pull<br>所谓pull，系统不知道数据什么时候变了，它需要一个信号去告诉它说数据有可能变了，在这个系统才会去进行一次比较暴力的比对，在React里面的表现是Virtual Dom Diff，在Angular里面就是整个脏检查的流程，能够这么做的前提是现在Javascript足够快，虽然有浪费但是性能上也可以接受</p>
+</li>
+<li><p>push<br>相比之下，vue的响应式数据或者RXJS的数据机制，在数据变动之后立刻就可以知道数据变动了，而且一定程序上我们会知道哪些数据变了，这样就可以进行相对更细粒度的更新，pull的这种更新是最粗粒度的，所以在大型应用里面我们要帮助系统来减少一些无用功，但是push的形式也有它的缺陷，粒度越细，你的每一个绑定都会需要一个observabel/watcher，这样会带来相应的内存以及依赖追踪的开销，所以在vue2里面选择的是一个比较中等粒度的方案，在组件级别是push，每一个组件是一个响应式的watcher，当数据变动时候我们可以对组件进行更新，在每个组件内部则是用Virtual Dom进行比对，push和pull之间的本质区别是在于用侦测成本换取一定程度的自动优化</p>
+</li>
+</ul>
+<h4 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h4><p>状态管理这个概念其实也是在FB提出了Flux之后才搬到台面上来讲，Flux在经历了初期的混乱竞争之后慢慢的合流到了Redux上，vux在一定程度受到了Redux的影响，状态管理的本质是从源事件(source event)映射到状态的迁移和改变，然后在映射到UI的变化，声明式的渲染已经帮我们解决了从状态到UI的映射，这一块，所以状态管理这些库他们做的实际上是如何管理将事件源映射到状态变化的过程，如何将这个映射的过程从视图组件中剥离出来，如何组织这一部分代码来提高可维护性，是状态管理要解决的本质问题</p>
+<p><a href="https://jsfiddle.net/yyx990803/0a22ojps/" target="_blank" rel="external">把 Vue 当 Redux 用</a><br><a href="https://jsfiddle.net/yyx990803/f5a24dk3/" target="_blank" rel="external">把 Vue 当 MobX 用</a></p>
+<p>现在的状态管理方案还面临一些其他的共同的尴尬，一个是组件的局部状态和全局状态如何区分，现在是局部状态和全局状态并没有很明显的区分，另一个是全局状态和服务端数据之间，现有的方案是把服务端抓过来的数据塞到store里面去</p>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>路由是只有在大型的单页应用才会遇到的一个问题，传统的路由思想是比较有侵入式的，每个路由有自己的数据模型，有自己的模板等，但是当Reac和vue出现之后人们发现把路由和组件解耦是可行的并且还更加灵活，比如Reac直接用不带路由是完全没问题的，另一个启示是，如果从组件出发去思考路由，本质上就变成了把一个url映射到组件树结构的一个过程，url到组件的映射会有一些小的分歧，我们到底是应该从url出发，还是从这个状态出发，其实本质是一样的，因为url就是一个序列化的状态。</p>
+<p>当实际在SPA中去做一个你会发现路由会涉及到许多其他问题，比如说hash模式和history模式如何兼容，重定向，别名，懒加载，然后最复杂的是跳转，路由之间的跳转需要提供各种”钩子”，然后这些”钩子”里面又可能做异步操作，”钩子”里面也有可能取消这次跳转，使得这次跳转无效等等。</p>
+<p>整体来说现在主要的路由方案都有点相似，比较有意思的是最新的reat-router4，他推崇的是一种用组件本身来做路由的一种思路，这里很大程度上利用了上述第四大组件”功能型组件”，在父组件里面声明式的渲染其他组件，跟传统的路由组件方案的区别是”去中心化”，他不是把整个路由表写在一个地方，是分散的写在各个组件里头，这样做的好处是灵活性非常好，但是也有一些问题，首先，集中式的路由表对于理解整个应用的结构是有帮助的，另一方面，去中心化的路由对于跳转的管理会弱一些，他对于跳转的管理是直接用组件的生命周期去做的。</p>
+<p><strong>web路由和app路由的区别：</strong><br>目前web路由整体思路上是一样的，将url映射到组件树，从一个url跳转到另一个url，我们把新的url push到历史的stack里面去了，但是stack前一个位置所对应的位置是被我们丢弃掉的，我们从一个状态迁移到另一个状态我们整个应用界面迁移到另一个状态了，原生应用上的跳转就像一叠卡片一样，新的界面会盖在现有的界面上，当你退回去的时候只是把当前的卡片拿掉，之前的卡片就会出现，web用的路由方案做app会比较别扭。</p>
+<h4 id="CSS方案"><a href="#CSS方案" class="headerlink" title="CSS方案"></a>CSS方案</h4><p>主流的 CSS 方案</p>
+<ul>
+<li>跟 JS 完全解耦，靠预处理器和比如 BEM 这样的规范来保持可维护性，偏传统</li>
+<li>CSS Modules，依然是 CSS，但是通过编译来避免 CSS 类名的全局冲突</li>
+<li>各类 CSS-in-JS 方案，React 社区为代表，比较激进</li>
+<li>Vue 的单文件组件 CSS，或是 Angular 的组件 CSS（写在装饰器里面），一种比较折中的方案</li>
+</ul>
+<p>比较 CSS 方案时首先要明确场景的问题，如果应用逻辑已经组件化了，是一个比较复杂应用的开发，传统的 CSS 方式可维护性就有问题了<br><a href="https://speakerdeck.com/vjeux/react-css-in-js" target="_blank" rel="external">react-css-in-js</a><br><a href="https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660" target="_blank" rel="external">反对css-in-js的文章</a></p>
+<p>传统 css 的一些问题：</p>
+<ol>
+<li>作用域</li>
+<li>Critical CSS</li>
+<li>Atomic CSS</li>
+<li>分发复用</li>
+<li>跨平台复用</li>
+</ol>
+<p>css-in-js有很多不同的方案，这些方案各自解决了上述的一些问题，但是并不完美：</p>
+<ol>
+<li>CSS Modules，Inline-Styles，vue的单文件组件里面直接加一个scoped都可以解决这个问题</li>
+<li>所谓的Critical ，比如说我们直出一个页面，可能我们整个应用有几十个页面，但是我们直出的永远是第一个页面，如果没一个页面都有一个对应的CSS的话，理论上渲染首屏我们只需要首屏的CSS就够了，这就是所谓的Critical  CSS，在服务端渲染尤为重要，解决的办法是在服务端渲染的时候侦测到渲染要用到哪些CSS，css-in-js和vue2.3+有一个运行时的功能，在编译过程里面可以把CSS的插入跟组件的生命周期挂钩，同样可以起到收集Critical CSS的效果</li>
+</ol>
+<blockquote>
+<p>Live提问：<br>问：在vue里 使用CSS Modules 会不会比 使用 scoped 好？<br>答：我个人觉得没有什么本质的区别，scoped的成本会更低一点，CSS Modules会有一定的运行时的代价，因为需要用动态的class绑定</p>
+</blockquote>
+<ol>
+<li>Atomic CSS的概念：比如说我们有两条CSS规则，一条是color：red，一条是color：green，我们写两个button的样式，一个按钮是红的，一个按钮是绿的，原子类的话就会把color：red单独拆成一个类：A，把color：green单独拆成一个类：B，然后所有button共享的再拆成一个类：C，然后红色的button可以说是AC，绿色的button是BC，总而言之就是把尽可能多的共享的一些单独的规则都拆成一个很小很小的类，这样出来的最后的结果是你的CSS可压缩性更好了，可以变得更小，对应于css-in-js里面的Style Chunk</li>
+<li>分发复用的论点是说css-in-js都是Javascript，所以可以跟普通的Javascript模块一样直接发包到npm上去复用，确实Javascript比纯CSS更容易去组合复用，但是css你也可以发到npm上然后webpack直接引用，这一点上并不算完全的优势</li>
+<li>跨平台复用：VueX里面就是把静态的css在parse之后编译成Javascript，就可以跨平台复用了</li>
+</ol>
+<h4 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h4><p>构建工具解决的其实是几方面的问题：</p>
+<ul>
+<li>任务的自动化</li>
+<li>开发体验和效率（新的语言功能，语法糖，hot reload 等等）</li>
+<li>部署相关的需求</li>
+<li>编译时优化</li>
+</ul>
+<p><a href="https://www.zhihu.com/question/20790576" target="_blank" rel="external">大公司里怎样开发和部署前端代码</a></p>
+<p><img src="https://user-images.githubusercontent.com/11991572/32641449-f3738fba-c608-11e7-83f4-3bc598791876.png" alt="image"><br>虽然 Vue 本身用 flow，但建议使用 TypeScript 的 flow，主要从开发体验、生态完善度上考虑</p>
+<h4 id="服务端数据通信"><a href="#服务端数据通信" class="headerlink" title="服务端数据通信"></a>服务端数据通信</h4><p>长久以来我们传统的做法都是围绕Rest，服务端如果暴露的是一个比较标准的Rest API，那我们客户端就可以直接拿一个fetch直接去抓，或者围绕Rest来做一个资源的抽象/封装，特定的应用会遇到比较复杂的场景，一种是，数据直连，数据之间有大量的关联性，另一类是有实时推送同步的需求，这种情况下传统的Rest做法会比较痛苦。<br><a href="https://ssr.vuejs.org/zh/" target="_blank" rel="external">Vue.js 服务器端渲染指南</a></p>
+<h4 id="跨平台渲染"><a href="#跨平台渲染" class="headerlink" title="跨平台渲染"></a>跨平台渲染</h4><p>从前端框架的角度去看，跨平台渲染的本质是在设计框架的时候要让框架的渲染机制和DOM解耦，这里面有很多种实现方式，并不一定需要Virtual Dom，本质上只要把框架更新时候的一些节点操作封装起来，你就可以做到跨平台，一个原生的渲染引擎，比如 React Native 和 VueX本质都是在底层针对每个平台有一个适配的渲染引擎，只要把渲染引擎暴露的结点操作的 API，跟框架运行时对接一下，就可以实现将框架里面的代码渲染到原生的目的。这里的解耦很清晰，这也是为什么能看到 NG 可以接 React Native，VueX 可以跑 Vue 文件，VueX 可以跑在 NativeScript 上等等。</p>
+<h4 id="新规范"><a href="#新规范" class="headerlink" title="新规范"></a>新规范</h4><ul>
+<li>Web Component<br><a href="https://www.zhihu.com/question/58731753" target="_blank" rel="external">Web Component 和类 React、Angular、Vue 组件化技术谁会成为未来？</a></li>
+<li>WebAssembly<br>是面向 Web 的通用二进制和文本格式，可以跑在浏览器里面。但是在目前的形势下，WebAssembly 暂时还操作不了 DOM，对于框架的影响暂时比较有限，待观望</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>总结一下吧，我们聊了很多东西，可能比较杂，但我希望大家发现其中一些共性的东西：技术方案都是先有问题，再有思路，同时伴随着取舍。在选择衡量技术的时候，尽量去思考这个技术背后是在解决什么问题，它做了怎样的取舍。这样一方面可以帮助我们更好的理解和使用这些技术，也为以后哪天你遇到业务中的特殊情况，需要自己做方案的时候打好基础。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/11991572/32664683-ffb60d34-c66c-11e7-83ae-8a4ca3ae2da8.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最近买了尤雨溪大大的Live：不吹不黑聊聊前端框架，这场Live让我的前端思维到了前所未有的高度：当我们身为前端开发萌新，在前端人才金字塔的浮动与挣扎中思考该学什么框架、该如何入门前端、又遇到学习瓶颈怎么办的时候，正是这些业界大牛们用自己的行动引导着我们，有如尤大所说：多思考场景需求，多看看技术到底做了怎样的取舍，现在把相关的东西作为笔记整理下来，希望对前端开发有兴趣的同学都可以去支持一下尤大&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端开发" scheme="https:///www.limuyang.cc/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端框架" scheme="https:///www.limuyang.cc/tags/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="知乎Live" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8ELive/"/>
+    
+      <category term="尤雨溪" scheme="https:///www.limuyang.cc/tags/%E5%B0%A4%E9%9B%A8%E6%BA%AA/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript中call、apply、bind方法的使用</title>
@@ -119,9 +229,9 @@
       <category term="前端开发" scheme="https:///www.limuyang.cc/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="IIFE" scheme="https:///www.limuyang.cc/tags/IIFE/"/>
-    
       <category term="javascript" scheme="https:///www.limuyang.cc/tags/javascript/"/>
+    
+      <category term="IIFE" scheme="https:///www.limuyang.cc/tags/IIFE/"/>
     
   </entry>
   
@@ -488,11 +598,11 @@
       <category term="Python" scheme="https:///www.limuyang.cc/categories/Python/"/>
     
     
-      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
-    
       <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="数据采集" scheme="https:///www.limuyang.cc/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+    
+      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
     
   </entry>
   
@@ -581,9 +691,9 @@
       <category term="Python" scheme="https:///www.limuyang.cc/categories/Python/"/>
     
     
-      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
-    
       <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
     
       <category term="网络" scheme="https:///www.limuyang.cc/tags/%E7%BD%91%E7%BB%9C/"/>
     
@@ -1542,9 +1652,9 @@
       <category term="Android" scheme="https:///www.limuyang.cc/categories/Android/"/>
     
     
-      <category term="事件分发" scheme="https:///www.limuyang.cc/tags/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/"/>
-    
       <category term="回调" scheme="https:///www.limuyang.cc/tags/%E5%9B%9E%E8%B0%83/"/>
+    
+      <category term="事件分发" scheme="https:///www.limuyang.cc/tags/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/"/>
     
       <category term="ViewGroup" scheme="https:///www.limuyang.cc/tags/ViewGroup/"/>
     
@@ -1664,9 +1774,9 @@
       <category term="Android" scheme="https:///www.limuyang.cc/categories/Android/"/>
     
     
-      <category term="事件分发" scheme="https:///www.limuyang.cc/tags/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/"/>
-    
       <category term="回调" scheme="https:///www.limuyang.cc/tags/%E5%9B%9E%E8%B0%83/"/>
+    
+      <category term="事件分发" scheme="https:///www.limuyang.cc/tags/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/"/>
     
   </entry>
   
@@ -1785,61 +1895,6 @@
       <category term="冷热启动" scheme="https:///www.limuyang.cc/tags/%E5%86%B7%E7%83%AD%E5%90%AF%E5%8A%A8/"/>
     
       <category term="app" scheme="https:///www.limuyang.cc/tags/app/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AsyncTask初步解析</title>
-    <link href="https:///www.limuyang.cc/2015/12/18/AsyncTask%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/"/>
-    <id>https:///www.limuyang.cc/2015/12/18/AsyncTask初步解析/</id>
-    <published>2015-12-18T12:26:43.000Z</published>
-    <updated>2017-09-12T12:29:04.463Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="AsyncTask-–-直接继承与Object类-在API-3中开始就被定义"><a href="#AsyncTask-–-直接继承与Object类-在API-3中开始就被定义" class="headerlink" title="AsyncTask  – 直接继承与Object类 在API-3中开始就被定义"></a>AsyncTask  – 直接继承与Object类 在API-3中开始就被定义</h4><p> <strong>一、AsyncTask初步介绍</strong><br>　在Android程序开始运行的时候会单独启动一个进程，默认情况下所有这个程序操作都在这个进程中进行。一个Android程序默认情况下只有一个进程，但是一个进程却是可以有许线程的。<br>　在这些线程中，有一个线程叫做UI线程，也叫做Main Thread，除了Main Thread之外的线程都可称为Worker Thread。Main Thread主要负责控制UI页面的显示、更新、交互等。 因此所有在UI线程中的操作要求越短越好，只有这样用户才会觉得操作比较流畅。一个比较好的做法是把一些比较耗时的操作，例如网络请求、数据库操作、 复杂计算等逻辑都封装到单独的线程，这样就可以避免阻塞主线程，这个时候就用到了异步任务类AsyncTask。<br>　AsyncTask 是一个综合Thread 和 Handler的辅助类，并不是通用线程框架的一部分。AsyncTask 是短期后台操作的理想选择（最多几秒钟），如果你需要线程长时间的保持运行，强烈建议你使用 java.util.concurrent 包提供的各种API以满足你的需求，比如：Executor, ThreadPoolExecutor and FutureTask.这里我们只讨论AsyncTask的初步使用。<br><a id="more"></a>　　<br><strong>二、AsyncTask的内部机制</strong><br>　首先我们来看一下AsyncTask的方法定义：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncTask</span>&lt;<span class="title">Params</span>, <span class="title">Progress</span>, <span class="title">Result</span>&gt; </span>&#123;</div></pre></td></tr></table></figure>
-<p>　我们可以很明显的看到这里有三个泛型参数，当我们要利用AsyncTask类的时候必须传入如下三个参数：</p>
-<ol>
-<li>Parms：启动该异步任务的时候传入的参数类型</li>
-<li>Progress：当异步任务在后台执行时返回的进度单位，也可以简单的理解为后台任务执行的进度</li>
-<li>Result：后台任务执行结束时返回的结果类型<br>Android Developer还告知我们：在某些情况有些泛型不需要被指定，这时我们为了简便可以传入一个空类型的参数：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">Void</span>&gt; </span>&#123; ... &#125;</div></pre></td></tr></table></figure>
-<p>　接下来，为了执行一个异步任务我们还需要执行如下几个步骤：</p>
-<ul>
-<li>onPreExecute()：在UI线程中被执行，通常是用来做任务执行前的准备工作，例如加载一个进度条或者在UI界面上显示一个文本等</li>
-<li>doInBackground(Params…)：在onPreExecute()方法完成之后立即被后台进程调用，用于执行一些耗时操作，启动异步任务时执行的Parms参数也会被传递到该方法，在这一方法中我们可以使用publishProgress(Progress…)方法来更新进度信息，并且在该方法内不可以更新UI信息</li>
-<li>onProgressUpdate(Progress…)：在UI线程中执行，如果我们在doInBackground(Params…)方法中使用了publishProgress(Progress…)那么进度信息将可以以进度条或者Log的形式显示在UI组件上</li>
-<li>onPostExecute(Result)：在UI线程中执行，当后台任务操作结束之后该方法会被执行，doInBackground(Params…)方法计算得到的结果将作为该方法的输入参数来进行一些UI更新的操作</li>
-</ul>
-<h4 id="取消AsyncTask任务操作"><a href="#取消AsyncTask任务操作" class="headerlink" title="取消AsyncTask任务操作"></a>取消AsyncTask任务操作</h4><p>　我们可以在异步任务执行的任何时候通过调用cancel(boolean )方法来取消；我们在cancel(boolean)方法中传入true参数则表明取消正在执行的任务，如果调用成功，那么之后我们使用isCancelled()方法来判断任务是否被取消的时候都会返回true，取消之后在执行完doInBackground(Object[])后onCancelled(Object)方法会代替onPostExecute(Object)方法被执行。为了确保能够尽快的取消一个任务，我们应该在doInBackground(Object[])里面周期性的检查isCancelled()的返回值(例如在一个循环里面)<br> <strong>注意事项</strong></p>
-<ul>
-<li>AsyncTask 类必须在UI主线程中被加载,从Android4.1开始系统上已经帮我们自动完成这一点</li>
-<li>AsyncTask类的实例必须在UI线程中进行创建</li>
-<li>execute(Params…) 必须在UI主线程中被调用</li>
-<li>不要手动的去调用 onPreExecute(), onPostExecute(Result), doInBackground(Params…),  onProgressUpdate(Progress…)这些方法</li>
-<li>任务只能被执行一次(如果执行第二次则抛出一个异常)</li>
-</ul>
-<p><strong>三、AsyncTask的使用</strong><br> 　下面给出一个关于AsyncTask的使用的Demo，布局只有两个Button、一个TextView和一个ProgressBar，代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> &gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ProgressBar</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/progressBar"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"25dp"</span></div><div class="line">        <span class="attr">android:layout_centerInParent</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_margin</span>=<span class="string">"5dip"</span></div><div class="line">        <span class="attr">android:layout_marginTop</span>=<span class="string">"60dp"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/btn_style"</span></div><div class="line">        <span class="attr">android:indeterminate</span>=<span class="string">"false"</span></div><div class="line">        <span class="attr">android:indeterminateOnly</span>=<span class="string">"false"</span></div><div class="line">        <span class="attr">android:max</span>=<span class="string">"100"</span></div><div class="line">        <span class="attr">android:progress</span>=<span class="string">"0"</span></div><div class="line">        <span class="attr">android:progressDrawable</span>=<span class="string">"@drawable/bakground_progress"</span> /&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/Cancle"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"100dp"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_alignRight</span>=<span class="string">"@+id/progressBar"</span></div><div class="line">        <span class="attr">android:layout_below</span>=<span class="string">"@+id/progressBar"</span></div><div class="line">        <span class="attr">android:layout_marginRight</span>=<span class="string">"24dp"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/btn_style"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"Cancle"</span></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"#ffffff"</span></div><div class="line">        <span class="attr">android:textStyle</span>=<span class="string">"bold"</span> /&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/Execute"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"100dp"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_alignLeft</span>=<span class="string">"@+id/progressBar"</span></div><div class="line">        <span class="attr">android:layout_below</span>=<span class="string">"@+id/progressBar"</span></div><div class="line">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"42dp"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/btn_style"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"Excuse"</span></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"#ffffff"</span></div><div class="line">        <span class="attr">android:textStyle</span>=<span class="string">"bold"</span> /&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/tv"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_above</span>=<span class="string">"@+id/progressBar"</span></div><div class="line">        <span class="attr">android:layout_centerHorizontal</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"31dp"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"AsyncTask测试"</span></div><div class="line">        <span class="attr">android:textSize</span>=<span class="string">"20sp"</span></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"#000000"</span></div><div class="line">        <span class="attr">android:textStyle</span>=<span class="string">"bold"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>　结构相对简单，接下里让我们看看TestAsyncTask.java的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.example.testasynctask;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.app.Activity;</div><div class="line"><span class="keyword">import</span> android.os.AsyncTask;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"><span class="keyword">import</span> android.widget.Button;</div><div class="line"><span class="keyword">import</span> android.widget.ProgressBar;</div><div class="line"><span class="keyword">import</span> android.widget.TextView;</div><div class="line"><span class="keyword">import</span> android.widget.Toast;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestAsyncTask</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Button execute, cancle;</div><div class="line">	<span class="keyword">private</span> ProgressBar progressBar;</div><div class="line">	<span class="keyword">private</span> TextView tv;</div><div class="line">	<span class="keyword">private</span> TestAsyncTaskProgressBar testAsyncTaskProgressBar;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">		setContentView(R.layout.activity_main);</div><div class="line">		execute = (Button) findViewById(R.id.Execute);</div><div class="line">		tv = (TextView) findViewById(R.id.tv);</div><div class="line">		progressBar = (ProgressBar) findViewById(R.id.progressBar);</div><div class="line">		execute.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line"></div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				<span class="comment">/**</span></div><div class="line">				 * 这里注意新建的任务只能执行一次，否则会出现异常</div><div class="line">				 */</div><div class="line">				testAsyncTaskProgressBar = <span class="keyword">new</span> TestAsyncTaskProgressBar();</div><div class="line">				testAsyncTaskProgressBar.execute();</div><div class="line">				execute.setEnabled(<span class="keyword">false</span>);</div><div class="line">				cancle.setEnabled(<span class="keyword">true</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">		cancle = (Button) findViewById(R.id.Cancle);</div><div class="line">		cancle.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line"></div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				<span class="comment">/**</span></div><div class="line">				 * 使用该方法可以尝试取消正在执行的任务</div><div class="line">				 */</div><div class="line">				testAsyncTaskProgressBar.cancel(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 要使用AsyncTask必须创建它的子类，并且该子类至少需要覆盖doInBackground(Params...)方法</div><div class="line">	 */</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">TestAsyncTaskProgressBar</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Integer</span>, <span class="title">Void</span>&gt; </span>&#123;</div><div class="line">		<span class="comment">/**</span></div><div class="line">		 * 当onPreExecute()方法结束执行时该方法立即在后台执行，用于进行一些耗时的操作，并且在执行后台操作的同时</div><div class="line">		 * 还可以通过publishProgress</div><div class="line">		 * (Progress...)将执行进度实时传送到UI线程，利用onProgressUpdate(Progress...)方法</div><div class="line">		 * 可以进行动态展示，而且在该方法内不允许修改UI</div><div class="line">		 */</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">protected</span> Void <span class="title">doInBackground</span><span class="params">(Void... params)</span> </span>&#123;</div><div class="line">			<span class="keyword">while</span> (!isCancelled() &amp;&amp; progressBar.getProgress() &lt; <span class="number">100</span>) &#123;</div><div class="line">                publishProgress(<span class="keyword">new</span> Integer(<span class="number">5</span>));</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    Thread.sleep(<span class="number">500</span>);</div><div class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">/**</span></div><div class="line">		 * 该方法在UI线程中被执行，主要用在执行后台操作之前做一些UI操作譬如显示一个进度条</div><div class="line">		 */</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPreExecute</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">super</span>.onPreExecute();</div><div class="line">			tv.setText(<span class="string">"开始执行"</span>);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">/**</span></div><div class="line">		 * 后台任务执行完毕之后该方法立即执行，后台任务执行结果的参数会被传递到该方法中</div><div class="line">		 */</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Void result)</span> </span>&#123;</div><div class="line">			<span class="keyword">super</span>.onPostExecute(result);</div><div class="line">			tv.setText(<span class="string">"执行完毕"</span>);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">/**</span></div><div class="line">		 * 当publishProgress(Progress...)方法被执行的时候被调用，并且接受传入第二个参数</div><div class="line">		 */</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(Integer... values)</span> </span>&#123;</div><div class="line">			<span class="keyword">super</span>.onProgressUpdate(values);</div><div class="line">			progressBar.setProgress(progressBar.getProgress() + values[<span class="number">0</span>]);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">/**</span></div><div class="line">		 * cancel(boolean)方法被调用并且doInBackground(Object[])方法执行完毕时执行</div><div class="line">		 */</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCancelled</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">super</span>.onCancelled();</div><div class="line">			tv.setText(<span class="string">"执行中断"</span>);</div><div class="line">			progressBar.setProgress(<span class="number">0</span>);</div><div class="line">			execute.setEnabled(<span class="keyword">true</span>);</div><div class="line">			cancle.setEnabled(<span class="keyword">false</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>总体执行效果如下：<br><img src="http://img.blog.csdn.net/20151218234420164" alt="这里写图片描述"><br><a href="http://download.csdn.net/detail/wei_smile/9367489" target="_blank" rel="external">AsyncTask Demo源码</a></p>
-<h4 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h4><ul>
-<li><a href="http://blog.csdn.net/ahuier/article/details/16953793" target="_blank" rel="external">http://blog.csdn.net/ahuier/article/details/16953793</a></li>
-<li><a href="http://blog.csdn.net/liuhe688/article/details/6532519" target="_blank" rel="external">http://blog.csdn.net/liuhe688/article/details/6532519</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;AsyncTask-–-直接继承与Object类-在API-3中开始就被定义&quot;&gt;&lt;a href=&quot;#AsyncTask-–-直接继承与Object类-在API-3中开始就被定义&quot; class=&quot;headerlink&quot; title=&quot;AsyncTask  – 直接继承与Object类 在API-3中开始就被定义&quot;&gt;&lt;/a&gt;AsyncTask  – 直接继承与Object类 在API-3中开始就被定义&lt;/h4&gt;&lt;p&gt; &lt;strong&gt;一、AsyncTask初步介绍&lt;/strong&gt;&lt;br&gt;　在Android程序开始运行的时候会单独启动一个进程，默认情况下所有这个程序操作都在这个进程中进行。一个Android程序默认情况下只有一个进程，但是一个进程却是可以有许线程的。&lt;br&gt;　在这些线程中，有一个线程叫做UI线程，也叫做Main Thread，除了Main Thread之外的线程都可称为Worker Thread。Main Thread主要负责控制UI页面的显示、更新、交互等。 因此所有在UI线程中的操作要求越短越好，只有这样用户才会觉得操作比较流畅。一个比较好的做法是把一些比较耗时的操作，例如网络请求、数据库操作、 复杂计算等逻辑都封装到单独的线程，这样就可以避免阻塞主线程，这个时候就用到了异步任务类AsyncTask。&lt;br&gt;　AsyncTask 是一个综合Thread 和 Handler的辅助类，并不是通用线程框架的一部分。AsyncTask 是短期后台操作的理想选择（最多几秒钟），如果你需要线程长时间的保持运行，强烈建议你使用 java.util.concurrent 包提供的各种API以满足你的需求，比如：Executor, ThreadPoolExecutor and FutureTask.这里我们只讨论AsyncTask的初步使用。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https:///www.limuyang.cc/categories/Android/"/>
-    
-    
-      <category term="异步IO" scheme="https:///www.limuyang.cc/tags/%E5%BC%82%E6%AD%A5IO/"/>
-    
-      <category term="AsyncTask" scheme="https:///www.limuyang.cc/tags/AsyncTask/"/>
     
   </entry>
   

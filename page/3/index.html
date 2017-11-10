@@ -161,6 +161,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-AsyncTask初步解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/18/AsyncTask初步解析/">AsyncTask初步解析</a>
+    </h1>
+  
+
+        
+        <a href="/2015/12/18/AsyncTask初步解析/" class="archive-article-date">
+  	<time datetime="2015-12-18T12:26:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="AsyncTask-–-直接继承与Object类-在API-3中开始就被定义"><a href="#AsyncTask-–-直接继承与Object类-在API-3中开始就被定义" class="headerlink" title="AsyncTask  – 直接继承与Object类 在API-3中开始就被定义"></a>AsyncTask  – 直接继承与Object类 在API-3中开始就被定义</h4><p> <strong>一、AsyncTask初步介绍</strong><br>　在Android程序开始运行的时候会单独启动一个进程，默认情况下所有这个程序操作都在这个进程中进行。一个Android程序默认情况下只有一个进程，但是一个进程却是可以有许线程的。<br>　在这些线程中，有一个线程叫做UI线程，也叫做Main Thread，除了Main Thread之外的线程都可称为Worker Thread。Main Thread主要负责控制UI页面的显示、更新、交互等。 因此所有在UI线程中的操作要求越短越好，只有这样用户才会觉得操作比较流畅。一个比较好的做法是把一些比较耗时的操作，例如网络请求、数据库操作、 复杂计算等逻辑都封装到单独的线程，这样就可以避免阻塞主线程，这个时候就用到了异步任务类AsyncTask。<br>　AsyncTask 是一个综合Thread 和 Handler的辅助类，并不是通用线程框架的一部分。AsyncTask 是短期后台操作的理想选择（最多几秒钟），如果你需要线程长时间的保持运行，强烈建议你使用 java.util.concurrent 包提供的各种API以满足你的需求，比如：Executor, ThreadPoolExecutor and FutureTask.这里我们只讨论AsyncTask的初步使用。<br>
+        
+          <a class="article-more-a" href="/2015/12/18/AsyncTask初步解析/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">异步IO</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AsyncTask</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Android/" class="article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/12/18/AsyncTask初步解析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Android系统架构解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -359,14 +435,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">异步IO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AsyncTask</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Material Design</a>
               </li>
              
@@ -375,11 +443,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TextInputLayout</a>
+                <a href="javascript:void(0)" class="js-tag color1">FloatingActionButton</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">FloatingActionButton</a>
+                <a href="javascript:void(0)" class="js-tag color5">异步IO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AsyncTask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -387,15 +459,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">TextInputLayout</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IIFE</a>
+                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -415,11 +483,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
+                <a href="javascript:void(0)" class="js-tag color5">前端框架</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件分发</a>
+                <a href="javascript:void(0)" class="js-tag color2">知乎Live</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">尤雨溪</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -427,7 +499,31 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ViewGroup</a>
+                <a href="javascript:void(0)" class="js-tag color5">事件分发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IIFE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">保存数据</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -443,15 +539,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据采集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">知乎</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -459,19 +551,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据采集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">自始至终</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模拟登陆</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">保存数据</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,7 +559,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ViewGroup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
             
             <div class="clearfix"></div>
