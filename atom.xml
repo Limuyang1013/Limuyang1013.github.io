@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:///www.limuyang.cc/"/>
-  <updated>2017-11-10T15:17:12.185Z</updated>
+  <updated>2018-03-31T14:31:50.653Z</updated>
   <id>https:///www.limuyang.cc/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue-router中使用EventBus传值需要注意到的问题</title>
+    <link href="https:///www.limuyang.cc/2018/03/31/vue-router%E4%B8%AD%E4%BD%BF%E7%94%A8EventBus%E4%BC%A0%E5%80%BC%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https:///www.limuyang.cc/2018/03/31/vue-router中使用EventBus传值需要注意到的问题/</id>
+    <published>2018-03-31T14:26:58.000Z</published>
+    <updated>2018-03-31T14:31:50.653Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://olivyw4lw.bkt.clouddn.com/139-full.png" alt="image"> 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：</p>
+<ul>
+<li><strong>首先新建一个js用来创建我们的EventBus，如Bus.js</strong> <a id="more"></a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;  </div><div class="line">...</div><div class="line">export <span class="keyword">default</span> <span class="keyword">new</span> Vue();</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>接着，我们在需要的地方通过$emit触发自定义事件，比如我这个时候有一个视频当前播放时间的状态需要传递</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Bus <span class="keyword">from</span> <span class="string">'../components/Bus.js'</span></div><div class="line">...</div><div class="line">Bus.$emit(<span class="string">'currentTime'</span>, <span class="string">'time'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>再然后就是我们在另一个路由页面(就分别叫页面A和B吧)通过$on监听自定义事件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Bus <span class="keyword">from</span> <span class="string">'../components/Bus.js'</span></div><div class="line">...</div><div class="line">Bus.$on(<span class="string">'currentTime'</span>, (time) =&gt; <span class="built_in">console</span>.log(time))</div></pre></td></tr></table></figure>
+<p>通常情况下这个是应该可以打印出我们想要的数据，但是经我实验发现，当第一次通过路由跳转页面的时候控制台是没有任何输出的，只有第二次跳转开始控制台才有输出，然后我就去查了下资料，发现有这么一种说法:</p>
+<blockquote>
+<p>vue-router切换的时候，会先加载新的组件，当新的组件渲染好但是还没mount的时候，销毁旧组件，然后再挂载新组件，也就是说当B页面的生命周期进行到beforeMount的时候，下一步走到的就是A页面的beforeDestory方法和接下去的destroyed方法</p>
+</blockquote>
+</li>
+</ul>
+<p>要知道我们一般都是在B页面的created方法里面去使用$on监听自定义事件，但是通过上面那段话我们知道，当我们在create方法里面监听事件的时候$emit事件已经发出去了，此时监听器还没有注册，那么要让$on监听到A页面的$emit发出的事件，可以在A页面的beforeDestory或destroyed去执行$emit，附上vue-router切换时候相关的生命周期顺序图： <img src="https://upload-images.jianshu.io/upload_images/5763769-1c04ab921c3d4876.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
+<p><strong><a href="https://www.jianshu.com/p/fde85549e3b0" target="_blank" rel="external">图片出自</a></strong></p>
+<p>但是我这个项目和这个人有不一样的地方，因为我需要留存上一个路由页面的状态，所以我在<code>router-view</code>的外面用了<code>keep-alive</code>属性，所以也就不存在A页面会走到beforeDestory和destoryed的说法，那么这时候该怎么做，我一开始是做了实验，既然我直接$emit那边接收不到，那我就延迟去$emit，一开始我用了个2s的延迟:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Bus <span class="keyword">from</span> <span class="string">'../components/Bus.js'</span></div><div class="line">...</div><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">   Bus.$emit(<span class="string">'currentTime'</span>, <span class="string">'time'</span>)</div><div class="line">&#125;, <span class="number">2000</span>)</div></pre></td></tr></table></figure>
+<p>目的就是让B页面$on执行开始监听事件的时候我再去$emit，发现是可以的，我又把时间减少到1s，依然正常运行，但是如果我们要去精确计算两个页面的切换时间岂不是太蠢，后来我就想到了vue自带的一个方法，敲黑板<strong>vm.$nextTick( [callback] )</strong>，这个方法的作用就是在dom更新之后异步执行回调方法，我在这个时候去$emit果然能够成功获取到数据，大功告成。</p>
+<p>顺便说一句，如果路由外面没有使用keep-alive的话，你会发现随着切换次数增多$on监听事件执行的次数也越来越多，和你切换页面的次数成正比，尤大在issue里面说这是因为$on事件是不会自动清除的，也就是说你切换的次数越多$on监听也会越来越多，解决的方法是需要在B页面的beforeDestroy里面手动使用$off去关闭监听:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Bus <span class="keyword">from</span> <span class="string">'../components/Bus.js'</span></div><div class="line">beforeDestory() &#123;</div><div class="line">  Bus.$off(<span class="string">'currentTime'</span>, (time) =&gt; <span class="built_in">console</span>.log(time))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上</p>
+<p>参考链接 <a href="https://segmentfault.com/q/1010000007879907" target="_blank" rel="external">vue2 eventbus 求解惑</a> <a href="https://www.jianshu.com/p/fde85549e3b0" target="_blank" rel="external">vue中eventbus被多次触发（vue中使用eventbus踩过的坑）</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://olivyw4lw.bkt.clouddn.com/139-full.png&quot; alt=&quot;image&quot;&gt; 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;首先新建一个js用来创建我们的EventBus，如Bus.js&lt;/strong&gt;
+    
+    </summary>
+    
+      <category term="前端开发" scheme="https:///www.limuyang.cc/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="vue-router" scheme="https:///www.limuyang.cc/tags/vue-router/"/>
+    
+      <category term="eventbus" scheme="https:///www.limuyang.cc/tags/eventbus/"/>
+    
+  </entry>
   
   <entry>
     <title>不吹不黑聊聊前端框架--尤雨溪Live整理</title>
@@ -598,11 +651,11 @@
       <category term="Python" scheme="https:///www.limuyang.cc/categories/Python/"/>
     
     
+      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
+    
       <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="数据采集" scheme="https:///www.limuyang.cc/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
-    
-      <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
     
   </entry>
   
@@ -691,9 +744,9 @@
       <category term="Python" scheme="https:///www.limuyang.cc/categories/Python/"/>
     
     
-      <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
-    
       <category term="知乎" scheme="https:///www.limuyang.cc/tags/%E7%9F%A5%E4%B9%8E/"/>
+    
+      <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="网络" scheme="https:///www.limuyang.cc/tags/%E7%BD%91%E7%BB%9C/"/>
     
@@ -782,9 +835,9 @@
       <category term="Python" scheme="https:///www.limuyang.cc/categories/Python/"/>
     
     
-      <category term="Python" scheme="https:///www.limuyang.cc/tags/Python/"/>
-    
       <category term="爬虫" scheme="https:///www.limuyang.cc/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Python" scheme="https:///www.limuyang.cc/tags/Python/"/>
     
       <category term="模拟登陆" scheme="https:///www.limuyang.cc/tags/%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86/"/>
     
@@ -1860,41 +1913,6 @@
       <category term="回调" scheme="https:///www.limuyang.cc/tags/%E5%9B%9E%E8%B0%83/"/>
     
       <category term="分析" scheme="https:///www.limuyang.cc/tags/%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>APP启动页的正确配置方式</title>
-    <link href="https:///www.limuyang.cc/2016/03/01/APP%E5%90%AF%E5%8A%A8%E9%A1%B5%E7%9A%84%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/"/>
-    <id>https:///www.limuyang.cc/2016/03/01/APP启动页的正确配置方式/</id>
-    <published>2016-03-01T12:23:31.000Z</published>
-    <updated>2017-09-13T11:59:43.914Z</updated>
-    
-    <content type="html"><![CDATA[<p>在APP的启动页面(Splash Screen)好多都是等待3秒，好一点的还可以跳过，但是有的跳过也是假的按钮。当然像一些大厂的APP，像网易新闻等启动页面都是广告，人家要收广告费的。但是，对于一些普通的APP，有的也出现等待三秒的启动画面，出现一个大大的logo,好像告诉用户他打开的是什么应用，加深用户的映像，这完全是浪费用户的时间，给用户很差的体验！其实我只想快点进入APP啊！！！而且有些APP启动时候都会出现一个短暂的空白界面，现在我们就来避免这些已知的问题。 <img src="http://olivyw4lw.bkt.clouddn.com/YourStory-consumer-internet-mobile-app-1.png" alt=""></p>
-<h1 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h1><p>你看到在这个APP的启动页面所花费的时间正是APP所初始化配置自己的时间，第一次启动也是这样的，所以第一次是最慢的，但是如果有缓存了，那么每次再打开应该是立即打开了吧 <strong>实现一个启动页面(Splash Screen)</strong> 实现一个启动页面可能和你想象的有点不一样。这个启动的页面必须是立即准备好的页面，即使是在Activity中加载一个xml页面也要是立刻加载好的。 所以，一般不会用layout来当启动页面。取而代之的是用一个颜色作为你的Activity的主题背景，接下来，在你的res/drawable文件夹下创建一个XML的drawable。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">&lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android"&gt;</div><div class="line"></div><div class="line">    &lt;item</div><div class="line">        android:drawable="@color/gray"/&gt;</div><div class="line"></div><div class="line">    &lt;item&gt;</div><div class="line">        &lt;bitmap</div><div class="line">            android:gravity="center"</div><div class="line">            android:src="@mipmap/ic_launcher"/&gt;</div><div class="line">    &lt;/item&gt;</div><div class="line"></div><div class="line">&lt;/layer-list&gt;</div></pre></td></tr></table></figure>
-<p>这里，我设置了背景颜色和一张居中的图片。 然后，在主题中，将这个设置为Activity的背景。打开你的styles.xml然后为你的Activity添加一个新的主题。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  &lt;!-- Base application theme. --&gt;</div><div class="line">    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;</div><div class="line">        &lt;!-- Customize your theme here. --&gt;</div><div class="line">    &lt;/style&gt;</div><div class="line"></div><div class="line">    &lt;style name="SplashTheme" parent="Theme.AppCompat.NoActionBar"&gt;</div><div class="line">        &lt;item name="android:windowBackground"&gt;@drawable/background_splash&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div><div class="line"></div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
-<p>在你新的SplashTheme中，设置窗口背景属性为我们之前写的XML的drawable，就是layer-list的xml。然后在你的AndroidManifest.xml中配置一下就好了。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">    android:name=".SplashActivity"</div><div class="line">    android:theme="@style/SplashTheme"&gt;</div><div class="line">    &lt;intent-filter&gt;</div><div class="line">        &lt;action android:name="android.intent.action.MAIN" /&gt;</div><div class="line"></div><div class="line">        &lt;category android:name="android.intent.category.LAUNCHER" /&gt;</div><div class="line">    &lt;/intent-filter&gt;</div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure>
-<p>最后，在你的SplashActivity.class文件中，编码直接进入主页面就行了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SplashActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class);</div><div class="line">        startActivity(intent);</div><div class="line">        finish();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里发现你并没有为Activity设置layout视图，视图来自于主题！所以，这应该是最快的方法启动页面了（相比较加载layout视图）。如果你一定要通过加载layout来显示页面，可能你初始化完了才跳出页面，这时已经有点迟了，所以，你应该考虑用极短的时间来显示加载layout视图. <strong>正确的打开它</strong> 当你完成这些步骤，你就正确的完成了启动页面。 <img src="http://img.blog.csdn.net/20151210222140337" alt="这里写图片描述"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在APP的启动页面(Splash Screen)好多都是等待3秒，好一点的还可以跳过，但是有的跳过也是假的按钮。当然像一些大厂的APP，像网易新闻等启动页面都是广告，人家要收广告费的。但是，对于一些普通的APP，有的也出现等待三秒的启动画面，出现一个大大的logo,好像告诉用户他打开的是什么应用，加深用户的映像，这完全是浪费用户的时间，给用户很差的体验！其实我只想快点进入APP啊！！！而且有些APP启动时候都会出现一个短暂的空白界面，现在我们就来避免这些已知的问题。 &lt;img src=&quot;http://olivyw4lw.bkt.clouddn.com/YourStory-consumer-internet-mobile-app-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https:///www.limuyang.cc/categories/Android/"/>
-    
-    
-      <category term="冷热启动" scheme="https:///www.limuyang.cc/tags/%E5%86%B7%E7%83%AD%E5%90%AF%E5%8A%A8/"/>
-    
-      <category term="app" scheme="https:///www.limuyang.cc/tags/app/"/>
     
   </entry>
   
