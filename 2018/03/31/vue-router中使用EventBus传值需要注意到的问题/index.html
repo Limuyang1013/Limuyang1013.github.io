@@ -8,24 +8,18 @@
   <link rel="dns-prefetch" href="https:///www.limuyang.cc">
   <title>vue-router中使用EventBus传值需要注意到的问题 | 李牧羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：
-
-首先新建一个js用来创建我们的EventBus，如Bus.js">
+  <meta name="description" content="最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-router中使用EventBus传值需要注意到的问题">
 <meta property="og:url" content="https:///www.limuyang.cc/2018/03/31/vue-router中使用EventBus传值需要注意到的问题/index.html">
 <meta property="og:site_name" content="李牧羊">
-<meta property="og:description" content="最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：
-
-首先新建一个js用来创建我们的EventBus，如Bus.js">
+<meta property="og:description" content="最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：">
 <meta property="og:image" content="http://olivyw4lw.bkt.clouddn.com/139-full.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5763769-1c04ab921c3d4876.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:updated_time" content="2018-03-31T14:35:39.594Z">
+<meta property="og:updated_time" content="2018-03-31T14:37:26.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-router中使用EventBus传值需要注意到的问题">
-<meta name="twitter:description" content="最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：
-
-首先新建一个js用来创建我们的EventBus，如Bus.js">
+<meta name="twitter:description" content="最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：">
 <meta name="twitter:image" content="http://olivyw4lw.bkt.clouddn.com/139-full.png">
   
   
@@ -192,10 +186,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://olivyw4lw.bkt.clouddn.com/139-full.png" alt="image"> 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：</p>
+        <p><img src="http://olivyw4lw.bkt.clouddn.com/139-full.png" alt="image"> 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：<br><a id="more"></a></p>
 <ul>
-<li><strong>首先新建一个js用来创建我们的EventBus，如Bus.js</strong> <a id="more"></a>
-</li>
+<li><strong>首先新建一个js用来创建我们的EventBus，如Bus.js</strong> </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;  </div><div class="line">...</div><div class="line">export <span class="keyword">default</span> <span class="keyword">new</span> Vue();</div></pre></td></tr></table></figure>
 <ul>
@@ -493,15 +486,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TextInputLayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TextInputLayout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,14 +511,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,14 +546,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">vue-router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">eventbus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">前端框架</a>
               </li>
              
@@ -578,6 +555,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">尤雨溪</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">vue-router</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">eventbus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,6 +579,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据采集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,6 +619,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CoordinatorLayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
             
             <div class="clearfix"></div>
