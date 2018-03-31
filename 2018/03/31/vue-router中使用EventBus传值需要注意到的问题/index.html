@@ -16,7 +16,7 @@
 <meta property="og:description" content="最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：">
 <meta property="og:image" content="http://olivyw4lw.bkt.clouddn.com/139-full.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5763769-1c04ab921c3d4876.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:updated_time" content="2018-03-31T14:37:26.709Z">
+<meta property="og:updated_time" content="2018-03-31T14:38:55.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-router中使用EventBus传值需要注意到的问题">
 <meta name="twitter:description" content="最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：">
@@ -212,7 +212,7 @@
 <p>顺便说一句，如果路由外面没有使用keep-alive的话，你会发现随着切换次数增多$on监听事件执行的次数也越来越多，和你切换页面的次数成正比，尤大在issue里面说这是因为$on事件是不会自动清除的，也就是说你切换的次数越多$on监听也会越来越多，解决的方法是需要在B页面的beforeDestroy里面手动使用$off去关闭监听:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Bus <span class="keyword">from</span> <span class="string">'../components/Bus.js'</span></div><div class="line">beforeDestory() &#123;</div><div class="line">  Bus.$off(<span class="string">'currentTime'</span>, (time) =&gt; <span class="built_in">console</span>.log(time))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>以上</p>
-<p>参考链接 <a href="https://segmentfault.com/q/1010000007879907" target="_blank" rel="external">vue2 eventbus 求解惑</a> <a href="https://www.jianshu.com/p/fde85549e3b0" target="_blank" rel="external">vue中eventbus被多次触发（vue中使用eventbus踩过的坑）</a></p>
+<p>参考链接<br><a href="https://segmentfault.com/q/1010000007879907" target="_blank" rel="external">vue2 eventbus 求解惑</a><br><a href="https://www.jianshu.com/p/fde85549e3b0" target="_blank" rel="external">vue中eventbus被多次触发（vue中使用eventbus踩过的坑）</a></p>
 
       
 
