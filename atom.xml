@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>李牧羊</title>
+  <title>Atlantis</title>
   <subtitle>时隐时现，悲喜无常</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:///www.limuyang.cc/"/>
-  <updated>2018-03-31T14:38:55.672Z</updated>
+  <updated>2018-04-27T15:13:07.458Z</updated>
   <id>https:///www.limuyang.cc/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https:///www.limuyang.cc/2018/03/31/vue-router%E4%B8%AD%E4%BD%BF%E7%94%A8EventBus%E4%BC%A0%E5%80%BC%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>https:///www.limuyang.cc/2018/03/31/vue-router中使用EventBus传值需要注意到的问题/</id>
     <published>2018-03-31T14:26:58.000Z</published>
-    <updated>2018-03-31T14:38:55.672Z</updated>
+    <updated>2018-04-27T15:13:07.458Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://olivyw4lw.bkt.clouddn.com/139-full.png" alt="image"> 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p><img src="https://www.tuchuang001.com/images/2018/04/27/flux-overview.png" alt="image"> 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：<br><a id="more"></a></p>
 <ul>
 <li><strong>首先新建一个js用来创建我们的EventBus，如Bus.js</strong> </li>
 </ul>
@@ -40,7 +40,7 @@
 </blockquote>
 </li>
 </ul>
-<p>要知道我们一般都是在B页面的created方法里面去使用$on监听自定义事件，但是通过上面那段话我们知道，当我们在create方法里面监听事件的时候$emit事件已经发出去了，此时监听器还没有注册，那么要让$on监听到A页面的$emit发出的事件，可以在A页面的beforeDestory或destroyed去执行$emit，附上vue-router切换时候相关的生命周期顺序图： <img src="https://upload-images.jianshu.io/upload_images/5763769-1c04ab921c3d4876.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
+<p>要知道我们一般都是在B页面的created方法里面去使用$on监听自定义事件，但是通过上面那段话我们知道，当我们在create方法里面监听事件的时候$emit事件已经发出去了，此时监听器还没有注册，那么要让$on监听到A页面的$emit发出的事件，可以在A页面的beforeDestory或destroyed去执行$emit，附上vue-router切换时候相关的生命周期顺序图： <img src="https://www.tuchuang001.com/images/2018/04/27/5763769-1c04ab921c3d4876.png" alt=""></p>
 <p><strong><a href="https://www.jianshu.com/p/fde85549e3b0" target="_blank" rel="external">图片出自</a></strong></p>
 <p>但是我这个项目和这个人有不一样的地方，因为我需要留存上一个路由页面的状态，所以我在<code>router-view</code>的外面用了<code>keep-alive</code>属性，所以也就不存在A页面会走到beforeDestory和destoryed的说法，那么这时候该怎么做，我一开始是做了实验，既然我直接$emit那边接收不到，那我就延迟去$emit，一开始我用了个2s的延迟:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Bus <span class="keyword">from</span> <span class="string">'../components/Bus.js'</span></div><div class="line">...</div><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">   Bus.$emit(<span class="string">'currentTime'</span>, <span class="string">'time'</span>)</div><div class="line">&#125;, <span class="number">2000</span>)</div></pre></td></tr></table></figure>
@@ -53,7 +53,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://olivyw4lw.bkt.clouddn.com/139-full.png&quot; alt=&quot;image&quot;&gt; 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：&lt;br&gt;
+      &lt;p&gt;&lt;img src=&quot;https://www.tuchuang001.com/images/2018/04/27/flux-overview.png&quot; alt=&quot;image&quot;&gt; 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：&lt;br&gt;
     
     </summary>
     
@@ -71,9 +71,9 @@
     <link href="https:///www.limuyang.cc/2017/11/10/%E4%B8%8D%E5%90%B9%E4%B8%8D%E9%BB%91%E8%81%8A%E8%81%8A%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-%E5%B0%A4%E9%9B%A8%E6%BA%AALive%E6%95%B4%E7%90%86/"/>
     <id>https:///www.limuyang.cc/2017/11/10/不吹不黑聊聊前端框架-尤雨溪Live整理/</id>
     <published>2017-11-10T14:58:38.000Z</published>
-    <updated>2017-11-10T15:17:12.185Z</updated>
+    <updated>2018-04-27T15:16:13.627Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://user-images.githubusercontent.com/11991572/32664683-ffb60d34-c66c-11e7-83ae-8a4ca3ae2da8.png" alt="image"></p>
+    <content type="html"><![CDATA[<p><img src="https://www.tuchuang001.com/images/2018/04/27/frontendframeworks.jpg" alt=""></p>
 <p>最近买了尤雨溪大大的Live：不吹不黑聊聊前端框架，这场Live让我的前端思维到了前所未有的高度：当我们身为前端开发萌新，在前端人才金字塔的浮动与挣扎中思考该学什么框架、该如何入门前端、又遇到学习瓶颈怎么办的时候，正是这些业界大牛们用自己的行动引导着我们，有如尤大所说：多思考场景需求，多看看技术到底做了怎样的取舍，现在把相关的东西作为笔记整理下来，希望对前端开发有兴趣的同学都可以去支持一下尤大</p>
 <a id="more"></a>
 <h4 id="组件可以是函数"><a href="#组件可以是函数" class="headerlink" title="组件可以是函数"></a>组件可以是函数</h4><p>想象一下整个应用是一个大的函数，函数里面可以调用别的函数，每一个组件是一个函数，一个组件可以调用其他的函数，整个一个树状结构</p>
@@ -148,7 +148,7 @@
 <li>编译时优化</li>
 </ul>
 <p><a href="https://www.zhihu.com/question/20790576" target="_blank" rel="external">大公司里怎样开发和部署前端代码</a></p>
-<p><img src="https://user-images.githubusercontent.com/11991572/32641449-f3738fba-c608-11e7-83f4-3bc598791876.png" alt="image"><br>虽然 Vue 本身用 flow，但建议使用 TypeScript 的 flow，主要从开发体验、生态完善度上考虑</p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/32641449-f3738fba-c608-11e7-83f4-3bc598791876.png" alt=""><br>虽然 Vue 本身用 flow，但建议使用 TypeScript 的 flow，主要从开发体验、生态完善度上考虑</p>
 <h4 id="服务端数据通信"><a href="#服务端数据通信" class="headerlink" title="服务端数据通信"></a>服务端数据通信</h4><p>长久以来我们传统的做法都是围绕Rest，服务端如果暴露的是一个比较标准的Rest API，那我们客户端就可以直接拿一个fetch直接去抓，或者围绕Rest来做一个资源的抽象/封装，特定的应用会遇到比较复杂的场景，一种是，数据直连，数据之间有大量的关联性，另一类是有实时推送同步的需求，这种情况下传统的Rest做法会比较痛苦。<br><a href="https://ssr.vuejs.org/zh/" target="_blank" rel="external">Vue.js 服务器端渲染指南</a></p>
 <h4 id="跨平台渲染"><a href="#跨平台渲染" class="headerlink" title="跨平台渲染"></a>跨平台渲染</h4><p>从前端框架的角度去看，跨平台渲染的本质是在设计框架的时候要让框架的渲染机制和DOM解耦，这里面有很多种实现方式，并不一定需要Virtual Dom，本质上只要把框架更新时候的一些节点操作封装起来，你就可以做到跨平台，一个原生的渲染引擎，比如 React Native 和 VueX本质都是在底层针对每个平台有一个适配的渲染引擎，只要把渲染引擎暴露的结点操作的 API，跟框架运行时对接一下，就可以实现将框架里面的代码渲染到原生的目的。这里的解耦很清晰，这也是为什么能看到 NG 可以接 React Native，VueX 可以跑 Vue 文件，VueX 可以跑在 NativeScript 上等等。</p>
 <h4 id="新规范"><a href="#新规范" class="headerlink" title="新规范"></a>新规范</h4><ul>
@@ -160,7 +160,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/11991572/32664683-ffb60d34-c66c-11e7-83ae-8a4ca3ae2da8.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://www.tuchuang001.com/images/2018/04/27/frontendframeworks.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;最近买了尤雨溪大大的Live：不吹不黑聊聊前端框架，这场Live让我的前端思维到了前所未有的高度：当我们身为前端开发萌新，在前端人才金字塔的浮动与挣扎中思考该学什么框架、该如何入门前端、又遇到学习瓶颈怎么办的时候，正是这些业界大牛们用自己的行动引导着我们，有如尤大所说：多思考场景需求，多看看技术到底做了怎样的取舍，现在把相关的东西作为笔记整理下来，希望对前端开发有兴趣的同学都可以去支持一下尤大&lt;/p&gt;
     
     </summary>
@@ -181,9 +181,9 @@
     <link href="https:///www.limuyang.cc/2017/11/08/javascript%E4%B8%ADcall%E3%80%81apply%E3%80%81bind%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https:///www.limuyang.cc/2017/11/08/javascript中call、apply、bind方法的使用/</id>
     <published>2017-11-08T12:50:19.000Z</published>
-    <updated>2017-11-08T12:51:05.693Z</updated>
+    <updated>2018-04-27T15:08:20.455Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://olivyw4lw.bkt.clouddn.com/maxresdefault.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://www.tuchuang001.com/images/2018/04/27/maxresdefault.jpg" alt=""></p>
 <a id="more"></a>
 <h4 id="context的概念"><a href="#context的概念" class="headerlink" title="context的概念"></a>context的概念</h4><p>在知道我们为什么要使用call、apply、bind方法之前，我觉得有必要先了解一下context的相关概念，通常context的作用是取决于函数将如何被调用，当函数作为对象的方法调用时，this就会被设置为调用方法的对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> object = &#123;</div><div class="line">       foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">           <span class="built_in">console</span>.log(<span class="keyword">this</span> === object);</div><div class="line">       &#125;</div><div class="line">   &#125;;</div><div class="line"></div><div class="line">   object.foo(); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
 <p>当通过new一个对象的实例的方式来调用一个函数的时候，this的值将被设置为新创建的实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  foo() <span class="comment">// window</span></div><div class="line">  <span class="keyword">new</span> foo() <span class="comment">// foo&#123;&#125;</span></div></pre></td></tr></table></figure></p>
@@ -217,7 +217,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://olivyw4lw.bkt.clouddn.com/maxresdefault.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://www.tuchuang001.com/images/2018/04/27/maxresdefault.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -239,9 +239,9 @@
     <link href="https:///www.limuyang.cc/2017/09/11/javascript%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0-IIFE/"/>
     <id>https:///www.limuyang.cc/2017/09/11/javascript立即执行函数-IIFE/</id>
     <published>2017-09-11T13:46:54.000Z</published>
-    <updated>2017-11-08T12:37:49.403Z</updated>
+    <updated>2018-04-27T15:07:26.282Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://oasusatoz.bkt.clouddn.com/maxresdefault.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://www.tuchuang001.com/images/2018/04/27/t01d33574ff8f0f445c.gif" alt="IEEF"></p>
 <a id="more"></a> 通常我们声明一个函数有以下几种方式：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明函数f1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f1"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过()来调用此函数</span></div><div class="line">f1();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个匿名函数的函数表达式，被赋值给变量f2:</span></div><div class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f2"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f2();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//一个命名为f3的函数的函数表达式(这里的函数名可以随意命名，可以不必和变量f3重名)，被赋值给变量f3:</span></div><div class="line"><span class="keyword">var</span> f3 = <span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"f3"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//通过()来调用此函数</span></div><div class="line">f3();</div></pre></td></tr></table></figure>
 <p>如果你看过一些自定义控件的话你会发现他们大多数都是沿用这种写法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ...</div><div class="line">   <span class="comment">// 这里开始写功能需求</span></div><div class="line"> &#125;)();</div></pre></td></tr></table></figure>
@@ -273,7 +273,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://oasusatoz.bkt.clouddn.com/maxresdefault.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://www.tuchuang001.com/images/2018/04/27/t01d33574ff8f0f445c.gif&quot; alt=&quot;IEEF&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -291,23 +291,23 @@
     <link href="https:///www.limuyang.cc/2017/06/01/%E5%91%8A%E5%88%AB%E4%BA%94%E6%9C%88/"/>
     <id>https:///www.limuyang.cc/2017/06/01/告别五月/</id>
     <published>2017-06-01T14:06:01.000Z</published>
-    <updated>2017-06-07T13:25:00.134Z</updated>
+    <updated>2018-04-27T14:35:27.477Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://olivyw4lw.bkt.clouddn.com/davide-ragusa-3131-min.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://www.tuchuang001.com/images/2017/06/07/davide-ragusa-3131-min.jpg" alt=""></p>
 <p>2017年<br>6月1号<br>转眼就跑到那似水流年里去了，然而身边的人都不珍视自己的似水流年<br>我要告别5月<br><a id="more"></a></p>
 <h4 id="诉"><a href="#诉" class="headerlink" title="诉"></a>诉</h4><p>一整个5月是我成长最快的日子<br>我心里很乱，当我沿着这条路走下去的时候<br>心里总想着另一条路上的事<br>好像王小波在《黄金时代》中描述到的：”那一年我二十一岁，在我一生的黄金时代，我有好多奢望。我想爱，想吃，还想在一瞬间变成天上半明半暗的云。”</p>
-<h4 id="别"><a href="#别" class="headerlink" title="别"></a>别</h4><p><img src="http://olivyw4lw.bkt.clouddn.com/duoshuo.png" alt=""><br>在2017-06-01这个节点我把多说换成了搜狐畅言<br>让我和你告个别<br>开源不易，且行且珍惜</p>
+<h4 id="别"><a href="#别" class="headerlink" title="别"></a>别</h4><p><img src="https://www.tuchuang001.com/images/2018/04/27/duoshuo.png" alt=""><br>在2017-06-01这个节点我把多说换成了搜狐畅言<br>让我和你告个别<br>开源不易，且行且珍惜</p>
 <h4 id="离"><a href="#离" class="headerlink" title="离"></a>离</h4><p>我只愿蓬勃的生活在此时此刻<br>成为一名真正意义上的移动WEB前端开发工程师<br>“移动”两字是我刻意加上去的，很好的显露出我没有如愿成为一名移动开发工程师的不忿<br>最后，我发现我真的胖了。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://olivyw4lw.bkt.clouddn.com/davide-ragusa-3131-min.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://www.tuchuang001.com/images/2017/06/07/davide-ragusa-3131-min.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;2017年&lt;br&gt;6月1号&lt;br&gt;转眼就跑到那似水流年里去了，然而身边的人都不珍视自己的似水流年&lt;br&gt;我要告别5月&lt;br&gt;
     
     </summary>
     
-      <category term="茕独" scheme="https:///www.limuyang.cc/categories/%E8%8C%95%E7%8B%AC/"/>
+      <category term="旧事" scheme="https:///www.limuyang.cc/categories/%E6%97%A7%E4%BA%8B/"/>
     
     
       <category term="告别" scheme="https:///www.limuyang.cc/tags/%E5%91%8A%E5%88%AB/"/>
@@ -319,29 +319,27 @@
     <link href="https:///www.limuyang.cc/2017/02/17/%E8%87%AA%E5%A7%8B%E8%87%B3%E7%BB%88/"/>
     <id>https:///www.limuyang.cc/2017/02/17/自始至终/</id>
     <published>2017-02-17T14:25:29.000Z</published>
-    <updated>2017-06-07T13:21:14.907Z</updated>
+    <updated>2018-04-27T14:35:35.902Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://olivyw4lw.bkt.clouddn.com/17-2-17/11192154-file_1487341097174_e508.jpg" alt=""></p>
-<p>长安有男儿，二十心已朽<br>我已经快忘了来这座城市的初衷</p>
+    <content type="html"><![CDATA[<p><img src="https://www.tuchuang001.com/images/2018/04/27/11192154-file_1487341097174_e508.jpg" alt=""></p>
+<p>我已经快忘了来这座城市的初衷</p>
 <p>我总是没有勇气把生活过的波澜壮阔</p>
 <a id="more"></a>
 <p>2016-6-26，我终于离开了生活和学习了四年的城市，<br>这个城市含着与我记忆无关的繁华，就这么走了也没捎上一句不咸不淡的问候</p>
 <p>人最可悲的心甘情愿用不知道多少个日夜的交替去执着自己不该执着的事物,<br>然而早已白露不是惊蛰，<br>世间也不存在那壶让人醉生梦死的酒<br>我只知道这个城市有我无法割舍的记忆和无法忘却的故人…</p>
-<p>“如果我有孤独和酒，你跟不跟我走”<br>伪文艺总是打着孤独的帆在人海浪尖处踮着脚尖儿跳舞。 船到尽头方知那些粗布麻衣闲茶淡酒垂钓岸边的人，<br>才是真性情。</p>
 <p>2017年元旦去了一趟东极之东，那里晚霞中的风车阵太美,<br>傍晚的暮霭渐渐化成粉色的温柔…<br>其实东极还有另一种宁静，那是大家启程返航的时候，<br>我们懈怠了一点，于是看到的也多一点，那时候的东极才是真正的东极…</p>
 <p>你很难找到跟你性情相通的人，<br>你发现你只是一个存在， 又或者在别人眼里根本就看不见你。</p>
-<p>如果你找到我，那么，你能否为我，作片刻的停留？</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://olivyw4lw.bkt.clouddn.com/17-2-17/11192154-file_1487341097174_e508.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;长安有男儿，二十心已朽&lt;br&gt;我已经快忘了来这座城市的初衷&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://www.tuchuang001.com/images/2018/04/27/11192154-file_1487341097174_e508.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我已经快忘了来这座城市的初衷&lt;/p&gt;
 &lt;p&gt;我总是没有勇气把生活过的波澜壮阔&lt;/p&gt;
     
     </summary>
     
-      <category term="茕独" scheme="https:///www.limuyang.cc/categories/%E8%8C%95%E7%8B%AC/"/>
+      <category term="旧事" scheme="https:///www.limuyang.cc/categories/%E6%97%A7%E4%BA%8B/"/>
     
     
       <category term="自始至终" scheme="https:///www.limuyang.cc/tags/%E8%87%AA%E5%A7%8B%E8%87%B3%E7%BB%88/"/>
@@ -662,20 +660,20 @@
     <link href="https:///www.limuyang.cc/2016/08/09/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Python-%E4%B8%80%E8%B5%B7%E6%9D%A5%E7%88%AC%E7%9F%A5%E4%B9%8E%E5%A8%98/"/>
     <id>https:///www.limuyang.cc/2016/08/09/人生苦短，我用Python-一起来爬知乎娘/</id>
     <published>2016-08-09T11:14:46.000Z</published>
-    <updated>2016-08-09T11:25:11.345Z</updated>
+    <updated>2018-04-27T15:04:37.108Z</updated>
     
     <content type="html"><![CDATA[<p>上次爬了教务处的成绩，接下来想去爬一爬知乎娘，好像大家都很喜欢爬知乎娘，GitHub上貌似已经有人把获取各种知乎数据的操作封装好了：<a href="https://github.com/egrcc/zhihu-python" target="_blank" rel="external"><strong>zhihu-python</strong></a> ，但是良辰表示还是想自己试一试，我就爬点简单的，难度大的我也不会，我瞄准的是我自己关注的人的数据，差不多就这些东西：</p>
 <blockquote>
 <p>关注者 /  提问 /  回答 /  赞同</p>
 </blockquote>
 <p>那么下面开始分析，要拿到这个数据肯定是要先登陆的，那么先找到登陆界面：<br><a id="more"></a></p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/zhihu.png" alt="登陆界面"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/zhihu.png" alt="登陆界面"></p>
 <p>这算是比较正常的界面，不知道为什么有的时候会出现新的验证码形式：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E5%80%92%E7%AB%8B%E7%9A%84%E6%96%87%E5%AD%97.png" alt="输入倒立的文字"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/f901919ea50f9a61.png" alt="输入倒立的文字"></p>
 <p>这种形式登陆的话我看传递的表单数据是你鼠标点击的坐标，这种情况暂时不知道怎么办，留给高手，我们分析上面那种，知乎登陆分为手机号登陆或者邮箱登陆，先试试邮箱登陆，查看Post数据：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E9%82%AE%E7%AE%B1%E7%99%BB%E9%99%86.png" alt="邮箱登陆"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/9177639cd14f1f5e.png" alt="邮箱登陆"></p>
 <p>然后是手机号登陆的:</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%99%BB%E9%99%86.png" alt="手机号登陆"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/8d5d00b9d5f07eda.png" alt="手机号登陆"></p>
 <p>现在理一下思路，我们要登录知乎要传递的数据如下：</p>
 <ul>
 <li>_xsrf() 用于防伪登陆</li>
@@ -684,19 +682,19 @@
 <li>phone_num/email  不同登陆方式传递的东西不同</li>
 </ul>
 <p>phone_num/email以及passsword都需要自己输入，这个好办，我们需要解决如何获取 _xsrf和captcha 的问题，先解决 _xsrf，这个更简单一点，我们在知乎<a href="http://www.zhihu.com/#signin" target="_blank" rel="external"><strong>登陆页面</strong></a> 右键查看网页源代码，直接搜_xsrf：</p>
-<figure class="highlight vbscript-html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"view view-signin"</span> <span class="attr">data-za-module</span>=<span class="string">"SignInForm"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_xsrf"</span> <span class="attr">value</span>=<span class="string">"cf1ee28f15cea5dba3243a1c31a1b284"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"group-inputs"</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight vbscript-html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class="view view-signin" data-za-module="SignInForm"&gt;</div><div class="line">&lt;form&gt;</div><div class="line">&lt;input type="hidden" name="_xsrf" value="cf1ee28f15cea5dba3243a1c31a1b284"/&gt;</div><div class="line">&lt;div class="group-inputs"&gt;</div></pre></td></tr></table></figure>
 <p>我们要做的就是解析出这个元素，直接上代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">logn_url = <span class="string">'http://www.zhihu.com/#signin'</span></div><div class="line">session = requests.session()</div><div class="line">headers = &#123;</div><div class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36'</span>,</div><div class="line">&#125;</div><div class="line">content = session.get(logn_url, headers=headers).content</div><div class="line">soup = BeautifulSoup(content, <span class="string">'html.parser'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getxsrf</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> soup.find(<span class="string">'input'</span>, attrs=&#123;<span class="string">'name'</span>: <span class="string">"_xsrf"</span>&#125;)[<span class="string">'value'</span>]</div></pre></td></tr></table></figure>
 <p>下面获取验证码， 我发现无论是使用哪一种登陆方式，Chrome的开发者面板都会有这么一行：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E9%AA%8C%E8%AF%81%E7%A0%81.png" alt="验证码请求"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/7aed5998a5101cfe.png" alt="验证码请求"></p>
 <p>当我把这个Request URL输入浏览器中就会转到这个验证码图片的界面，说明这个验证码是我们加载这个页面时候，浏览器向服务器发出请求然后下载下来的，那么现在我们有了URL地址：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E9%AA%8C%E8%AF%81%E7%A0%81GET%E8%AF%B7%E6%B1%82.png" alt="获取验证码"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/GET.png" alt="获取验证码"></p>
 <p>这还是一个GET请求，这里注意这个传递的r参数是会不断变化的，这是一个当前Unix的时间戳，知道了这些可以着手获取验证码然后让用户自己输入：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">from</span> PIL <span class="keyword">import</span> Image</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="comment"># 获取验证码</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_captcha</span><span class="params">()</span>:</span></div><div class="line">    t = str(int(time.time() * <span class="number">1000</span>))</div><div class="line">    captcha_url = <span class="string">'http://www.zhihu.com/captcha.gif?r='</span> + t + <span class="string">"&amp;type=login"</span></div><div class="line">    r = session.get(captcha_url, headers=headers)</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'captcha.jpg'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">        f.write(r.content)</div><div class="line">        f.close()</div><div class="line">    <span class="comment"># 用pillow 的 Image 显示验证码</span></div><div class="line">    <span class="comment"># 如果没有安装 pillow 到源代码所在的目录去找到验证码然后手动输入</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        im = Image.open(<span class="string">'captcha.jpg'</span>)</div><div class="line">        im.show()</div><div class="line">        im.close()</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        print(<span class="string">u'请到 %s 目录找到captcha.jpg 手动输入'</span> % os.path.abspath(<span class="string">'captcha.jpg'</span>))</div><div class="line">    captcha = input(<span class="string">"please input the captcha\n&gt;"</span>)</div><div class="line">    <span class="keyword">return</span> captcha</div></pre></td></tr></table></figure>
 <p>这里获取验证码的代码来自GitHub上的<a href="https://github.com/xchaoinfo/fuck-login" target="_blank" rel="external"><strong>fuck-login</strong></a>项目，在此表示感谢，接下里就是写一个方法判断用户是使用了哪一种登陆方式，然后传递相应的数据：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">def login(secret, account):</div><div class="line">    # 通过输入的用户名判断是否是手机号</div><div class="line">    if re.match(r&quot;^1\d&#123;10&#125;$&quot;, account):</div><div class="line">        print(&quot;手机号登录 \n&quot;)</div><div class="line">        post_url = &apos;http://www.zhihu.com/login/phone_num&apos;</div><div class="line">        postdata = &#123;</div><div class="line">            &apos;_xsrf&apos;: getxsrf(),</div><div class="line">            &apos;password&apos;: secret,</div><div class="line">            &apos;remember_me&apos;: &apos;true&apos;,</div><div class="line">            &apos;phone_num&apos;: account,</div><div class="line">        &#125;</div><div class="line">    else:</div><div class="line">        print(&quot;邮箱登录 \n&quot;)</div><div class="line">        post_url = &apos;http://www.zhihu.com/login/email&apos;</div><div class="line">        postdata = &#123;</div><div class="line">            &apos;_xsrf&apos;: getxsrf(),</div><div class="line">            &apos;password&apos;: secret,</div><div class="line">            &apos;remember_me&apos;: &apos;true&apos;,</div><div class="line">            &apos;email&apos;: account,</div><div class="line">        &#125;</div><div class="line">    try:</div><div class="line">        # 不需要验证码直接登录成功</div><div class="line">        login_page = session.post(post_url, data=postdata, headers=headers)</div><div class="line">        login_code = login_page.text</div><div class="line">        print(login_page.status)</div><div class="line">        print(login_code)</div><div class="line">    except:</div><div class="line">        # 需要输入验证码后才能登录成功</div><div class="line">        postdata[&quot;captcha&quot;] = get_captcha()</div><div class="line">        login_page = session.post(post_url, data=postdata, headers=headers)</div><div class="line">        login_code = eval(login_page.text)</div><div class="line">        print(login_code[&apos;msg&apos;])</div><div class="line"></div><div class="line"># 这部分代码同样来自[**fuck-login**](https://github.com/xchaoinfo/fuck-login)项目,我偷了很多懒,囧</div></pre></td></tr></table></figure>
 <p>这个时候判断是否登陆成功可以随便查看一个页面发送GET请求看是否返回200，这里就不多说，接下来才是关键，为了获取我关注的人的信息，先打开开发者面板，这个地方打钩：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E6%89%93%E9%92%A9.png" alt="记得打钩"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/dce7be5950c5523b.png" alt="记得打钩"></p>
 <p>因为网页有时候会跳转，这里打钩之后新跳转的页面的信息就不会覆盖之前接受到的信息，然后找到我关注的人，URL地址是：</p>
 <blockquote>
 <p><a href="https://www.zhihu.com/people/GitSmile/followees" target="_blank" rel="external">https://www.zhihu.com/people/GitSmile/followees</a></p>
@@ -715,15 +713,15 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">获取详细信息</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getdetial</span><span class="params">()</span>:</span></div><div class="line">    followees_url = <span class="string">'https://www.zhihu.com/people/GitSmile/followees'</span></div><div class="line">    followees_headers = &#123;</div><div class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36'</span>,</div><div class="line">        <span class="string">'Referer'</span>: <span class="string">'https://www.zhihu.com/people/GitSmile/about'</span>,</div><div class="line">        <span class="string">'Upgrade-Insecure-Requests'</span>: <span class="string">'1'</span>,</div><div class="line">        <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate, sdch, br'</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    myfollowees = session.get(followees_url, headers=followees_headers)</div><div class="line">    mysoup = BeautifulSoup(myfollowees.content, <span class="string">'html.parser'</span>)</div><div class="line">    print(mysoup.find(<span class="string">'span'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'zm-profile-section-name'</span>&#125;).text)</div><div class="line">    <span class="keyword">for</span> result <span class="keyword">in</span> mysoup.findAll(<span class="string">'a'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'zm-item-link-avatar'</span>&#125;):</div><div class="line">        print(result.get(<span class="string">'title'</span>))</div><div class="line">        <span class="comment"># 解析出href元素信息</span></div><div class="line">        href = str(result.get(<span class="string">'href'</span>))</div><div class="line">        <span class="comment"># 关注者</span></div><div class="line">        print(mysoup.find(<span class="string">'a'</span>, attrs=&#123;<span class="string">'href'</span>: href + <span class="string">'/followers'</span>&#125;).text)</div><div class="line">        <span class="comment"># 提问</span></div><div class="line">        print(mysoup.find(<span class="string">'a'</span>, attrs=&#123;<span class="string">'href'</span>: href + <span class="string">'/asks'</span>&#125;).text)</div><div class="line">        <span class="comment"># 回答</span></div><div class="line">        print(mysoup.find(<span class="string">'a'</span>, attrs=&#123;<span class="string">'href'</span>: href + <span class="string">'/answers'</span>&#125;).text)</div><div class="line">        <span class="comment"># 赞同</span></div><div class="line">        print(mysoup.find(<span class="string">'a'</span>, attrs=&#123;<span class="string">'href'</span>: href, <span class="string">'class'</span>: <span class="string">'zg-link-gray-normal'</span>&#125;).text + <span class="string">'\n'</span>)</div></pre></td></tr></table></figure>
 <p>上面的代码应该很简单了，看一看就能看懂，然后就我信心满满地在PyCharm上输出的时候，发现来来回回只输出20条信息，也就是说，我关注了26人，但是控制台只输出了20个人的信息，然后我就上网查，发现不止一个人有我这样的疑问，当然也多亏了前人踩坑，网上给出来的答案是知乎获取关注的人的时候使用了AJAX技术，也就是动态加载，但是这一部分代码不会再网页Html代码中显示出来，所以为了获取其他关注的人的信息我这里要另辟蹊径。</p>
 <p>然后我翻看我关注的人的信息的时候，在开发者面板抓到这么一条POST信息：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E6%88%91%E5%85%B3%E6%B3%A8%E7%9A%84%E4%BA%BA.png" alt="抓取到的Post信息"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/efba534dce691fe8.png" alt="抓取到的Post信息"></p>
 <p>这条POST之后下面刷出来的图片是我关注的人的头像并且这些头像在我之前看到的20条数据里面是没有的，加上我总共就关注了27个人，所以我有理由相信这个Post就是浏览器向服务器发送请求的Post，看一下Post的信息：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/ajax%E8%A1%A8%E5%8D%95.png" alt="查看Post信息"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/ajax.png" alt="查看Post信息"></p>
 <p>一个偏移量(offset)，一个哈希值(hash_id)外加一个”order_by”:”created”的键值对，这里偏移量很好理解，这个”hash_id”据我多次登陆发现是一个不变的值，或者说每一台电脑或许精确一点每一个浏览器都会有这么一个给定的值，照抄，那么改进后的代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"># 获取所有关注的人的信息</div><div class="line">def getallview():</div><div class="line">    nums = 27  # 这个是我关注的人数</div><div class="line">    followees_headers = &#123;</div><div class="line">        &apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36&apos;,</div><div class="line">        &apos;Referer&apos;: &apos;https://www.zhihu.com/people/GitSmile/followees&apos;,</div><div class="line">        &apos;Origin&apos;: &apos;https://www.zhihu.com&apos;,</div><div class="line">        &apos;Accept-Encoding&apos;: &apos;gzip, deflate, br&apos;,</div><div class="line">        &apos;CG - Sid&apos;: &apos;57226ad5 - 793b - 4a9d - 9791 - 2a9a17e682ef&apos;,</div><div class="line">        &apos;Accept&apos;: &apos;* / *&apos;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    # 序号</div><div class="line">    count = 0</div><div class="line">    for index in range(0, nums):</div><div class="line">        fo_url = &apos;https://www.zhihu.com/node/ProfileFolloweesListV2&apos;</div><div class="line">        m_data = &#123;</div><div class="line">            &apos;method&apos;: &apos;next&apos;,</div><div class="line">            &apos;params&apos;: &apos;&#123;&quot;offset&quot;:&apos; + str(</div><div class="line">                index) + &apos;,&quot;order_by&quot;:&quot;created&quot;,&quot;hash_id&quot;:&quot;de2cb64bc1afe59cf8a6e456ee5eaebc&quot;&#125;&apos;,</div><div class="line">            &apos;_xsrf&apos;: str(getxsrf())</div><div class="line">        &#125;</div><div class="line">        result = session.post(fo_url, data=m_data, headers=followees_headers)</div><div class="line">        dic = json.loads(result.content.decode(&apos;utf-8&apos;))</div><div class="line">        li = dic[&apos;msg&apos;][0]</div><div class="line">        mysoup = BeautifulSoup(li, &apos;html.parser&apos;)</div><div class="line">        for result in mysoup.findAll(&apos;a&apos;, attrs=&#123;&apos;class&apos;: &apos;zm-item-link-avatar&apos;&#125;):</div><div class="line">            print(index + 1)</div><div class="line">            print(result.get(&apos;title&apos;))</div><div class="line">            href = str(result.get(&apos;href&apos;))</div><div class="line">            print(mysoup.find(&apos;a&apos;, attrs=&#123;&apos;href&apos;: href + &apos;/followers&apos;&#125;).text)</div><div class="line">            print(mysoup.find(&apos;a&apos;, attrs=&#123;&apos;href&apos;: href + &apos;/asks&apos;&#125;).text)</div><div class="line">            print(mysoup.find(&apos;a&apos;, attrs=&#123;&apos;href&apos;: href + &apos;/answers&apos;&#125;).text)</div><div class="line">            print(mysoup.find(&apos;a&apos;, attrs=&#123;&apos;href&apos;: href, &apos;class&apos;: &apos;zg-link-gray-normal&apos;&#125;).text + &apos;\n&apos;)</div><div class="line">            count += 1</div><div class="line">    print(&apos;一共关注了 %d人&apos; % count)</div></pre></td></tr></table></figure>
 <p>放上程序的入口：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line"></div><div class="line">    if isLogin():</div><div class="line">        print(&apos;您已经登录&apos;)</div><div class="line">    else:</div><div class="line">        account = input(&apos;请输入你的用户名\n&gt;  &apos;)</div><div class="line">        secret = input(&quot;请输入你的密码\n&gt;  &quot;)</div><div class="line">        login(secret, account)</div><div class="line">    getallview()</div></pre></td></tr></table></figure>
 <p>看一下实际效果：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E7%99%BB%E9%99%86%E7%9F%A5%E4%B9%8E%E6%95%88%E6%9E%9C.gif" alt="结果"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/9f021a71a9c4d305.gif" alt="结果"></p>
 <p><strong>写在结尾</strong></p>
 <p>虽然简单，但是提供了一些初学者的思路，下一次准备爬一些知乎上的图片，好像很多人都热衷于这种事，嘻嘻，荆轲刺秦王。</p>
 <p><a href="https://github.com/GiitSmile/loginzhihu.py/blob/master/loginzhihu.py" target="_blank" rel="external">源码</a></p>
@@ -755,7 +753,7 @@
     <link href="https:///www.limuyang.cc/2016/08/04/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Python-%E7%88%AC%E8%99%AB%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E6%95%99%E5%8A%A1%E5%A4%84%E5%B9%B6%E4%B8%94%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E5%88%B0%E6%9C%AC%E5%9C%B0/"/>
     <id>https:///www.limuyang.cc/2016/08/04/人生苦短，我用Python-爬虫模拟登陆教务处并且保存数据到本地/</id>
     <published>2016-08-04T11:26:46.000Z</published>
-    <updated>2016-08-09T11:38:57.663Z</updated>
+    <updated>2018-04-27T14:53:03.510Z</updated>
     
     <content type="html"><![CDATA[<p>刚开始接触Python，看很多人玩爬虫我也想玩，找来找去发现很多人用网络爬虫干的第一件事就是模拟登陆，增加点难度就是模拟登陆后在获取数据，但是网上好少有Python 3.x的模拟登陆Demo可以参考，加上自己也不怎么懂HTML，所以这第一个Python爬虫写的异常艰难，不过最终结果还是尽如人意的，下面把这次学习的过程整理一下。<br><a id="more"></a><br><strong>工具</strong></p>
 <ul>
@@ -766,24 +764,24 @@
 </ul>
 <p>我把目标瞄准了我们的教务处，这次爬虫的目的是从教务处获取成绩并且把成绩输入Excel表格中保存起来，</p>
 <p>我们学校教务处的地址是：<a href="http://jwc.ecjtu.jx.cn/" target="_blank" rel="external">http://jwc.ecjtu.jx.cn/</a> ，往常每次我们获取成绩都需要先进入教务处，然后点击成绩查询，输入公共的账号密码进入，最后输入相关信息获取成绩表格，这里登陆不需要验证码省了我一番功夫，这样我们先进入成绩查询系统登陆界面，先看看怎么模拟登陆这个过程，在Chrome浏览器下按F12打开开发者面板：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2%E6%89%93%E5%BC%80%E5%BC%80%E5%8F%91%E8%80%85%E9%9D%A2%E6%9D%BF.png" alt="开发者面板"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/5213cf10f7b38ed7.png" alt="开发者面板"></p>
 <p>这里我们学校的教务处查询系统的密码是公共的jwc也就是拼音缩写，我们输入用户名和密码点击登陆，这时候注意POST请求：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E7%99%BB%E9%99%86%E6%8A%93%E5%8F%96%E5%8A%A8%E7%94%BB.gif" alt="注意post请求"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/89f24d7d4c579e6d.gif" alt="注意post请求"></p>
 <p>发现了什么，好像Chrome并没有把Post提交的表单信息保留下来直接跳转到了另一个界面然后展示另一个界面的数据，这里就需要我们自己动手操作一下，注意开发者面板左上角的小红点表示这时候正在抓取数据，如果点击一下就会变成灰色，就可以变相地保存下当时抓取到的包，我在点击登陆后新界面未刷新出来之前点击了这个小红点，如愿以偿的得到了Post的表单数据：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E6%8A%93%E5%8F%96%E7%99%BB%E9%99%86%E8%A1%A8%E5%8D%95.gif" alt="得到post表单数据"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/9b70f0535f02d601.gif" alt="得到post表单数据"></p>
 <p>这样就获取了浏览器在登陆时候向服务器传递的表单数据，看一下这个表单都有些什么：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E7%99%BB%E9%99%86%E8%A1%A8%E5%8D%95.png" alt="查看表单数据"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/a65289b9a55a4923.png" alt="查看表单数据"></p>
 <p>这里看到我们需要传递三个参数，分别是：user、pass、Submit，可以很容易的理解这几个单词的字面意思，这样有了思路，我们就可以写出这次代码的第一步：<strong>模拟登陆教务处</strong></p>
 <p>直接上代码:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> requests</div><div class="line">url = <span class="string">'http://jwc.ecjtu.jx.cn/mis_o/login.php'</span></div><div class="line">datas = &#123;<span class="string">'user'</span>: <span class="string">'jwc'</span>,</div><div class="line">         <span class="string">'pass'</span>: <span class="string">'jwc'</span>,</div><div class="line">         <span class="string">'Submit'</span>: <span class="string">'%CC%E1%BD%BB'</span></div><div class="line">         &#125;</div><div class="line">headers = &#123;<span class="string">'Referer'</span>: <span class="string">'http://jwc.ecjtu.jx.cn/mis_o/login.htm'</span>,</div><div class="line">           <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 '</span></div><div class="line">                         <span class="string">'(KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36'</span>,</div><div class="line">           <span class="string">'Accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'</span>,</div><div class="line">           <span class="string">'Accept-Language'</span>: <span class="string">'zh-CN,zh;q=0.8'</span>,</div><div class="line">           &#125;</div><div class="line">sessions = requests.session()</div><div class="line">response = sessions.post(url, headers=headers, data=datas)</div><div class="line">print(response.status_code)</div></pre></td></tr></table></figure>
 <p>代码输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">200</div></pre></td></tr></table></figure>
 <p>说明我们模拟登陆成功了，这里用到了Requests模块，还不会使用的可以查看<a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html#cookie" target="_blank" rel="external">中文文档</a> ，它给自己的定义是：HTTP for Humans，因为简单易用易上手，我们只需要传入Url地址，构造请求头，传入post方法需要的数据，就可以模拟浏览器登陆了，这里因为有进一步获取成绩的操作所以使用了session来保持连接，这里单看最后的返回码的话我们是成功了的，具体如何还要看下一步操作，接下来：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/search.png" alt="抓包"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/search.png" alt="抓包"></p>
 <p>这里为了简便代码我们设定输入学号查询所有成绩，减少其他判断，同样对Post数据进行抓包：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2.png" alt="对post数据抓包"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/4b81e10138628dc5.png" alt="对post数据抓包"></p>
 <p>同样查看Post的数据：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/querrypos.png" alt="查看post数据"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/querrypos.png" alt="查看post数据"></p>
 <p>因为这里就分析输入学号的情况所以其他都为空，这样我们就可以写出查询成绩的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">score_healders = &#123;<span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</div><div class="line">                  <span class="string">'User - Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) '</span></div><div class="line">                                  <span class="string">'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36'</span>,</div><div class="line">                  <span class="string">'Content - Type'</span>: <span class="string">'application / x - www - form - urlencoded'</span>,</div><div class="line">                  <span class="string">'Accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'</span>,</div><div class="line">                  <span class="string">'Content - Length'</span>: <span class="string">'69'</span>,</div><div class="line">                  <span class="string">'Host'</span>: <span class="string">'jwc.ecjtu.jx.cn'</span>,</div><div class="line">                  <span class="string">'Referer'</span>: <span class="string">'http: // jwc.ecjtu.jx.cn / mis_o / main.php'</span>,</div><div class="line">                  <span class="string">'Upgrade - Insecure - Requests'</span>: <span class="string">'1'</span>,</div><div class="line">                  <span class="string">'Accept - Language'</span>: <span class="string">'zh - CN, zh;q = 0.8'</span></div><div class="line">                  &#125;</div><div class="line">score_url = <span class="string">'http://jwc.ecjtu.jx.cn/mis_o/query.php?start='</span> + str(</div><div class="line">    pagenum) + <span class="string">'&amp;job=see&amp;=&amp;Name=&amp;Course=&amp;ClassID=&amp;Term=&amp;StuID='</span> + num</div><div class="line">score_data = &#123;<span class="string">'Name'</span>: <span class="string">''</span>,</div><div class="line">              <span class="string">'StuID'</span>: num,</div><div class="line">              <span class="string">'Course'</span>: <span class="string">''</span>,</div><div class="line">              <span class="string">'Term'</span>: <span class="string">''</span>,</div><div class="line">              <span class="string">'ClassID'</span>: <span class="string">''</span>,</div><div class="line">              <span class="string">'Submit'</span>: <span class="string">'%B2%E9%D1%AF'</span></div><div class="line">              &#125;</div><div class="line"></div><div class="line">score_response = sessions.post(score_url, data=score_data, headers=score_healders)</div><div class="line">content = score_response.content</div></pre></td></tr></table></figure>
 <p>这里解释一下上面的代码，上面的<code>score_url</code> 并不是浏览器上显示的地址，我们要获取真正的地址，在Chrome下右键–查看网页源代码，找到这么一行：</p>
@@ -793,7 +791,7 @@
 <p>同样使用Post方法传递数据并获取响应的内容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">score_response = sessions.post(score_url, data=score_data,headers=score_healders)</div><div class="line">content = score_response.content</div></pre></td></tr></table></figure>
 <p>这里采用<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" target="_blank" rel="external">Beautiful Soup 4.2.0</a>来解析返回的响应内容，因为我们要获取的是成绩，这里到教务处成绩查询界面，查看获取到的成绩在网页中是以表格的形式存在：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/qr.png" alt="网页源代码"><br>观察表格的网页源代码：</p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/qr.png" alt="网页源代码"><br>观察表格的网页源代码：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">align</span>=<span class="string">center</span> <span class="attr">border</span>=<span class="string">1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>学期<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>学号<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>课程<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>课程要求<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>学分<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>成绩<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>重考一<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">009999</span>&gt;</span>重考二<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">...</div><div class="line">...</div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>这里拿出第一行举例，虽然我不太懂Html但是从这里可以看出来<code>&lt;tr&gt;</code> 代表的是一行，而<code>&lt;td&gt;</code>应该是代表这一行中的每一列，这样就好办了，取出每一行然后分解出每一列，打印输出就可以得到我们要的结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line">soup = BeautifulSoup(content, <span class="string">'html.parser'</span>)</div><div class="line"><span class="comment"># 找到每一行</span></div><div class="line">target = soup.findAll(<span class="string">'tr'</span>)</div></pre></td></tr></table></figure>
@@ -812,13 +810,13 @@
 <p>最后在<code>__main__</code>中这么调用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    num = input(&apos;请输入你的学号：&apos;)</div><div class="line">    if isLogin(num):</div><div class="line">        getScore(num, pagenum=0, i=0, j=0)</div><div class="line">        getScore(num, pagenum=1, i=31, j=0)</div><div class="line">        getScore(num, pagenum=2, i=61, j=0)</div></pre></td></tr></table></figure>
 <p>在PyCharm下按<code>alt</code>+<code>shift</code>+<code>x</code>快捷键运行程序：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/inputnum.png" alt="控制台输出"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/inputnum.png" alt="控制台输出"></p>
 <p>控制台会有如下输出(这里只截取部分，不要吐槽没有对齐，这里我也用了格式化输出还是不太行，不过最起码出来了结果，而且我们的目的是输出到Excel中不是吗)</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/achievre.png" alt="控制台输出"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/achievre.png" alt="控制台输出"></p>
 <p>然后去程序根目录找看看有没有生成一个叫<code>demo.xls</code>的文件，我的程序就放在桌面，所以去桌面找：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/rexls.png" alt="桌面图标"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/rexls.png" alt="桌面图标"></p>
 <p>点开查看是否成功获取：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/finalresult.png" alt="最终获取结果"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/finalresult.png" alt="最终获取结果"></p>
 <p>至此，大功告成</p>
 <p><strong>小结</strong><br>刚开始接触Python一个星期的样子，这次写了这么一个简单的网络爬虫检验一下学习成果，虽然程序还有些许Bug，不过总归得到了一定收获，当然也为下一步学习打下了基础，嗯哼，为了接下来批量获取网络上美女图片并分类保存我会继续自学Python，荆轲刺秦王~</p>
 <p><a href="https://github.com/GiitSmile/login/blob/master/login.py" target="_blank" rel="external">源码</a></p>
@@ -848,24 +846,24 @@
     <link href="https:///www.limuyang.cc/2016/07/25/Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
     <id>https:///www.limuyang.cc/2016/07/25/Python网络编程基础/</id>
     <published>2016-07-25T11:24:55.000Z</published>
-    <updated>2016-08-10T11:26:59.172Z</updated>
+    <updated>2018-04-27T14:40:19.422Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p><strong>原文转自</strong>：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014320037768360d53e4e935ca4a1f96eed1c896ad1217000" target="_blank" rel="external"><strong>Python教程</strong></a>          </p>
+<p><strong>原文转自</strong>：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014320037768360d53e4e935ca4a1f96eed1c896ad1217000" target="_blank" rel="external"><strong>Python教程</strong></a></p>
 </blockquote>
-<h3 id="TCP-IP简介"><a href="#TCP-IP简介" class="headerlink" title="TCP/IP简介"></a>TCP/IP简介</h3><p>虽然大家现在对互联网很熟悉，但是计算机网络的出现比互联网要早很多。</p>
-<p>计算机为了联网，就必须规定通信协议，早期的计算机网络，都是由各厂商自己规定一套协议，IBM、Apple和Microsoft都有各自的网络协议，互不兼容，这就好比一群人有的说英语，有的说中文，有的说德语，说同一种语言的人可以交流，不同的语言之间就不行了。<br><a id="more"></a><br>为了把全世界的所有不同类型的计算机都连接起来，就必须规定一套全球通用的协议，为了实现互联网这个目标，互联网协议簇（Internet Protocol Suite）就是通用协议标准。Internet是由inter和net两个单词组合起来的，原意就是连接“网络”的网络，有了Internet，任何私有网络，只要支持这个协议，就可以联入互联网。</p>
+<h1 id="TCP-IP简介"><a href="#TCP-IP简介" class="headerlink" title="TCP/IP简介"></a>TCP/IP简介</h1><p>虽然大家现在对互联网很熟悉，但是计算机网络的出现比互联网要早很多。</p>
+<p>计算机为了联网，就必须规定通信协议，早期的计算机网络，都是由各厂商自己规定一套协议，IBM、Apple和Microsoft都有各自的网络协议，互不兼容，这就好比一群人有的说英语，有的说中文，有的说德语，说同一种语言的人可以交流，不同的语言之间就不行了。 <a id="more"></a> 为了把全世界的所有不同类型的计算机都连接起来，就必须规定一套全球通用的协议，为了实现互联网这个目标，互联网协议簇（Internet Protocol Suite）就是通用协议标准。Internet是由inter和net两个单词组合起来的，原意就是连接”网络”的网络，有了Internet，任何私有网络，只要支持这个协议，就可以联入互联网。</p>
 <p>因为互联网协议包含了上百种协议标准，但是最重要的两个协议是TCP和IP协议，所以，大家把互联网的协议简称TCP/IP协议。</p>
 <p>通信的时候，双方必须知道对方的标识，好比发邮件必须知道对方的邮件地址。互联网上每个计算机的唯一标识就是IP地址，类似<code>123.123.123.123</code>。如果一台计算机同时接入到两个或更多的网络，比如路由器，它就会有两个或多个IP地址，所以，IP地址对应的实际上是计算机的网络接口，通常是网卡。</p>
 <p>IP协议负责把数据从一台计算机通过网络发送到另一台计算机。数据被分割成一小块一小块，然后通过IP包发送出去。由于互联网链路复杂，两台计算机之间经常有多条线路，因此，路由器就负责决定如何把一个IP包转发出去。IP包的特点是按块发送，途径多个路由，但不保证能到达，也不保证顺序到达。</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/1.png" alt="Alt text"></p>
-<p>IP地址实际上是一个32位整数（称为IPv4），以字符串表示的IP地址如<code>192.168.0.1</code>实际上是把32位整数按8位分组后的数字表示，目的是便于阅读。<br>IPv6地址实际上是一个128位整数，它是目前使用的IPv4的升级版，以字符串表示类似于<code>2001:0db8:85a3:0042:1000:8a2e:0370:7334</code>。<br>TCP协议则是建立在IP协议之上的。TCP协议负责在两台计算机之间建立可靠连接，保证数据包按顺序到达。TCP协议会通过握手建立连接，然后，对每个IP包编号，确保对方按顺序收到，如果包丢掉了，就自动重发。</p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/1.png" alt=""></p>
+<p>IP地址实际上是一个32位整数（称为IPv4），以字符串表示的IP地址如<code>192.168.0.1</code>实际上是把32位整数按8位分组后的数字表示，目的是便于阅读。 IPv6地址实际上是一个128位整数，它是目前使用的IPv4的升级版，以字符串表示类似于<code>2001:0db8:85a3:0042:1000:8a2e:0370:7334</code>。 TCP协议则是建立在IP协议之上的。TCP协议负责在两台计算机之间建立可靠连接，保证数据包按顺序到达。TCP协议会通过握手建立连接，然后，对每个IP包编号，确保对方按顺序收到，如果包丢掉了，就自动重发。</p>
 <p>许多常用的更高级的协议都是建立在TCP协议基础上的，比如用于浏览器的HTTP协议、发送邮件的SMTP协议等。</p>
 <p>一个IP包除了包含要传输的数据外，还包含源IP地址和目标IP地址，源端口和目标端口。</p>
 <p>端口有什么作用？在两台计算机通信时，只发IP地址是不够的，因为同一台计算机上跑着多个网络程序。一个IP包来了之后，到底是交给浏览器还是QQ，就需要端口号来区分。每个网络程序都向操作系统申请唯一的端口号，这样，两个进程在两台计算机之间建立网络连接就需要各自的IP地址和各自的端口号。</p>
 <p>一个进程也可能同时与多个计算机建立链接，因此它会申请很多端口。</p>
 <p>了解了TCP/IP协议的基本概念，IP地址和端口的概念，我们就可以开始进行网络编程了。</p>
-<h3 id="TCP编程"><a href="#TCP编程" class="headerlink" title="TCP编程"></a>TCP编程</h3><p>Socket是网络编程的一个抽象概念。通常我们用一个Socket表示“打开了一个网络链接”，而打开一个Socket需要知道目标计算机的IP地址和端口号，再指定协议类型即可。</p>
+<h1 id="TCP编程"><a href="#TCP编程" class="headerlink" title="TCP编程"></a>TCP编程</h1><p>Socket是网络编程的一个抽象概念。通常我们用一个Socket表示”打开了一个网络链接”，而打开一个Socket需要知道目标计算机的IP地址和端口号，再指定协议类型即可。</p>
 <p><strong>客户端</strong></p>
 <p>大多数连接都是可靠的TCP连接。创建TCP连接时，主动发起连接的叫客户端，被动响应连接的叫服务器。</p>
 <p>举个例子，当我们在浏览器中访问新浪时，我们自己的计算机就是客户端，浏览器会主动向新浪的服务器发起连接。如果一切顺利，新浪的服务器接受了我们的连接，一个TCP连接就建立起来的，后面的通信就是发送网页内容了。</p>
@@ -876,7 +874,7 @@
 <p>答案是作为服务器，提供什么样的服务，端口号就必须固定下来。由于我们想要访问网页，因此新浪提供网页服务的服务器必须把端口号固定在<code>80</code>端口，因为<code>80</code>端口是Web服务的标准端口。其他服务都有对应的标准端口号，例如SMTP服务是<code>25</code>端口，FTP服务是<code>21</code>端口，等等。端口号小于1024的是Internet标准服务的端口，端口号大于1024的，可以任意使用。</p>
 <p>因此，我们连接新浪服务器的代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.connect((<span class="string">'www.sina.com.cn'</span>, <span class="number">80</span>))</div></pre></td></tr></table></figure>
-<p>注意参数是一个<code>tuple</code>，包含地址和端口号。<br>建立TCP连接后，我们就可以向新浪服务器发送请求，要求返回首页的内容：</p>
+<p>注意参数是一个<code>tuple</code>，包含地址和端口号。 建立TCP连接后，我们就可以向新浪服务器发送请求，要求返回首页的内容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 发送数据:</span></div><div class="line">s.send(<span class="string">b'GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n'</span>)</div></pre></td></tr></table></figure>
 <p>TCP连接创建的是双向通道，双方都可以同时给对方发数据。但是谁先发谁后发，怎么协调，要根据具体的协议来决定。例如，HTTP协议规定客户端必须先发请求给服务器，服务器收到后才发数据给客户端。</p>
 <p>发送的文本格式必须符合HTTP标准，如果格式没问题，接下来就可以接收新浪服务器返回的数据了：</p>
@@ -908,14 +906,14 @@
 <p>要测试这个服务器程序，我们还需要编写一个客户端程序：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line"># 建立连接:</div><div class="line">s.connect((&apos;127.0.0.1&apos;, 9999))</div><div class="line"># 接收欢迎消息:</div><div class="line">print(s.recv(1024).decode(&apos;utf-8&apos;))</div><div class="line">for data in [b&apos;Michael&apos;, b&apos;Tracy&apos;, b&apos;Sarah&apos;]:</div><div class="line">    # 发送数据:</div><div class="line">    s.send(data)</div><div class="line">    print(s.recv(1024).decode(&apos;utf-8&apos;))</div><div class="line">s.send(b&apos;exit&apos;)</div><div class="line">s.close()</div></pre></td></tr></table></figure>
 <p>我们需要打开两个命令行窗口，一个运行服务器程序，另一个运行客户端程序，就可以看到效果了：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/2.png" alt="Alt text"></p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/2.png" alt=""></p>
 <p>需要注意的是，客户端程序运行完毕就退出了，而服务器程序会永远运行下去，必须按Ctrl+C退出程序。</p>
 <p><strong>小结</strong></p>
 <p>用TCP协议进行Socket编程在Python中十分简单，对于客户端，要主动连接服务器的IP和指定端口，对于服务器，要首先监听指定端口，然后，对每一个新的连接，创建一个线程或进程来处理。通常，服务器程序会无限运行下去。</p>
 <p>同一个端口，被一个Socket绑定了以后，就不能被别的Socket绑定了。</p>
 <p>源码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line"><span class="comment"># 创建一个socket:</span></div><div class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line"></div><div class="line"><span class="comment"># 建立连接:</span></div><div class="line">s.connect((<span class="string">'www.sina.com.cn'</span>, <span class="number">80</span>))</div><div class="line"></div><div class="line"><span class="comment"># 发送数据:</span></div><div class="line">s.send(<span class="string">b'GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 接收数据:</span></div><div class="line">buffer = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="comment"># 每次最多接收1k字节:</span></div><div class="line">    d = s.recv(<span class="number">1024</span>)</div><div class="line">    <span class="keyword">if</span> d:</div><div class="line">        buffer.append(d)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line"></div><div class="line">data = <span class="string">b''</span>.join(buffer)</div><div class="line"></div><div class="line"><span class="comment"># 关闭连接:</span></div><div class="line">s.close()</div><div class="line"></div><div class="line">header, html = data.split(<span class="string">b'\r\n\r\n'</span>, <span class="number">1</span>)</div><div class="line">print(header.decode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line"><span class="comment"># 把接收的数据写入文件:</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'sina.html'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">    f.write(html)</div></pre></td></tr></table></figure>
-<h3 id="UDP编程"><a href="#UDP编程" class="headerlink" title="UDP编程"></a>UDP编程</h3><p>TCP是建立可靠连接，并且通信双方都可以以流的形式发送数据。相对TCP，UDP则是面向无连接的协议。</p>
+<h1 id="UDP编程"><a href="#UDP编程" class="headerlink" title="UDP编程"></a>UDP编程</h1><p>TCP是建立可靠连接，并且通信双方都可以以流的形式发送数据。相对TCP，UDP则是面向无连接的协议。</p>
 <p>使用UDP协议时，不需要建立连接，只需要知道对方的IP地址和端口号，就可以直接发数据包。但是，能不能到达就不知道了。</p>
 <p>虽然用UDP传输数据不可靠，但它的优点是和TCP比，速度快，对于不要求可靠到达的数据，就可以使用UDP协议。</p>
 <p>我们来看看如何通过UDP协议传输数据。和TCP类似，使用UDP的通信双方也分为客户端和服务器。服务器首先需要绑定端口：</p>
@@ -926,22 +924,23 @@
 <p>注意这里省掉了多线程，因为这个例子很简单。</p>
 <p>客户端使用UDP时，首先仍然创建基于UDP的Socket，然后，不需要调用<code>connect()</code>，直接通过<code>sendto()</code>给服务器发数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</div><div class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">b'Michael'</span>, <span class="string">b'Tracy'</span>, <span class="string">b'Sarah'</span>]:</div><div class="line">    <span class="comment"># 发送数据:</span></div><div class="line">    s.sendto(data, (<span class="string">'127.0.0.1'</span>, <span class="number">9999</span>))</div><div class="line">    <span class="comment"># 接收数据:</span></div><div class="line">    print(s.recv(<span class="number">1024</span>).decode(<span class="string">'utf-8'</span>))</div><div class="line">s.close()</div></pre></td></tr></table></figure>
-<p>从服务器接收数据仍然调用<code>recv()</code>方法。<br>仍然用两个命令行分别启动服务器和客户端测试，结果如下：</p>
-<p><img src="http://oasusatoz.bkt.clouddn.com/3.png" alt="Alt text"></p>
+<p>从服务器接收数据仍然调用<code>recv()</code>方法。 仍然用两个命令行分别启动服务器和客户端测试，结果如下：</p>
+<p><img src="https://www.tuchuang001.com/images/2018/04/27/3.png" alt=""></p>
 <p><strong>小结</strong></p>
 <p>UDP的使用与TCP类似，但是不需要建立连接。此外，服务器绑定UDP端口和TCP端口互不冲突，也就是说，UDP的9999端口与TCP的9999端口可以各自绑定。</p>
 <p>sever.py</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</div><div class="line"></div><div class="line"><span class="comment"># 绑定端口:</span></div><div class="line">s.bind((<span class="string">'127.0.0.1'</span>, <span class="number">9999</span>))</div><div class="line"></div><div class="line">print(<span class="string">'Bind UDP on 9999...'</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="comment"># 接收数据:</span></div><div class="line">    data, addr = s.recvfrom(<span class="number">1024</span>)</div><div class="line">    print(<span class="string">'Received from %s:%s.'</span> % addr)</div><div class="line">    reply = <span class="string">'Hello, %s!'</span> % data.decode(<span class="string">'utf-8'</span>)</div><div class="line">    s.sendto(reply.encode(<span class="string">'utf-8'</span>), addr)</div></pre></td></tr></table></figure>
 <p>client.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</div><div class="line"></div><div class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">b'Michael'</span>, <span class="string">b'Tracy'</span>, <span class="string">b'Sarah'</span>]:</div><div class="line">    <span class="comment"># 发送数据:</span></div><div class="line">    s.sendto(data, (<span class="string">'127.0.0.1'</span>, <span class="number">9999</span>))</div><div class="line">    <span class="comment"># 接收数据:</span></div><div class="line">    print(s.recv(<span class="number">1024</span>).decode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line">s.close()</div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</div><div class="line"></div><div class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">b'Michael'</span>, <span class="string">b'Tracy'</span>, <span class="string">b'Sarah'</span>]:</div><div class="line">    <span class="comment"># 发送数据:</span></div><div class="line">    s.sendto(data, (<span class="string">'127.0.0.1'</span>, <span class="number">9999</span>))</div><div class="line">    <span class="comment"># 接收数据:</span></div><div class="line">    print(s.recv(<span class="number">1024</span>).decode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line">s.close()</div></pre></td></tr></table></figure>
+]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;原文转自&lt;/strong&gt;：&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014320037768360d53e4e935ca4a1f96eed1c896ad1217000&quot;&gt;&lt;strong&gt;Python教程&lt;/strong&gt;&lt;/a&gt;          &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原文转自&lt;/strong&gt;：&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014320037768360d53e4e935ca4a1f96eed1c896ad1217000&quot;&gt;&lt;strong&gt;Python教程&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;TCP-IP简介&quot;&gt;&lt;a href=&quot;#TCP-IP简介&quot; class=&quot;headerlink&quot; title=&quot;TCP/IP简介&quot;&gt;&lt;/a&gt;TCP/IP简介&lt;/h3&gt;&lt;p&gt;虽然大家现在对互联网很熟悉，但是计算机网络的出现比互联网要早很多。&lt;/p&gt;
-&lt;p&gt;计算机为了联网，就必须规定通信协议，早期的计算机网络，都是由各厂商自己规定一套协议，IBM、Apple和Microsoft都有各自的网络协议，互不兼容，这就好比一群人有的说英语，有的说中文，有的说德语，说同一种语言的人可以交流，不同的语言之间就不行了。&lt;br&gt;
+&lt;h1 id=&quot;TCP-IP简介&quot;&gt;&lt;a href=&quot;#TCP-IP简介&quot; class=&quot;headerlink&quot; title=&quot;TCP/IP简介&quot;&gt;&lt;/a&gt;TCP/IP简介&lt;/h1&gt;&lt;p&gt;虽然大家现在对互联网很熟悉，但是计算机网络的出现比互联网要早很多。&lt;/p&gt;
+&lt;p&gt;计算机为了联网，就必须规定通信协议，早期的计算机网络，都是由各厂商自己规定一套协议，IBM、Apple和Microsoft都有各自的网络协议，互不兼容，这就好比一群人有的说英语，有的说中文，有的说德语，说同一种语言的人可以交流，不同的语言之间就不行了。
     
     </summary>
     
