@@ -21,7 +21,7 @@ after_script: # 推送到github的部分
   - git config user.email "lin794653318@gmail.com"
   - git add .
   - git commit -m "Update docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master # 通过之前存在Travis-CI里的token以及github仓库的地址推送到相应的master分支
+  - git push --force --quiet "https://${AUTO_TOKEN}@${GH_REF}" master:master # 通过之前存在Travis-CI里的token以及github仓库的地址推送到相应的master分支
 # E: Build LifeCycle
 
 branches:
