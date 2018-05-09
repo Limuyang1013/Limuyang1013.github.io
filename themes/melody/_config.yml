@@ -228,6 +228,7 @@ busuanzi:
 links_title: Links
 links:
     litten: http://litten.me/
-    Android Developer: https://developer.android.com/index.html
+    MDN: https://developer.mozilla.org/zh-CN/
     CSDN: http://blog.csdn.net/wei_smile
+    Vuejs: https://cn.vuejs.org/
   #Name: url
