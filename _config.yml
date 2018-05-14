@@ -4,7 +4,7 @@
 
 # Site
 title: Atlantis
-subtitle: 时隐时现，悲喜无常
+subtitle: 大海与冷笑话
 description: 碌碌无为，打马而过
 author: 李牧羊
 language: zh-Hans
@@ -67,6 +67,12 @@ pagination_dir: page
 theme: melody
 google_analytics: UA-81201582-1
 
+algolia:
+  applicationID: 'HJB2USV1FL'
+  apiKey: 'fb4cc72114f6ad072b67049aa8e6b5c6'
+  adminApiKey: '3df0d9bc9bbdc68d45bc8bfeb08612b7'
+  indexName: 'Limuyang'
+  chunkSize: 5000
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
