@@ -7,7 +7,7 @@ tags:
   - eventbus
 ---
 
-![image](https://www.tuchuang001.com/images/2018/04/27/flux-overview.png) 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：
+ 最近负责开发一个视频相关的项目，要用到vue-router，同时涉及到一些共有状态管理，但是少量的状态又不想用vuex，于是用到了EventBus，一般来说， 我们用EventBus的步骤如下：
 <!-- more -->
 - **首先新建一个js用来创建我们的EventBus，如Bus.js** 
 

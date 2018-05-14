@@ -1,4 +1,4 @@
----
+﻿---
 title: 译Android Design Support Library--使用CoordinatorLayout来处理滚动
 date: 2016-05-03 20:32:58
 categories: Android
@@ -6,7 +6,7 @@ tags: [Material Design,CoordinatorLayout]
 ---
 #### 引言
 本来这一次想写关于`SnackBar`的，但是因为官方都推荐使用Material Design控件最好使用`CoordinatorLayout` 来作为它们的父布局，所以就先讲解一下`CoordinatorLayout` 的知识，本来想自己去理解的，但是发现网上已经有一份很好的材料了就给搬过来了，原文是CodePath的，我给翻译了一遍，如果有出入的话欢迎指正---[英文原文地址](https://guides.codepath.com/android/Handling-Scrolls-with-CoordinatorLayout)
-![](http://olivyw4lw.bkt.clouddn.com/333.png)
+
 <!-- more -->
 **概述**
 [CoordinatorLayout](https://developer.android.com/intl/zh-cn/reference/android/support/design/widget/CoordinatorLayout.html) 可以实现在Google Material Design中提到的[滚动特效](http://www.google.com/design/spec/patterns/scrolling-techniques.html) ，目前，这个框架提供了好几种让你不用去写自定义动画效果代码就能实现的特效，这些特效包括如下几个方面：
