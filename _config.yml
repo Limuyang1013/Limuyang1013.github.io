@@ -73,6 +73,15 @@ algolia:
   adminApiKey: '3df0d9bc9bbdc68d45bc8bfeb08612b7'
   indexName: 'Limuyang'
   chunkSize: 5000
+    fields:
+    - title
+    - tags
+    - categories
+    - excerpt:strip
+    - content:strip
+    - slug
+    - permalink
+    - path
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
