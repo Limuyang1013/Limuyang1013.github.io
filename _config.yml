@@ -1,11 +1,11 @@
-# Hexo Configuration
+﻿# Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
 title: Atlantis
-subtitle: 大海与冷笑话
-description: 碌碌无为，打马而过
+subtitle: 时隐时现，悲喜无常
+description: 大海与冷笑话
 author: 李牧羊
 language: zh-Hans
 timezone:
@@ -66,13 +66,9 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: melody
 google_analytics: UA-81201582-1
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-search:
-  path: search.xml
-  field: post
 
-algolia:
+
+algolia: 
   appId: "HJB2USV1FL"
   apiKey: "fb4cc72114f6ad072b67049aa8e6b5c6"
   adminApiKey: "3df0d9bc9bbdc68d45bc8bfeb08612b7"
@@ -88,6 +84,8 @@ algolia:
     - permalink
     - path
 
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   repository: git@github.com:Limuyang1013/Limuyang1013.github.io.git
