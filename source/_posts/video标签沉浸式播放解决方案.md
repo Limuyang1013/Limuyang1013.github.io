@@ -1,0 +1,88 @@
+---
+title: video标签沉浸式播放解决方案
+date: 2018-07-22 23:46:19
+categories: 前端开发
+tags: 
+  - video
+  - 沉浸式
+  - x5内核同层播放器
+---
+
+"沉浸播放式"这个概念是我从Android开发里面的沉浸式引申过来的一个概念，沉浸式其实就是隐藏页面顶部的status bar和底部的navigation bar之后呈现出来的页面，一般用户很容易把沉浸式状态栏和透明化状态栏混为一谈，他们的区别如下：
+
+<!-- more -->
+- 沉浸式状态栏
+![Immersive Mode](https://user-images.githubusercontent.com/11991572/43042061-6fc8a4d8-8da5-11e8-9a70-47c8d1b14ead.jpg)
+
+- 透明化状态栏
+![Translucent Bar](https://user-images.githubusercontent.com/11991572/43042064-a03001e8-8da5-11e8-91c3-3a9083f94aee.jpg)
+
+那么回到前端开发，让我们看一下如何让video标签呈现这种沉浸式的播放效果，平常我们使用video标签都是这样的：
+
+```javascript
+  <div id="app">
+    <video
+      id="videos"
+      playsinline="true"
+      webkit-playsinline="true" /*IOS播放视频会自动调用原生播放器全屏播放，这里使用这个属性让IOS内播放视频的时候使用inline模式，同时我们设置宽高等于屏幕宽高来实现IOS下的全屏播放*/
+      x5-video-orientation="portraint"
+      preload="auto"
+      style="width: 100%;height: 100%"
+    >
+      <source src="//gw.alicdn.com/bao/uploaded/TB1YKBlb_ZRMeJjSsppXXXrEpXa.mp4" type="video/mp4">
+    </video>
+  </div>
+```
+正常情况下我们要做竖版视频，视频的比例都是16:9，也就是高/宽约等于1.78，这里用到的测试视频也是16:9的，而且默认情况下video的object-fit属性的值是contain，也就是保持长宽比，我们先看下不做处理在iphone6/7/8下的表现情况：
+
+![在iphone6/7/8下的表现情况](https://user-images.githubusercontent.com/11991572/43042594-1539fb4c-8db5-11e8-8d82-79c5a39a40f0.png)
+
+看起来比较完美，因为这几款手机分辨率都是16:9的，视频维持屏幕大小完全没有问题，接下来看一下分辨率不是16:9的机型，比较典型的就是iphoneX，面向老板开发的同学可能对适配这款机型颇有怨言：
+
+![iphoneX下的表现情况](https://user-images.githubusercontent.com/11991572/43042602-3a3f9668-8db5-11e8-88b7-971b9106637d.png)
+
+有人会觉得奇怪为什么我们设置了video的宽高都是百分百上下还漏出了两个白条，这里其实是object-fit这个属性在作怪，既然默认的是contain，我们就改为fill吧，再看一下效果:
+
+![object-fit:fill](https://user-images.githubusercontent.com/11991572/43042622-a8534d7a-8db5-11e8-96e5-80a7ed1c7c5c.png)
+
+这样看起来没问题，但是你觉得产品小姐姐会这么轻易放过你吗？too navie，你看我们正常16:9的视频在iphoneX这种18:9的屏幕上是有形变的，而且市面上这么多分辨率不同的设备，如果要追求不同的手机上有最接近的用户体验这么做肯定是不行的，有人可能会提到object-fit中的cover属性，没错，这个属性可以让我们的视频等比例缩放，如果宽高不匹配会对处理对象做裁剪操作，来我们看一下现在在微信里面的效果：
+
+![微信里的效果](https://user-images.githubusercontent.com/11991572/43046765-6d572bba-8e00-11e8-9949-7150b64edc43.png)
+
+其他效果都蛮好，你会发现右上角有个可恶的全屏，这个全屏按钮是微信的x5内核自带的，没法去除，这个有很多人给腾讯x5开发团队那边提过issue，但是暂时没有办法处理，我后续会提到一个另辟蹊径的方案，先回到这里，点了这个全屏按钮之后会进入微信的全屏播放模式，而且放完之后会出现一堆广告列表，这都是我们不想看到了，其次如果我们的产品需求不单单是全屏播放，还想在视频上面放一些交互按钮之类的，这种方式就做不到，因为video是在最上一级的，但是两种方式例外，一个是微信把你们的域名加入白名单，这种可以在Android手机的video上随意放置dom元素，IOS本身没有这个限制，另一种更为通用的方式是用微信x5内核的同层播放模式，这种模式有两种好处：
+- 去除了右上角讨厌的"全屏"按钮
+- 真正实现了x5内核下的沉浸式播放，我们看到目前的实现在微信上还是带有浏览器的titleBar的
+在x5内核的环境下实现同层播放很简单，只需要在video上添加这么两行属性：
+
+```javascript
+    x5-video-player-type="h5"
+    x5-video-player-fullscreen="true"
+```
+再看一下这个时候的效果：
+
+![同层播放模式下的效果](https://user-images.githubusercontent.com/11991572/43047055-a4593190-8e04-11e8-800f-eb7021755f14.png)
+
+确实是真正意义上的沉浸式播放，如果你的app里面webview用的也是x5内核那么这个页面也能在app上达到同样的效果，但是这种同层播放依然有无法解决的问题，首先这个全屏模式会重新计算宽高，触发视口大小变化，也就是说用户视觉上会有一个视口变化的过程，其次，同层播放模式虽然没有了"全屏"按钮，但是左上角的按钮用于退出沉浸式全屏，右上角的按钮点开是分享，分享的内容不可定制，固定位当前页面的title+url的组合，如果你对页面的定制化要求比较高的话，我这里有一个备选的方案，那就是放弃同层播放模式，当然这个前提是你不需要在video页面上做一些交互操作，或者说你的域名处于微信白名单下，当我们在非沉浸式下又想要打到等比例缩放视频的效果，同时我们还要去除x5自带的"全屏"按钮，最好的方式就是动态去计算视频的宽高，把视频撑大，把"全屏"按钮撑出浏览器页面，这样基本就能达到我们的目的了，这里以16:9的标准为例：
+
+```javascript
+  this.$nextTick(() => {
+        // 动态处理video标签宽高适配
+        const video = this.$refs.video
+        const ratio = Math.fround(document.documentElement.clientHeight / document.documentElement.clientWidth)
+        if (ratio >= 1.78) {
+          // 竖屏
+          video.height = document.documentElement.clientHeight + 100
+          video.width = Math.floor(video.clientHeight * 0.572)
+          const winW = document.documentElement.clientWidth
+          video.style.left = (winW - video.width) / 2 + 'px'
+        } else {
+          // 宽屏
+          video.width = document.documentElement.clientWidth + 100
+          video.height = Math.floor(video.width * 1.78)
+          const winH = document.documentElement.clientHeight
+          video.style.top = (winH - video.height) / 2 + 'px'
+        }
+      })
+```
+讲解下思路，16:9的视频也就是高宽比差不多是1.78，那么大于这个比例的就是类似于iphoneX的长屏幕类型的手机，对于这种手机我们要做等比缩放适配的话就以手机的长为标准，先让视频的长度等于手机的长度，这里我加上的100px可以理解为上下在加上50px，目的就是为了把视频长度拉大，让"全屏"按钮消失在视线内，实际这个值可以自己尝试修改，让后宽就是此时高的1/78倍，然后使用绝对布局去设置视频的左边距，就可以达到等比缩放的效果，同理可以理解处理宽屏手机的代码部分，当然，应该还有更完美的方案，可以在评论区留言探讨~
+
