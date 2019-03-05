@@ -29,9 +29,9 @@ highlight_theme: default
 # Nav settings
 # ---------------
 social:
-  github: https://github.com/
-  rss: /atom.xml
-  medium: https://medium.com/@lin794653318
+#  github: https://github.com/
+#  rss: /atom.xml
+#  medium: https://medium.com/@lin794653318
 # Algolia search
 # ---------------
 algolia_search:
@@ -101,7 +101,7 @@ cdn:
 # ---------------
 avatar: https://www.tuchuang001.com/images/2018/04/27/3-15052H1035cF.jpg
 
-top_img: https://ws1.sinaimg.cn/large/8700af19ly1fnp7q2phkzj21hc0xc0yl # false or url of img
+top_img: https://ws1.sinaimg.cn/large/9f814a87gy1g0s6n93k0tj215d0nagzu.jpg # false or url of img
 
 post_meta:
   date_type: created # created or updated
