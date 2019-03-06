@@ -74,4 +74,4 @@ public class SplashActivity extends AppCompatActivity {
 }
 ```
 
-这里发现你并没有为Activity设置layout视图，视图来自于主题！所以，这应该是最快的方法启动页面了（相比较加载layout视图）。如果你一定要通过加载layout来显示页面，可能你初始化完了才跳出页面，这时已经有点迟了，所以，你应该考虑用极短的时间来显示加载layout视图. **正确的打开它** 当你完成这些步骤，你就正确的完成了启动页面。 ![这里写图片描述](http://img.blog.csdn.net/20151210222140337)
+这里发现你并没有为Activity设置layout视图，视图来自于主题！所以，这应该是最快的方法启动页面了（相比较加载layout视图）。如果你一定要通过加载layout来显示页面，可能你初始化完了才跳出页面，这时已经有点迟了，所以，你应该考虑用极短的时间来显示加载layout视图. **正确的打开它** 当你完成这些步骤，你就正确的完成了启动页面。 ![](https://ws1.sinaimg.cn/large/9f814a87gy1g0tgiplhl5g20ao0hsn1s.jpg)

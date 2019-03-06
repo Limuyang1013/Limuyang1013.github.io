@@ -79,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
 运行一下，果不其然代码蹦了：
 
-![Crash](http://oasusatoz.bkt.clouddn.com/16-10-28/55948496.jpg)
-
 报错信息：
 
 ```
@@ -110,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-![运行结果](http://oasusatoz.bkt.clouddn.com/16-10-28/83297625.jpg)
 
 果然很成功的运行了，但是这是为什么，来看一下Handler的源码：
 
@@ -189,7 +186,6 @@ mLooper = Looper.myLooper();
 
 看下面那个，Looper.prepare()调用了prepare()的重载方法prepare(boolean quitAllowed)并且传入了true参数，这个方法判断sThreadLocal.get()是否会返回一个Looper对象，如果没有的话就set一个新的Looper进去，如果已经有了再调用prepare()方法的话就会报错，不信邪的可以在mainHandler创建之前也调用一个Looper.prepare()，控制台就会出现这个错误：
 
-![Crash](http://oasusatoz.bkt.clouddn.com/4.png)
 
 那么问题来了，为什么我们在主线程创建Handler不需要调用`Looper.prepare()`，而在子线程中需要呢，可以合理的猜想是不是系统给我们主动调用了，毕竟我们大部分的操作还是在主线程上，每次都要那么`Looper.prepare()`来一次多麻烦，有了猜想还要去源码寻求验证，主线程是ActivityThread，从ActivityThread类里搜索相关信息，用跟上面一样的方法：
 
@@ -838,7 +834,7 @@ public interface Callback {
 
 #### 总结
 
-从最开始的使用到从源码的角度去分析，写这篇博客花了很长的时间，最后做个总结： 在整个Android内部通信进程中，Handler机制如果捋顺了相互之间的关系的话其实不难理解，下面上一张图帮助理解： ![Handler机制](http://oasusatoz.bkt.clouddn.com/handler.png)
+从最开始的使用到从源码的角度去分析，写这篇博客花了很长的时间，最后做个总结： 在整个Android内部通信进程中，Handler机制如果捋顺了相互之间的关系的话其实不难理解
 
 套用一段很形象的话解释这幅图：
 

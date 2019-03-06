@@ -12,7 +12,6 @@ Google在2015的IO大会上，给我们带来了更加详细的Material Design�
 先从看起来最简单的控件开始，也就是`TextInputLayout`，说实话`TextInputLayout` 我所见到的平常用的并不多，它的大体作用是在我们正常的EditText左上角显示出一个浮动标签，这个标签的内容就是我们设置的`android:hint` 属性的值。
 先来看一下它的继承结构：
 
-![继承结构](http://oasusatoz.bkt.clouddn.com/TextInput_1.jpg)
 
 可以很清晰的看到我们的`TextInputLayout` 继承于`LinearLayout` ，那么很明显这是一个布局，需要配合它的子控件来显示出想要的效果，这里谷歌把它专门设计用来包裹`EditText`(或者`EditText`的子类)，然后当用户进行输入动作的时候我们设置的`android:hint` 提示就会以动画的形式运动到左上角，谷歌官方提供的最简单的使用示例如下：
 
@@ -38,15 +37,12 @@ Using this class allows us to display a hint in the IME when in 'extract' mode.
 大意是说，这只是一种特殊的`EditText` 的子类，用来在`'extract' mode` 下在输入法编辑器中显示我们的`hint`提示信息，这里的`'extract' mode` 其实就是全屏模式，谷歌官方对它的解释是有时候你的输入框的UI界面很大，大的不能与你自己的应用程序的UI结合起来，这时候就可以切换到全屏模式来输入，这么说可能不太明白，上图：
 比如说，下面这种情况使用的是`EditText`：
 
-![使用EditText](http://oasusatoz.bkt.clouddn.com/TextInput_2.jpg)
 
 我们看到下面那里输入框已经很大了，然后你点击输入框进行输入，会发现这个现象：
 
-![点击输入](http://oasusatoz.bkt.clouddn.com/TextInput_3.jpg)
 
 你进入到了全屏模式输入，但是界面上空空如也，对比一下使用`TextInputEditText` 的情况：
 
-![使用TextInputEditText](http://oasusatoz.bkt.clouddn.com/TextInput_4.jpg)
 
 看到左上角的文字了嘛，这是我们在之前设置的`android:hint` 属性的值，这么一看这两者的区别的就一目了然了，但是说实话`TextInputEditText` 用到的地方还是很有限的，所以日常开发我们还是使用`TextInputLayout` 去包裹`EditText` 来实现浮动标签的功能。
 
@@ -70,8 +66,6 @@ Using this class allows us to display a hint in the IME when in 'extract' mode.
 
 这里我们通过一个简单的Demo来了解以上这些属性，简单起见我们就做一个登录界面，这个界面长这样：
 
-
-![这里写图片描述登录界面](http://oasusatoz.bkt.clouddn.com/TextInput_5.jpg)
 
 先上布局文件：
 
@@ -304,8 +298,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 先来看一下最终的实现效果：
-
-![实现效果](http://oasusatoz.bkt.clouddn.com/TextInput_6.gif)
 
 
 可以很明显的看到，当我们同时设置了`app:counterEnabled` 和`app:counterMaxLength` 属性时，我们输入的`EditText` 右下角会出现一个计数器还有一个最大输入字符数的数字显示，我们在输入名字这一栏设置最大输入为5个字符，所以当超过了5个字符的时候，`EditText` 的整个样式的颜色都会改变以示警告，如果我们只设置了`app:counterEnabled` 属性的话`EditText` 右下角一开始会出现一个0，随着输入字符的增多而逐步进行计数，注意如果设置了整个属性我们`EditText` 布局的高度会有一定的增大，具体的可以自己实践一下。

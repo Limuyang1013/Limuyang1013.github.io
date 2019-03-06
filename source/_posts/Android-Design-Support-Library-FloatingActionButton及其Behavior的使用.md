@@ -45,12 +45,12 @@ toc: true
 
 Lollipop 中的 FAB：
 
-![Lollipop 中的 FAB](http://upload-images.jianshu.io/upload_images/735909-7f8ca975b3c3ea12.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Lollipop 中的 FAB](https://upload-images.jianshu.io/upload_images/735909-7f8ca975b3c3ea12.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 Kitkat 中的 FAB：
 
-![Kitkat 中的 FAB](http://upload-images.jianshu.io/upload_images/735909-eeef434197918cee.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kitkat 中的 FAB](https://upload-images.jianshu.io/upload_images/735909-eeef434197918cee.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 很容易看出，Lollipop 中存在边缘显示的问题。为了解决此问题，API21+ 的版本统一定义底部与右边缘空白为 16dp，Lollipop 以下版本统一设置为 0dp.解决办法：
 
@@ -88,7 +88,7 @@ Kitkat 中的 FAB：
         ...
          />
 ```
-![最简单的使用](http://upload-images.jianshu.io/upload_images/735909-59d7a7715b7b404f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![最简单的使用](https://upload-images.jianshu.io/upload_images/735909-59d7a7715b7b404f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 更酷炫的效果
 
@@ -101,7 +101,7 @@ Kitkat 中的 FAB：
          />  
 ```
 
-![更酷炫的效果](http://upload-images.jianshu.io/upload_images/735909-5b05a2607b053ab1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![更酷炫的效果](https://upload-images.jianshu.io/upload_images/735909-5b05a2607b053ab1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 [这张图片出处](http://blog.csdn.net/u010687392/article/details/46954213)
 
@@ -113,11 +113,11 @@ Kitkat 中的 FAB：
 
 如果你还记得这张图的话：
 
-![交互效果](http://upload-images.jianshu.io/upload_images/735909-0412fef046d56bc2.jpg?imageMogr2/auto-orient/strip)
+![交互效果](https://upload-images.jianshu.io/upload_images/735909-0412fef046d56bc2.jpg?imageMogr2/auto-orient/strip)
 
 或者说你见过这种交互效果：
 
-![交互效果](http://upload-images.jianshu.io/upload_images/735909-b7811a2ad183a2d8.jpg?imageMogr2/auto-orient/strip)
+![交互效果](https://upload-images.jianshu.io/upload_images/735909-b7811a2ad183a2d8.jpg?imageMogr2/auto-orient/strip)
 
 其实这些都是通过`Behavior`这个类做出来的，以上的两种动画都是默认自带的Behavior，在`CoordinatorLayout` 内部有对`Behavior`类的描述：
 
@@ -396,11 +396,11 @@ static Behavior parseBehavior(Context context, AttributeSet attrs, String name) 
 ```
 可以看到用这种方式的系统会自动给我们加上包名，写太多反而显的累赘，这个自定义Behavior应该很好理解，效果就是随着RecycleView的滑动FAB会隐藏/显示，是一个很常见的效果：
 
-![常见效果](http://upload-images.jianshu.io/upload_images/735909-8e9af07adf1d369e.jpg?imageMogr2/auto-orient/strip)
+![常见效果](https://upload-images.jianshu.io/upload_images/735909-8e9af07adf1d369e.jpg?imageMogr2/auto-orient/strip)
 
 只要向上滚动FAB就会消失，向下滚动FAB就是显示，这里要注意的是FAB可以与RecycleView形成这种效果，但是暂时并不支持ListView，没关系，反正RecycleView当成ListView来用就好，接下来仿照实现知乎的FAB效果的实现，先看一下知乎的效果：
 
-![知乎的效果](http://upload-images.jianshu.io/upload_images/735909-08e8d14c491535e9.jpg?imageMogr2/auto-orient/strip)
+![知乎的效果](https://upload-images.jianshu.io/upload_images/735909-08e8d14c491535e9.jpg?imageMogr2/auto-orient/strip)
 
 可以很清楚的看到FAB随着RecycleView的滑动呈现出滚动推出的效果，并且点击FAB会出现旋转效果并且弹出一个蒙版，我们可以先自定义一个用于执行FAB旋转的Behavior，可以看到这里FAB是逆时针旋转135度，那么代码就可以这么写：
 
@@ -523,7 +523,7 @@ ViewCompat.setTranslationY(mView, mView.getHeight());
 
 看看效果：
 
-![效果](http://upload-images.jianshu.io/upload_images/735909-85f0b2d01a407941.jpg?imageMogr2/auto-orient/strip)
+![效果](https://upload-images.jianshu.io/upload_images/735909-85f0b2d01a407941.jpg?imageMogr2/auto-orient/strip)
 
 是不是有一个很奇怪的地方，知乎的FAB并没有SnackBar弹出啊，那就说明一开始的思路错了，但是一个FAB只能设置一个`app:layout_behavior` ，如果我们把这个Behavior用作FAB的旋转效果那么FAB的滚动移出视图的效果就没了，所以换一种思路，用Object动画来做FAB的旋转效果：
 
@@ -642,13 +642,13 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
 
 最后实现的效果：
 
-![最终效果](http://upload-images.jianshu.io/upload_images/735909-dfaae781fc36cd63.jpg?imageMogr2/auto-orient/strip)
+![最终效果](https://upload-images.jianshu.io/upload_images/735909-dfaae781fc36cd63.jpg?imageMogr2/auto-orient/strip)
 
 这里部分参考了[**仿知乎FloatingActionButton浮动按钮动画效果实现**](http://blog.csdn.net/qq_22770457/article/details/50978774)
 
 至于FAB弹出的InBox这里就不去实现了，比较麻烦，可以参考第三方的实现：
 
-![第三方实现](http://upload-images.jianshu.io/upload_images/735909-22e7010e0101db39.jpg?imageMogr2/auto-orient/strip)
+![第三方实现](https://upload-images.jianshu.io/upload_images/735909-22e7010e0101db39.jpg?imageMogr2/auto-orient/strip)
 [**FloatingActionButtonPlus**](https://github.com/550609334/FloatingActionButtonPlus)
 
 #### 写在末尾

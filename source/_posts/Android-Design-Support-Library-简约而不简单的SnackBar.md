@@ -12,7 +12,7 @@ tags: [Material Design,Google,Android]
 
 根据SnackBar的特点，在屏幕上显示出不同的SnackBar，效果如下：
 
-![这里写图片描述](http://img.blog.csdn.net/20160507110336476)
+![snackBar](https://img.blog.csdn.net/20160507110336476)
 
 先看一下相关的API文档：
 
@@ -57,7 +57,7 @@ Toast.makeText(MainActivity.this,R.string.normal,Toast.LENGTH_SHORT).show();
 
 是不是很像，没错简单的使用的话SnackBar跟Toast并没有多大区别，但是动画效果上是有差异的，如果你注意到了这一点：
 
-![这里写图片描述](http://img.blog.csdn.net/20160507111906669)
+![这里写图片描述](https://img.blog.csdn.net/20160507111906669)
 
 看，这个侧边滑动消失的效果只有当你使用CoordinatorLayout作为根布局才有，这就是为什么在写SnackBar之前我要先说明一下CoordinatorLayout的原因，如果你使用普通的LinearLayout或者RelativeLayout是不会有这种动画交互效果的，另外，**注意**
 SnackBar的make方法有两种重载方法，分别是：
@@ -124,7 +124,7 @@ Snackbar.make(mCoor,R.string.callback,Snackbar.LENGTH_SHORT)
 
 看一下效果：
 
-![这里写图片描述](http://img.blog.csdn.net/20160507114025959)
+![效果](https://img.blog.csdn.net/20160507114025959)
 
 当我们调用了setAction方法并且传入一个字符串之后，SnackBar的右下角就会呈现出我们传入的字符串，并且这个字符串是可点击的，我们可以在点击事件里面做出响应，比如说跳转Activity或者弹出一个Toast等等，这里默认你点击了这个Action这个SnackBar是会消失的。也就是无论你的duration参数设置的是一直显示还是显示多长时间都会消失。
 
@@ -317,7 +317,7 @@ private View view;
 ```
 **最后一行，addView方法第二个参数表示新加的布局在SnackBar中的位置，注意不要超过总的View的个数不然会报错**，message和Action text分别算一个View，其他的话注释已经写得很清楚就不一一解释了，这个代码呈现的效果如下：
 
-![这里写图片描述](http://img.blog.csdn.net/20160507124757478)
+![效果](https://img.blog.csdn.net/20160507124757478)
 
 为了方便自定义样式，发现这一特性的作者还给我们封装了成为一个工具类：
 ```java

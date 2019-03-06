@@ -113,15 +113,12 @@ public class MainActivity extends Activity implements OnClickListener,OnTouchLis
 
 界面是这样的：
 
-![这里写图片描述](http://oasusatoz.bkt.clouddn.com/%E7%95%8C%E9%9D%A2.jpg)
 
 运行这个程序，点击Button，查看Log打印输出的信息：
 
-![这里写图片描述](http://oasusatoz.bkt.clouddn.com/%E6%9F%A5%E7%9C%8BLog%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF.jpg)
 
 (这里onTouch0代表的是ACTION_DOWN，onTouch1代表的是ACTION_UP，onTouch2表示ACTION_MOVE，因为我们只是稳稳的点击了一下Button所以不会有ACTION_MOVE的Log信息出现) 这样我们可以得到一个初步的结论：`onTouch()`方法是优先于`onClick()`执行的，然后我们会发现`onTouch()`方法有一个很明显的和`onClick()`方法不同的地方的，那就是它有一个`Boolean`类型的返回值，如果我们把这个默认为False的返回值改为True会怎么样呢：
 
-![这里写图片描述](http://oasusatoz.bkt.clouddn.com/%E8%BF%94%E5%9B%9E%E5%80%BC%E6%94%B9%E4%B8%BATrue.jpg)
 
 发现了什么：`onClick()`方法没有被执行，这里我们把这种现象叫做点击事件被`onTouch()`消费掉了，事件不会在继续向`onClick()`方法传递了，那么事件分发机制最基本的几条我们已经了解了，下面我们来分析产生这种机制的根本原因。
 

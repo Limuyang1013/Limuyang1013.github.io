@@ -38,13 +38,10 @@ public class MainActivity extends Activity implements OnClickListener,OnTouchLis
 
 }
 ```
-![效果图](http://oasusatoz.bkt.clouddn.com/%E7%82%B9%E5%87%BB%E6%95%88%E6%9E%9C%E5%9B%BE.jpg)
 
 效果图也依旧没有变，现在我们先点击一下Button,查看Log输出：
-![Log输出](http://oasusatoz.bkt.clouddn.com/Log%E8%BE%93%E5%87%BA.jpg)
 
 可以很清楚的看到这里和上一节分析得情况一样：当点击事件发生时`onTouch()`方法是优先于`onClick()`方法执行的，并且如果`onTouch()`返回False既不消耗点击事件那么如果控件设置了`setOnClickListener`最终是会执行到`onClick()`方法的，可是我很好奇ViewGroup的点击事件和View的到底有什么区别，点击事件事件的分发到底是从`ViewGroup`开始还是从`View`开始的呢，于是我点击了Button以外的空白区域，捕捉到如下信息(注:我的根布局就是`RelativeLayout`)：
-![Log输出](http://oasusatoz.bkt.clouddn.com/%E7%A9%BA%E7%99%BD%E5%8C%BA%E5%9F%9FLog%E8%BE%93%E5%87%BA.jpg)
 
 说明根布局也就是`Viewroup`也是可以响应点击事件的，但是我们点击`View`的时候为什么没有`ViewGroup`的Log输出，这是不是说明android事件分发是先传到`View`的，当`View`消耗的这个事件它的`ViewGroup`就无法接收这个事件了呢，为了彻底的谈清楚原因，我们先重写一个`ViewGroup`，然后重写这个`ViewGroup`里面的`onInterceptTouchEvent(MotionEvent ev)`、`dispatchTouchEvent(MotionEvent event)`还有onTouchEvent(MotionEvent event)这三个方法通过Log输出信息来判断：
 
@@ -91,7 +88,6 @@ public class MyButton extends Button{
 	//这里注意View是没有onInterceptTouchEvent方法的
 ```
 效果图是一样的这里就不再贴了，为了验证刚才的想法我们直接点击一下界面上的Button，Log输出如下：
-![Log输出](http://oasusatoz.bkt.clouddn.com/%E5%86%8D%E6%AC%A1%E7%82%B9%E5%87%BB%E6%97%B6Log%E8%BE%93%E5%87%BA.jpg)
 
 发现了什么，我们点击的是Button,然而这个事件最开始是传到了我们的根布局MyLayout，并且还按照：
 `dispatchTouchEvent`、`onInterceptTouchEvent`、`dispatchTouchEvent`的顺序执行，紧接着执行`View`的`onTouch()`和`onTouchEvent()`方法，还有一点很奇怪的事只有最开始ACTION_DOWN的时候调用了ViewGroup的`onInterceptTouchEvent`方法，在后面的ACTION_UP事件派发过程中却没有调用，这里给出一个合理的猜想：一旦一个View开始处理这个触摸事件，那么接下来的ACTION_MOVE和ACTION_UP事件都会交给它去处理，就好比你在公司里面做事，分到你做的事你已经做了一些，那么接下来的事你的完完整整的做好，那么如果做到一半不做了会怎么样(即View不消耗ACTION_DOWN事件)？我们可以大胆的假设如果上级交给你做的事没有做好，那么上级_在短期内肯定不敢交代事情给你做了(后续的ACTION_MOVE、ACTION_DOWN事件这个View都接收不到了)，那么究竟如何我们还是从源码看起。
@@ -791,7 +787,6 @@ if (!canViewReceivePointerEvents(child)
 执行到这里的话有两种情况，一种是ViewGroup里面没有找到子View，另一种就是找到了处理这次点击事件的子View但是这个子View的`disPatchTouchEvent`返回了False，我们通过前面的分析知道`disPatchTouchEvent`中是先执行`onTouch()`方法的，而一般`onTouch()`方法返回的是False，此时`disPatchTouchEvent`方法的返回值由`onTouchEvent`方法决定，出现这种情况说明`onTouchEvent`返回了False，在以上两种情况下，`ViewGroup`会自己处理这个点击事件，注意这里这个方法里的child传入的是null，我们前面就知道了传入null会执行`handled = super.dispatchTouchEvent(event);`也就是说此时交由ViewGroup处理这个事件。而`ViewGroup`也是`View`的子类，它里面是没有重写`View`的`onTouchEvent`方法的，所以它自身处理点击事件的流程和我们在[**View的事件分发机制解析**](http://www.limuyang.cc/2016/07/24/View%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6%E8%A7%A3%E6%9E%90/)里面分析得是一样的，至此`ViewGroup`的分发事件分析完毕。
 ### 总结
 这次我们只分析了点击Button时的Log输出，下面给出点击空白处的Log输出，可以自己检验一下分析成果：
-![这里写图片描述](http://oasusatoz.bkt.clouddn.com/%E6%9C%80%E5%90%8E%E7%9A%84Log%E8%BE%93%E5%87%BA.jpg)
 
 ### 一些结论
 
