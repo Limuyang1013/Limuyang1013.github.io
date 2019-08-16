@@ -48,13 +48,13 @@ open_in_new: false
 # 请在需要打赏的文章的md文件头部，设置属性reward: true
 
 # 打赏基础设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏
-reward_type: 2
+reward_type: 0
 # 打赏wording
 reward_wording: '谢谢你请我吃糖果'
 # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg
 alipay:
 # 微信二维码图片地址
-weixin: http://oasusatoz.bkt.clouddn.com/weixin.png
+#weixin: http://oasusatoz.bkt.clouddn.com/weixin.png
 
 # Miscellaneous
 baidu_analytics: ''
@@ -107,7 +107,7 @@ smart_menu:
 
 friends:
   litten: http://litten.me/
-  Android Developer: https://developer.android.com/index.html
+  Jue Jin: https://juejin.im/user/57a012cb2e958a00666507a5
   CSDN: http://blog.csdn.net/wei_smile
 
 aboutme: 毕业自花椒，现在在上海<br>目前是一枚移动前端开发工程师<br>Google原生粉<br>信仰圣光吧
